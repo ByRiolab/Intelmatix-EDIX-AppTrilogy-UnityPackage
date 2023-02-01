@@ -1,7 +1,6 @@
 {
     "dependencies": {
-        "com.unity.textmeshpro": "2.0.1",
-        "com.dentedpixel.LeanTween": "2.0.0"
+        "com.unity.textmeshpro": "2.0.1"
     },
     "displayName": "Intelmatix UI",
     "version": "0.0.1",
