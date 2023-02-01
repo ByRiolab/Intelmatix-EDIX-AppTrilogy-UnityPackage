@@ -1,0 +1,11 @@
+{
+    "dependencies": {
+        "com.dentedpixel.LeanTween": "2.4.0"
+    },
+    "name": "com.riolabtv.IntelmatixUI",
+    "displayName": "Intelmatix UI",
+    "version": "1.0.0",
+    "unity": "2020.1",
+    "description": "Este paquete contiene la interfaz de usuario para los proyectos de Intelmatix.",
+    "author": "RiolabTV"
+}
