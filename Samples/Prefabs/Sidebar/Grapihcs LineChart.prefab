@@ -46,7 +46,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 572766577307562144}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f198b3da6a2fe470681e03734ea90ae8, type: 3}
+  m_Script: {fileID: 11500000, guid: 176be1e7928f745bbae68c20be5f30ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   chart: {fileID: 7878518440040290218}
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bb94585de240e4812a61e862f86533e4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3fc7463071f0a42d68fc1bac037b8979, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 0
@@ -729,7 +729,7 @@ GameObject:
   - component: {fileID: 3603483558504699648}
   - component: {fileID: 3603483558504699773}
   m_Layer: 0
-  m_Name: LineChart - TMPro
+  m_Name: LineChart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -929,7 +929,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3617168024174308737}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22b180e3076d4435392108c4670f8c9a, type: 3}
+  m_Script: {fileID: 11500000, guid: afc04f97717444dae91baa5a2fe0b5db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   minimizeButton: {fileID: 7378812446674308291}
@@ -1117,7 +1117,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bb94585de240e4812a61e862f86533e4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3fc7463071f0a42d68fc1bac037b8979, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 0
@@ -1439,8 +1439,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: (SAR)
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: fe29feff293d34badb975a393f68e79b, type: 2}
-  m_sharedMaterial: {fileID: -6323987121526522042, guid: fe29feff293d34badb975a393f68e79b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1590,8 +1590,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Overall Sales Store
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b1242c766ed9d45c5bce49d53e5f4dac, type: 2}
-  m_sharedMaterial: {fileID: -6245380361334667240, guid: b1242c766ed9d45c5bce49d53e5f4dac, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1841,7 +1841,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7878518439615224822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05db3dffa3ccd4971b54d2778c1b9ea9, type: 3}
+  m_Script: {fileID: 11500000, guid: d65b9fd10f4454deb9f5d109e823eae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   titleText: {fileID: 7878518438912842416}
@@ -1977,7 +1977,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e54b83e38b06f4a34875e21364d4cafb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4e96d43dd84e441e795a7fdc9c13c321, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
