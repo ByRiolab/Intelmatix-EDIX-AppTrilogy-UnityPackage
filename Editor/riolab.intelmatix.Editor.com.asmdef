@@ -1,5 +1,5 @@
 {
-    "name": "Intelmatix_UI.Core",
+    "name": "Intelmatix.Editor.Core",
     "rootNamespace": "",
     "references": [],
     "includePlatforms": [],
