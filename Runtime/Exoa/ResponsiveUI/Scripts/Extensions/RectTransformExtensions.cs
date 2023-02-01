@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Exoa.Extensions
+namespace Intelmatix.Exoa.Responsive.Extensions
 {
     public static class RectTransformExtensions
     {

@@ -4,7 +4,7 @@ using AwesomeCharts;
 using UnityEngine.UI;
 using Intelmatix.Modules.Sidebar.Primitives;
 using Intelmatix.Modules.Sidebar.Graphics;
-using Exoa.Responsive;
+using Intelmatix.Exoa.Responsive;
 
 namespace Intelmatix.Modules.Sidebar
 {

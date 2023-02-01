@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 
-namespace Exoa.Responsive
+namespace Intelmatix.Exoa.Responsive
 {
     public abstract class ScriptlessEditor : Editor
     {

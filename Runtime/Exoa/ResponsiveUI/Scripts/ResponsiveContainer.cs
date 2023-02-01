@@ -2,11 +2,11 @@
 // Copyright 2023 exoa.dev
 // Special thanks to dtappe on the support forum for his contribution
 //====================================================================
-using Exoa.Extensions;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Exoa.Responsive
+using Intelmatix.Exoa.Responsive.Extensions;
+namespace Intelmatix.Exoa.Responsive
 {
     /// <summary>
     /// The main component for any container containing items.

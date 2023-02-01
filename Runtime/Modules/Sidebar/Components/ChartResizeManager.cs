@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
-using Exoa.Responsive;
 using AwesomeCharts;
+using Intelmatix.Exoa.Responsive;
 
 namespace Intelmatix.Modules.Sidebar.Components
 {

@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Exoa.Responsive;
 using Intelmatix.Modules.Sidebar.Components;
 using Intelmatix.Modules.Sidebar.Primitives;
 using UnityEngine;

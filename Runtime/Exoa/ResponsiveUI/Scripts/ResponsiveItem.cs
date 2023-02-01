@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Intelmatix.Exoa.Responsive.Extensions;
 
-namespace Exoa.Responsive
+namespace Intelmatix.Exoa.Responsive
 {
     /// <summary>
     /// Add this component on any Responsive Container's children 

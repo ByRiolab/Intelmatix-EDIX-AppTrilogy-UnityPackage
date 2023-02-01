@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace Exoa.Responsive
+namespace Intelmatix.Exoa.Responsive
 {
     [CustomEditor(typeof(ResponsiveContainer), true)]
     [CanEditMultipleObjects]

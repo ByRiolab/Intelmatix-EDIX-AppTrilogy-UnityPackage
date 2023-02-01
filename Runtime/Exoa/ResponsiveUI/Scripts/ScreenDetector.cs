@@ -1,8 +1,7 @@
-﻿using Exoa.Extensions;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Intelmatix.Exoa.Responsive.Extensions;
 using UnityEngine;
-
-namespace Exoa.Responsive
+namespace Intelmatix.Exoa.Responsive
 {
     /// A class that detects the screen orientation and sends
     /// feedbacks to other components

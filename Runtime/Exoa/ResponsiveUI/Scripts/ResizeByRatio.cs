@@ -1,8 +1,8 @@
-﻿using Exoa.Extensions;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Exoa.Responsive
+using Intelmatix.Exoa.Responsive.Extensions;
+namespace Intelmatix.Exoa.Responsive
 {
     /// <summary>
     ///  a very simple component to resize a rect transform based on

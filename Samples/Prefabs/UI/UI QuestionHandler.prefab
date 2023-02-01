@@ -48,11 +48,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 410678208105249012}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af398738d4e2a4a1d9eec77fbb752cdf, type: 3}
+  m_Script: {fileID: 11500000, guid: ca431d55d02674cbeb8b9a7c04f5a98c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   titleText: {fileID: 4350988121336106371}
-  toggle: {fileID: 5110913595542661896}
+  toggle: {fileID: 2507226525497416226}
   canvasToAnimate: {fileID: 7585251403497039938}
   textVerticalSizeAdjuster: {fileID: 7557565965992529880}
 --- !u!1 &1142583255857613918
@@ -101,13 +101,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1142583255857613918}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3ad7819c22ec43d2ac50b329a0283a3, type: 3}
+  m_Script: {fileID: 11500000, guid: 54ba9896be6584ae1b4745f604720433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textMeshPro: {fileID: 4350988121336106371}
-  rectTransform: {fileID: 8942473450826141390}
-  maxHieght: 300
-  minHieght: 50
+  textMeshPro: {fileID: 0}
+  rectTransform: {fileID: 0}
+  maxHieght: 0
+  minHieght: 0
 --- !u!1 &6232537662851206790
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,9 +191,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: What will my sales be?
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: fe29feff293d34badb975a393f68e79b, type: 2}
-  m_sharedMaterial: {fileID: -6323987121526522042, guid: fe29feff293d34badb975a393f68e79b,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e2e949779c6f146e3a288b02f550a2d0, type: 2}
+  m_sharedMaterial: {fileID: -6323987121526522042, guid: e2e949779c6f146e3a288b02f550a2d0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -284,8 +283,8 @@ GameObject:
   - component: {fileID: 5340740570504821080}
   - component: {fileID: 6022524784753979099}
   - component: {fileID: 3774531349321762222}
-  - component: {fileID: 8083828189298802706}
-  - component: {fileID: 5110913595542661896}
+  - component: {fileID: 4053249306603211038}
+  - component: {fileID: 2507226525497416226}
   m_Layer: 5
   m_Name: <toggle>[BlockRaycast]
   m_TagString: Untagged
@@ -351,7 +350,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8083828189298802706
+--- !u!114 &4053249306603211038
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -360,12 +359,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 9090060091634492503}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d08c583d116114046ba91a1287b6b71b, type: 3}
+  m_Script: {fileID: 11500000, guid: 96fd1e681e5ca4bd6a10985b1be2e8ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetGraphics:
   - {fileID: 4350988121336106371}
---- !u!114 &5110913595542661896
+--- !u!114 &2507226525497416226
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -374,7 +373,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9090060091634492503}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 136bec08a271e4749b70825272981e82, type: 3}
+  m_Script: {fileID: 11500000, guid: 11ffe479c536649be897cb74552ce305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:

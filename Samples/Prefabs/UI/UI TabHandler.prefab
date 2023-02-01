@@ -161,7 +161,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4069036402432340680}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d08c583d116114046ba91a1287b6b71b, type: 3}
+  m_Script: {fileID: 11500000, guid: 96fd1e681e5ca4bd6a10985b1be2e8ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetGraphics:
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4069036402432340680}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 136bec08a271e4749b70825272981e82, type: 3}
+  m_Script: {fileID: 11500000, guid: 11ffe479c536649be897cb74552ce305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -260,7 +260,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5529716987907433883}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4bd38d2c0a784570a69de0769d5cc25, type: 3}
+  m_Script: {fileID: 11500000, guid: ef940acfd6cb84f5ea7e091e627928ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   textMeshPro: {fileID: 6017746550150443825}
@@ -505,8 +505,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Explore.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a1aef51a2bd4b477197cf39a374a447f, type: 2}
-  m_sharedMaterial: {fileID: 8414950910057396538, guid: a1aef51a2bd4b477197cf39a374a447f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -709,13 +709,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6017746551310728511}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e535bfa14d4104168a2ac39c3cc14559, type: 3}
+  m_Script: {fileID: 11500000, guid: 47c66aca47e3a480ab36011a21169a4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   titleText: {fileID: 6017746550150443825}
   canvasToAnimate: {fileID: 6993781127480468909}
-  toggle: {fileID: 7298432612317612567}
-  buttonToInteract: {fileID: 0}
+  toggle: {fileID: 6017746550794924604}
   textSizeAdjuster: {fileID: 6374722456254959905}
 --- !u!1 &6017746551735690834
 GameObject:
