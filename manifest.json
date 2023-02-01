@@ -2,5 +2,16 @@
     "dependencies": {},
     "displayName": "Intelmatix UI",
     "version": "0.0.1",
-    "unity": "2020.1"
+    "unity": "2020.1",
+    "description": "UI for Intelmatix",
+    "name": "com.intelmatix.ui",
+    "author": "Riolab",
+    "keywords": [
+        "UI",
+        "Intelmatix"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/RiolabTV/Intelmatix_EDIX_UI_Package.git"
+    }
 }
