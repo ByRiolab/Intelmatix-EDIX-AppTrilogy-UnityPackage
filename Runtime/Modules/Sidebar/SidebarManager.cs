@@ -5,8 +5,6 @@ using UnityEngine.UI;
 using Intelmatix.Modules.Sidebar.Primitives;
 using Intelmatix.Modules.Sidebar.Graphics;
 using Exoa.Responsive;
-using Intelmatix.Modules.Map;
-using Intelmatix.Modules.Map.Primitives;
 
 namespace Intelmatix.Modules.Sidebar
 {
@@ -14,7 +12,6 @@ namespace Intelmatix.Modules.Sidebar
     {
         [Header("Data References")]
         [SerializeField] private SidebarReference sidebarReference;
-        [SerializeField] private MapReference mapReference;
         [Space(20)]
 
         [Header("References")]
@@ -39,7 +36,6 @@ namespace Intelmatix.Modules.Sidebar
 
         void Start()
         {
-            closeButton.onClick.AddListener(MapManager.ShowWorldInfo);
             closeButton.onClick.AddListener(CloseSidebar);
 
             instanceLineCharts = new();
@@ -53,20 +49,14 @@ namespace Intelmatix.Modules.Sidebar
             //     DestroyImmediate(child.gameObject);
 
             sidebarReference.OnDataChanged += SetupSidebar;
-            mapReference.OnDataChanged += OnMapDataChanged;
             buttonToAnimate.alpha = 0;
             buttonToAnimate.blocksRaycasts = false;
         }
         void OnDisable()
         {
             sidebarReference.OnDataChanged -= SetupSidebar;
-            mapReference.OnDataChanged -= OnMapDataChanged;
         }
 
-        private void OnMapDataChanged(MapData mapData)
-        {
-            CloseSidebar();
-        }
         public static void Close()
         {
             Instance.CloseSidebar();

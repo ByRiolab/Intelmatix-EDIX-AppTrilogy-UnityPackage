@@ -64,7 +64,6 @@ namespace Intelmatix.Modules.Questions.Components
 
                     if (!toggleGroup.AnyTogglesOn())
                     {
-                        MapManager.Close();
                     }
                     // LeanTween.moveLocal(this.canvasToAnimate.gameObject, Vector3.zero,duration).setEase(LeanTweenType.easeOutBack);
                 }

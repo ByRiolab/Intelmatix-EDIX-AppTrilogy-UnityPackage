@@ -9,7 +9,6 @@ namespace Intelmatix.Modules.Questions
     {
         [Header("Data References")]
         public QuestionsReference questionsReference;
-        public MapReference mapReference;
         [Space(20)]
 
         [Header("Components")]
@@ -26,13 +25,11 @@ namespace Intelmatix.Modules.Questions
         void OnEnable()
         {
             questionsReference.OnDataChanged += SetupQuestions;
-            mapReference.OnDataChanged += UpdateKPIs;
             parentOfQuestions.DestroyChildren();
         }
         void OnDisable()
         {
             questionsReference.OnDataChanged -= SetupQuestions;
-            mapReference.OnDataChanged -= UpdateKPIs;
         }
 
         void SetupQuestions(QuestionsData questionsData)
@@ -64,20 +61,12 @@ namespace Intelmatix.Modules.Questions
                             // if (!toggleGroup.AnyTogglesOn())
                             // {
                             // }
-                            MapManager.Close();
                         }
                     });
                 });
                 delayBetweenTabs += 0.075f;
             });
         }
-
-        void UpdateKPIs(MapData mapData)
-        {
-            //mapData.KPIs();
-            Debug.LogWarning("UI -> missing KPIs data");
-        }
-
 
     }
 }

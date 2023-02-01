@@ -6,7 +6,7 @@ namespace Intelmatix.Modules.Questions.Primitives
     [Serializable]
     public class QuestionsData
     {
-        
+
         [SerializeField] private List<Tab> tabs;
         public List<Tab> Tabs => tabs;
 
@@ -31,7 +31,6 @@ namespace Intelmatix.Modules.Questions.Primitives
 
             public void OpenMap()
             {
-                ApplicationManager.Instance.OpenMap(path);
             }
         }
     }
