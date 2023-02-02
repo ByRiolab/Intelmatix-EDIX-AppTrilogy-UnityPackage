@@ -52,7 +52,6 @@ namespace Intelmatix.Modules.Sidebar.Graphics
 
         private void OnDisable()
         {
-            if (this.gameObject == null || this.canvasToAnimate == null) return;
             AnimationManager.AnimateOut(this.canvasToAnimate, direction: AnimationManager.Direction.Right, duration: AnimationSettings.Sidebar.ContentCloseDuration);
         }
     }

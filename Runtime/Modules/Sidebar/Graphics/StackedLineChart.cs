@@ -30,10 +30,14 @@ namespace Intelmatix.Modules.Sidebar.Graphics
         [SerializeField] private CanvasGroup canvasToAnimate;
 
 
-        private void OnEnable()
+        private void Start()
         {
             AnimationManager.AnimateIn(this.canvasToAnimate, direction: AnimationManager.Direction.Right, duration: AnimationSettings.Sidebar.ContentAppearDuration);
             togglePrefab.gameObject.SetActive(false);
+        }
+        private void OnEnable()
+        {
+            canvasToAnimate.alpha = 0;
         }
         private void OnDisable()
         {

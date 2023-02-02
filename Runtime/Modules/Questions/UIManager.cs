@@ -22,14 +22,17 @@ namespace Intelmatix.Modules.Questions
 
         private QuestionsPanel currentPanel;
 
-        void Awake()
+        protected override void Awake()
         {
             if (questionsReference == null)
             {
                 Debug.LogWarning("Questions reference is null");
-                Destroy(this.gameObject);
+                DestroyImmediate(this.gameObject);
+                return;
             }
+            else base.Awake();
         }
+
         void OnEnable()
         {
             questionsReference.OnDataChanged += SetupQuestions;
