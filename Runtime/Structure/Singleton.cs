@@ -32,15 +32,10 @@ namespace Intelmatix.Base
 
         void Awake()
         {
-            if (instance == null && dataReference != null)
+            if (instance == null && dataReference != null && instance != this)
             {
                 instance = this as T;
                 // Debug.LogFormat("Singleton {0} Initialized", typeof(T).Name);
-            }
-            else if (dataReference == null)
-            {
-                Debug.LogErrorFormat("Singleton {0} data reference is null", typeof(T).Name);
-                DestroyImmediate(gameObject);
             }
             else
             {
@@ -78,13 +73,14 @@ namespace Intelmatix.Base
 
         void Awake()
         {
-            if (instance == null)
+            if (instance == null && instance != this)
             {
                 instance = this as T;
                 // Debug.LogFormat("Singleton {0} Initialized", typeof(T).Name);
             }
             else
             {
+                Debug.LogErrorFormat("Singleton {0} already initialized", typeof(T).Name);
                 DestroyImmediate(gameObject);
             }
         }

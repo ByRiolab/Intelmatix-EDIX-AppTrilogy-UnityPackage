@@ -22,11 +22,14 @@ namespace Intelmatix.Modules.Sidebar.Primitives
         // [SerializeField] private List<Decision> decisions;
         // #endregion
         public string Title => title;
+        #region Filters
         public string CurrentFilter => current_filter;
+        public List<FiltersData> Filters => filters;
+        #endregion
+
         public List<DataTable> TableCharts => tables;
         public List<ChartGroup> LineCharts => linecharts;
         public List<ChartGroup> BarCharts => barcharts;
-        public List<FiltersData> Filters => filters;
 
         [Serializable]
         public class StoreData

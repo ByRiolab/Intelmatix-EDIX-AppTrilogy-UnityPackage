@@ -2469,7 +2469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 176be1e7928f745bbae68c20be5f30ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chart: {fileID: 644426321744761673}
+  chart: {fileID: 1905465996646105377}
   minimizeSize: 1000
   maximizeSize: 1600
   animationTime: 1
