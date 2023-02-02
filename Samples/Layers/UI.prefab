@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4fb01e0835284956929d29b1bf2c759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questionsReference: {fileID: 0}
-  tabHandlerPrefab: {fileID: 7321704621823341121}
+  dataReference: {fileID: 0}
+  tabHandlerPrefab: {fileID: 6017746551310728509, guid: 5092bddd131744f8790462664719b634, type: 3}
   questionsPanel: {fileID: 5455288194800980576, guid: 4ed599d9b8deb4cdeb2101ff101a5985, type: 3}
   toggleGroup: {fileID: 6155746441969600146}
   parentOfTabs: {fileID: 6155746441969600147}
@@ -2624,7 +2624,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 50, y: -0.0000076293945}
+  m_AnchoredPosition: {x: 50, y: -0.0000038146973}
   m_SizeDelta: {x: 1770, y: 200}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &6155746442750931391
@@ -3614,17 +3614,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5092bddd131744f8790462664719b634, type: 3}
---- !u!114 &7321704621823341121 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6017746551310728509, guid: 5092bddd131744f8790462664719b634, type: 3}
-  m_PrefabInstance: {fileID: 3898075575967321980}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47c66aca47e3a480ab36011a21169a4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &7321704621823341122 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6017746551310728510, guid: 5092bddd131744f8790462664719b634, type: 3}
