@@ -25,6 +25,7 @@ namespace Intelmatix.Modules.Sidebar.Components
                 maximizeButton.gameObject.SetActive(true);
 
 
+
                 if (lineChart)
                 {
                     var lenght = lineChart.AxisConfig.HorizontalAxisConfig.LabelsCount;

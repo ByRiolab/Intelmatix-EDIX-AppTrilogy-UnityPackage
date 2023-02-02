@@ -23,11 +23,21 @@ namespace Intelmatix.Modules.Sidebar.Components
         [SerializeField] private LeanTweenType animationType = LeanTweenType.easeOutCubic;
         [SerializeField] private Direction direction;
 
+        private float marginBottom = 30;
 
         public delegate void ChartResizeEvent();
         public event ChartResizeEvent OnChartResizeStart;
         public event ChartResizeEvent OnChartResizeUpdate;
         public event ChartResizeEvent OnChartResizeEnd;
+
+        public void SetMaximizeSize(float newValue)
+        {
+            if (newValue > minimizeSize && newValue < maximizeSize)
+            {
+                this.maximizeSize = newValue + marginBottom;
+            }
+            // Debug.Log("verticalLayoutGroup.preferredHeight: " + this.maximizeSize);
+        }
 
         public void ResizeChart(float targetSize)
         {

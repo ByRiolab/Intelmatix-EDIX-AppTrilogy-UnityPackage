@@ -130,17 +130,29 @@ namespace Intelmatix.Modules.Sidebar.Primitives
 
             public List<AwesomeCharts.LineDataSet> GetLineDataSets()
             {
+                AwesomeCharts.LineEntry line = null;
+
                 List<AwesomeCharts.LineDataSet> lineDataSets = new List<AwesomeCharts.LineDataSet>();
                 foreach (var dataSet in data.DataSets)
                 {
                     AwesomeCharts.LineDataSet lineDataSet = new AwesomeCharts.LineDataSet();
                     lineDataSet.LineColor = Color.white;
+
+                    // Predicted line
+                    if (line != null && dataSet.Title.ToLower().Equals("predict"))
+                    {
+                        lineDataSet.Entries.Add(line);
+                        // ColorUtility.TryParseHtmlString("00FF9A", out Color color);
+                        lineDataSet.LineColor = new Color(0, 255 / 255, 154 / 255);
+                        // lineDataSet.LineColor = new Color(0, 255, 154)
+                    }
                     // lineDataSet.LineThickness = 1;
                     lineDataSet.LineThickness = 1f;
                     lineDataSet.Title = dataSet.Title;
                     foreach (var entry in dataSet.Entries)
                     {
                         lineDataSet.Entries.Add(entry.ToLineEntry());
+                        line = lineDataSet.Entries[lineDataSet.Entries.Count - 1];
                     }
                     lineDataSets.Add(lineDataSet);
                 }
@@ -177,24 +189,24 @@ namespace Intelmatix.Modules.Sidebar.Primitives
                 lineChartTemplate.AxisConfig.VerticalAxisConfig.Bounds.Max = this.AxisConfig.VerticalAxisConfig.Max;
                 lineChartTemplate.AxisConfig.VerticalAxisConfig.Bounds.Min = this.AxisConfig.VerticalAxisConfig.Min;
 
-
                 // bind custom values
-                if (this.AxisConfig.HorizontalAxisconfig.CustomValues.Count > 0)
+                if (this.AxisConfig.HorizontalAxisconfig.CustomValues.Count > 0 && this.AxisConfig.HorizontalAxisconfig.CustomValues.Count < 7)
                 {
                     lineChartTemplate.AxisConfig.HorizontalAxisConfig.ValueFormatterConfig.CustomValues = this.AxisConfig.HorizontalAxisconfig.CustomValues;
+                    lineChartTemplate.AxisConfig.HorizontalAxisConfig.LabelsCount = this.AxisConfig.HorizontalAxisconfig.CustomValues.Count;
                 }
+
                 if (this.AxisConfig.VerticalAxisConfig.CustomValues.Count > 0)
                 {
+                    lineChartTemplate.AxisConfig.VerticalAxisConfig.LabelsCount = this.AxisConfig.VerticalAxisConfig.LabelsCount;
                     lineChartTemplate.AxisConfig.VerticalAxisConfig.ValueFormatterConfig.CustomValues = this.AxisConfig.VerticalAxisConfig.CustomValues;
                 }
 
-                lineChartTemplate.AxisConfig.HorizontalAxisConfig.LabelsCount = this.AxisConfig.HorizontalAxisconfig.LabelsCount;
-                lineChartTemplate.AxisConfig.VerticalAxisConfig.LabelsCount = this.AxisConfig.VerticalAxisConfig.LabelsCount;
 
-                if (this.AxisConfig.HorizontalAxisconfig.LabelsCount > 7)
-                {
-                    lineChartTemplate.AxisConfig.HorizontalAxisConfig.LabelsConfig.LabelColor = new Color(1, 1, 1, 0);
-                }
+                // if (this.AxisConfig.HorizontalAxisconfig.LabelsCount > 7)
+                // {
+                //     lineChartTemplate.AxisConfig.HorizontalAxisConfig.LabelsConfig.LabelColor = new Color(1, 1, 1, 0);
+                // }
             }
 
 
@@ -209,22 +221,22 @@ namespace Intelmatix.Modules.Sidebar.Primitives
 
 
                 // bind custom values
-                if (this.AxisConfig.HorizontalAxisconfig.CustomValues.Count > 0)
+                if (this.AxisConfig.HorizontalAxisconfig.CustomValues.Count > 0 && this.AxisConfig.HorizontalAxisconfig.CustomValues.Count < 7)
                 {
                     lineChartTemplate.AxisConfig.HorizontalAxisConfig.ValueFormatterConfig.CustomValues = this.AxisConfig.HorizontalAxisconfig.CustomValues;
+                    // lineChartTemplate.AxisConfig.HorizontalAxisConfig.LabelsCount = this.AxisConfig.HorizontalAxisconfig.CustomValues;
                 }
                 if (this.AxisConfig.VerticalAxisConfig.CustomValues.Count > 0)
                 {
                     lineChartTemplate.AxisConfig.VerticalAxisConfig.ValueFormatterConfig.CustomValues = this.AxisConfig.VerticalAxisConfig.CustomValues;
+                    lineChartTemplate.AxisConfig.VerticalAxisConfig.LabelsCount = this.AxisConfig.VerticalAxisConfig.LabelsCount;
                 }
 
-                //lineChartTemplate.AxisConfig.HorizontalAxisConfig.LabelsCount = this.AxisConfig.HorizontalAxisconfig.LabelsCount;
-                lineChartTemplate.AxisConfig.VerticalAxisConfig.LabelsCount = this.AxisConfig.VerticalAxisConfig.LabelsCount;
 
-                if (this.AxisConfig.HorizontalAxisconfig.LabelsCount > 7)
-                {
-                    lineChartTemplate.AxisConfig.HorizontalAxisConfig.LabelsConfig.LabelColor = new Color(1, 1, 1, 0);
-                }
+                // if (this.AxisConfig.HorizontalAxisconfig.LabelsCount > 7)
+                // {
+                //     lineChartTemplate.AxisConfig.HorizontalAxisConfig.LabelsConfig.LabelColor = new Color(1, 1, 1, 0);
+                // }
             }
 
         }

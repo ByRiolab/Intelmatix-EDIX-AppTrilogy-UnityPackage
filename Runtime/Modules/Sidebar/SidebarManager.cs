@@ -23,20 +23,20 @@ namespace Intelmatix.Modules.Sidebar
         [Header("Graphics")]
         [SerializeField] private StackedLineChart lineChartPrefab;
         [SerializeField] private StackedBarchart barchartPrefab;
-        [SerializeField] private TableChart tableChartPrefab;
+        [SerializeField] private ProductTableChart tableChartPrefab;
 
         private List<StackedLineChart> instanceLineCharts = new List<StackedLineChart>();
         private List<StackedBarchart> instanceBarCharts = new List<StackedBarchart>();
-        private List<TableChart> instanceTableCharts = new List<TableChart>();
+        private List<ProductTableChart> instanceTableCharts = new List<ProductTableChart>();
 
 
         // #region Delegates and Events
         // #endregion
-        public delegate void OnSidebarClosed();
-        public static event OnSidebarClosed OnSidebarClosedEvent;
+        // public delegate void OnSidebarClosed();
+        // public static event OnSidebarClosed OnSidebarClosedEvent;
 
-        public delegate void OnSidebarOpened();
-        public static event OnSidebarOpened OnSidebarOpenedEvent;
+        // public delegate void OnSidebarOpened();
+        // public static event OnSidebarOpened OnSidebarOpenedEvent;
 
 
         void Start()
@@ -117,10 +117,13 @@ namespace Intelmatix.Modules.Sidebar
             {
                 LeanTween.delayedCall(this.gameObject, delay, () =>
                 {
-                    TableChart instance = Instantiate(tableChartPrefab, parentOfGraphics);
-                    instance.Display(tableChart);
-                    instanceTableCharts.Add(instance);
-                    responsiveContainer.Resize(true);
+                    if (tableChart.TableType == "product")
+                    {
+                        ProductTableChart instance = Instantiate(tableChartPrefab, parentOfGraphics);
+                        instance.Display(tableChart);
+                        instanceTableCharts.Add(instance);
+                        responsiveContainer.Resize(true);
+                    }
                 });
                 delay += delay_between;
             });

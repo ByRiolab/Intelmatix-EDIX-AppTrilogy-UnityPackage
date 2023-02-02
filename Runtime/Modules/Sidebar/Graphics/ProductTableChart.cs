@@ -4,45 +4,49 @@ using UnityEngine;
 using TMPro;
 using static Intelmatix.Modules.Sidebar.Primitives.SidebarData;
 using UnityEngine.UI;
+using Intelmatix.Modules.Sidebar.Components;
 
 namespace Intelmatix.Modules.Sidebar.Graphics
 {
-    public class TableChart : MonoBehaviour
+    public class ProductTableChart : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] private TextMeshProUGUI titleText;
         [SerializeField] private Transform parentOfOptions;
+
         [Space]
         [Header("Components")]
         [SerializeField] private Components.RowHandler rowHandlerPrefab;
+        [SerializeField] private ChartResizer chartResizeManager;
 
         [Header("Animation")]
         [SerializeField] private CanvasGroup canvasToAnimate;
         [SerializeField] private VerticalLayoutGroup verticalLayoutGroup;
 
-        [Header("Images")]
-        private Sprite potatoImage;
         public void Display(DataTable tableChart)
         {
             this.name = "<table-chart> [" + tableChart.Title + "]";
             titleText.text = tableChart.Title;
 
-            parentOfOptions.DestroyChildren();
-            // if(tableChart.TableType == "time")
-
-            rowHandlerPrefab.gameObject.SetActive(false);
-            if (tableChart.TableType == "product")
+            foreach (Transform child in parentOfOptions)
             {
-                foreach (var row in tableChart.Rows)
-                {
-                    var instance = Instantiate(rowHandlerPrefab, parentOfOptions);
-                    instance.Display(row);
-                    instance.gameObject.SetActive(true);
-                }
-                //force reset of vertical layout group
-                verticalLayoutGroup.enabled = false;
-                verticalLayoutGroup.enabled = true;
+                child.transform.SetParent(null);
             }
+            parentOfOptions.DestroyChildren();
+            rowHandlerPrefab.gameObject.SetActive(false);
+
+            Debug.Log("verticalLayoutGroup.preferredHeight: " + verticalLayoutGroup.preferredHeight);
+            foreach (var row in tableChart.Rows)
+            {
+                var instance = Instantiate(rowHandlerPrefab, parentOfOptions);
+                instance.Display(row);
+                instance.gameObject.SetActive(true);
+            }
+            verticalLayoutGroup.SetLayoutVertical();
+            LayoutRebuilder.ForceRebuildLayoutImmediate(parentOfOptions.GetComponent<RectTransform>());
+            // ContentSizeFitter fitter = verticalLayoutGroup.GetComponent<ContentSizeFitter>();
+            // fitter.
+            chartResizeManager.SetMaximizeSize(verticalLayoutGroup.preferredHeight);
         }
 
         private void OnEnable()
