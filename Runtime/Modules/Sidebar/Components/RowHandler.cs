@@ -24,7 +24,7 @@ namespace Intelmatix.Modules.Sidebar.Components
         public void Display(RowInfo row)
         {
             titleText.text = row.Title;
-            valueText.text = row.Data.Value + row.Data.Unit;
+            valueText.text = row.Data.Value + " " + row.Data.Unit.ToLower();
 
             switch (row.Title)
             {
