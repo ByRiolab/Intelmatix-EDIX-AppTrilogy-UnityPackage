@@ -9,11 +9,9 @@ using Intelmatix.Base;
 
 namespace Intelmatix.Modules.Sidebar
 {
-    public class SidebarManager : Singleton<SidebarManager>
+    public class SidebarManager : Singleton<SidebarManager, SidebarReference>
     {
-        [Header("Data References")]
-        [SerializeField] private SidebarReference sidebarReference;
-        [Space(20)]
+        private SidebarReference sidebarReference => dataReference;
 
         [Header("References")]
         [SerializeField] private Transform parentOfGraphics;
@@ -27,30 +25,13 @@ namespace Intelmatix.Modules.Sidebar
         [SerializeField] private StackedBarchart barchartPrefab;
         [SerializeField] private TableChart tableChartPrefab;
 
-        [Header("Button Close sidebar")]
-        [SerializeField] private CanvasGroup buttonToAnimate;
-        [SerializeField] private Button closeButton;
-
         private List<StackedLineChart> instanceLineCharts = new List<StackedLineChart>();
         private List<StackedBarchart> instanceBarCharts = new List<StackedBarchart>();
         private List<TableChart> instanceTableCharts = new List<TableChart>();
 
-        protected override void Awake()
-        {
-            if (sidebarReference == null)
-            {
-                Debug.LogWarning("Sidebar reference is null");
-                // Destroy(this.gameObject);
-                DestroyImmediate(this.gameObject);
-                return;
-
-            }
-            else base.Awake();
-        }
-
         void Start()
         {
-            closeButton.onClick.AddListener(CloseSidebar);
+            // closeButton.onClick.AddListener(CloseSidebar);
 
             instanceLineCharts = new();
             instanceBarCharts = new();
@@ -62,8 +43,8 @@ namespace Intelmatix.Modules.Sidebar
             parentOfGraphics.DestroyChildren();
 
             sidebarReference.OnDataChanged += SetupSidebar;
-            buttonToAnimate.alpha = 0;
-            buttonToAnimate.blocksRaycasts = false;
+            // buttonToAnimate.alpha = 0;
+            // buttonToAnimate.blocksRaycasts = false;
         }
         void OnDisable()
         {
@@ -77,12 +58,12 @@ namespace Intelmatix.Modules.Sidebar
         }
         public static void ShowCloseButton()
         {
-            AnimationManager.AnimateIn(Instance.buttonToAnimate, direction: AnimationManager.Direction.Up);
+            // AnimationManager.AnimateIn(Instance.buttonToAnimate, direction: AnimationManager.Direction.Up);
         }
         private void CloseSidebar()
         {
             backgroundAnimation.HideRect(SidebarAnimationSettings.BackgroundCloseDuration);
-            AnimationManager.AnimateOut(Instance.buttonToAnimate, direction: AnimationManager.Direction.Up);
+            // AnimationManager.AnimateOut(Instance.buttonToAnimate, direction: AnimationManager.Direction.Up);
             DestroyGraphics();
         }
 

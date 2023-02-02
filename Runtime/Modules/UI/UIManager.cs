@@ -7,11 +7,11 @@ namespace Intelmatix.Modules.UI
     using Intelmatix.Modules.UI.Primitives;
     using Intelmatix.Modules.UI.Templates;
 
-    public class UIManager : Singleton<UIManager>
+    public class UIManager : Singleton<UIManager, QuestionsReference>
     {
-        [Header("Data References")]
-        public QuestionsReference questionsReference;
-        [Space(20)]
+        // [Header("Data References")]
+        // public QuestionsReference questionsReference;
+        // [Space(20)]
 
         [Header("Components")]
         [SerializeField] private TabHandler tabHandlerPrefab;
@@ -24,17 +24,9 @@ namespace Intelmatix.Modules.UI
 
         private QuestionsPanel currentPanel;
 
-        protected override void Awake()
-        {
-            if (questionsReference == null)
-            {
-                Debug.LogWarning("Questions reference is null");
-                DestroyImmediate(this.gameObject);
-                // Destroy(this.gameObject);
-                return;
-            }
-            else base.Awake();
-        }
+
+        private QuestionsReference questionsReference => dataReference;
+
 
         void OnEnable()
         {

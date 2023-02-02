@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titleText: {fileID: 4350988121336106371}
-  toggle: {fileID: 2507226525497416226}
+  toggle: {fileID: 7157369142489693768}
   canvasToAnimate: {fileID: 7585251403497039938}
   textVerticalSizeAdjuster: {fileID: 7557565965992529880}
 --- !u!1 &1142583255857613918
@@ -101,13 +101,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1142583255857613918}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54ba9896be6584ae1b4745f604720433, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b2f547d90d9a4eddae500947c6e2a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textMeshPro: {fileID: 0}
-  rectTransform: {fileID: 0}
-  maxHieght: 0
-  minHieght: 0
+  textMeshPro: {fileID: 4350988121336106371}
+  rectTransform: {fileID: 8942473450826141390}
+  maxHieght: 300
+  minHieght: 50
 --- !u!1 &6232537662851206790
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,8 +283,8 @@ GameObject:
   - component: {fileID: 5340740570504821080}
   - component: {fileID: 6022524784753979099}
   - component: {fileID: 3774531349321762222}
-  - component: {fileID: 4053249306603211038}
-  - component: {fileID: 2507226525497416226}
+  - component: {fileID: 2968368980465356218}
+  - component: {fileID: 7157369142489693768}
   m_Layer: 5
   m_Name: <toggle>[BlockRaycast]
   m_TagString: Untagged
@@ -350,7 +350,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4053249306603211038
+--- !u!114 &2968368980465356218
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -359,12 +359,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 9090060091634492503}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96fd1e681e5ca4bd6a10985b1be2e8ca, type: 3}
+  m_Script: {fileID: 11500000, guid: b93023252710f4d18898901eba8b1feb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetGraphics:
   - {fileID: 4350988121336106371}
---- !u!114 &2507226525497416226
+--- !u!114 &7157369142489693768
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -373,7 +373,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9090060091634492503}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11ffe479c536649be897cb74552ce305, type: 3}
+  m_Script: {fileID: 11500000, guid: f2f559f2702be4bfaacf2e12424c8aa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
