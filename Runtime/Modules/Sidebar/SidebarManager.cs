@@ -34,6 +34,14 @@ namespace Intelmatix.Modules.Sidebar
         private List<StackedBarchart> instanceBarCharts = new List<StackedBarchart>();
         private List<TableChart> instanceTableCharts = new List<TableChart>();
 
+        void Awake()
+        {
+            if (sidebarReference == null)
+            {
+                Debug.LogWarning("Sidebar reference is null");
+                Destroy(this.gameObject);
+            }
+        }
         void Start()
         {
             closeButton.onClick.AddListener(CloseSidebar);
