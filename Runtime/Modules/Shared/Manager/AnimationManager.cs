@@ -28,7 +28,7 @@ public static class AnimationManager
     {
         if (canvasGroup == null)
         {
-            Debug.LogWarning("CanvasGroup is null");
+            // Debug.LogWarning("CanvasGroup is null");
             return null;
         }
 
@@ -79,7 +79,7 @@ public static class AnimationManager
     {
         if (canvasGroup == null)
         {
-            Debug.LogWarning("CanvasGroup is null");
+            // Debug.LogWarning("CanvasGroup is null");
             return null;
         }
 

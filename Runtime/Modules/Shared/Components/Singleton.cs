@@ -26,14 +26,14 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         if (instance == null)
         {
-            instance = this as T;
+            // instance = this as T;
             DontDestroyOnLoad(gameObject);
             Debug.LogFormat("Singleton {0} Initialized", typeof(T).Name);
             // Debug.Log(typeof(T).Name + " Singleton Initialized");
         }
         else
         {
-            Destroy(gameObject);
+            DestroyImmediate(gameObject);
         }
     }
 }

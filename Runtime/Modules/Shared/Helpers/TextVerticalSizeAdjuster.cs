@@ -11,19 +11,6 @@ namespace Intelmatix.Modules.Shared.Helpers
         public float maxHieght;
         public float minHieght;
 
-        private void Start()
-        {
-            // textMeshPro = GetComponent<TextMeshProUGUI>();
-            // rectTransform = GetComponent<RectTransform>();
-        }
-
-        // public void UpdateSize()
-        // {
-        //     Vector2 preferredValues = textMeshPro.GetPreferredValues();
-        //     float width = Mathf.Min(preferredValues.x, maxWidth);
-        //     rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width + margin);
-        // }
-
         public void UpdateSize()
         {
             Vector2 preferredValues = textMeshPro.GetPreferredValues();

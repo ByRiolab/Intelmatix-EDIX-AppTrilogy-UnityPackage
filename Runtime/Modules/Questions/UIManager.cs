@@ -28,6 +28,7 @@ namespace Intelmatix.Modules.Questions
             {
                 Debug.LogWarning("Questions reference is null");
                 DestroyImmediate(this.gameObject);
+                // Destroy(this.gameObject);
                 return;
             }
             else base.Awake();
@@ -35,11 +36,13 @@ namespace Intelmatix.Modules.Questions
 
         void OnEnable()
         {
+            if (Object.ReferenceEquals(questionsReference, null)) return;
             questionsReference.OnDataChanged += SetupQuestions;
             parentOfQuestions.DestroyChildren();
         }
         void OnDisable()
         {
+            if (Object.ReferenceEquals(questionsReference, null)) return;
             questionsReference.OnDataChanged -= SetupQuestions;
         }
 

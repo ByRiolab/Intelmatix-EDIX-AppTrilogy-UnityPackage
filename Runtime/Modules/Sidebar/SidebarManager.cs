@@ -39,7 +39,10 @@ namespace Intelmatix.Modules.Sidebar
             if (sidebarReference == null)
             {
                 Debug.LogWarning("Sidebar reference is null");
+                // Destroy(this.gameObject);
                 DestroyImmediate(this.gameObject);
+                return;
+
             }
             else base.Awake();
         }
@@ -54,9 +57,8 @@ namespace Intelmatix.Modules.Sidebar
         }
         void OnEnable()
         {
+            if (Object.ReferenceEquals(sidebarReference, null)) return;
             parentOfGraphics.DestroyChildren();
-            // foreach (var child in parentOfGraphics.GetComponentsInChildren<RectTransform>())
-            //     DestroyImmediate(child.gameObject);
 
             sidebarReference.OnDataChanged += SetupSidebar;
             buttonToAnimate.alpha = 0;
@@ -64,6 +66,7 @@ namespace Intelmatix.Modules.Sidebar
         }
         void OnDisable()
         {
+            if (Object.ReferenceEquals(sidebarReference, null)) return;
             sidebarReference.OnDataChanged -= SetupSidebar;
         }
 
