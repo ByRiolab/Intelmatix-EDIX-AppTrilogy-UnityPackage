@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 5319436050721561833}
   - component: {fileID: 8985247063157372999}
   - component: {fileID: 961249237017299204}
+  - component: {fileID: 1941981923437374657}
   m_Layer: 0
   m_Name: Sidebar
   m_TagString: Untagged
@@ -170,6 +171,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformBackground: {fileID: 8450782425061745974}
+--- !u!114 &1941981923437374657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2902429272363890499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87477255ab8ca4e62aad7cf740b1a90d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundAppearDuration: 3
+  backgroundCloseDuration: 3
+  contentAppearDelay: 1
+  contentAppearDuration: 1
+  contentCloseDuration: 1
+  delayBetweenCharts: 1
 --- !u!1 &8450782423391153952
 GameObject:
   m_ObjectHideFlags: 0

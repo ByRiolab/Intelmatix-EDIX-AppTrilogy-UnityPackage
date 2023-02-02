@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimationSettings : Singleton<AnimationSettings>
+public class AnimationSettingsX : Singleton<AnimationSettingsX>
 {
 
     [Header("Settiings")]

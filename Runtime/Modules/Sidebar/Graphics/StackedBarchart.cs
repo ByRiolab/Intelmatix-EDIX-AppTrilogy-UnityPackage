@@ -32,14 +32,14 @@ namespace Intelmatix.Modules.Sidebar.Graphics
 
         private void OnEnable()
         {
-            AnimationManager.AnimateIn(this.canvasToAnimate, direction: AnimationManager.Direction.Right, duration: AnimationSettings.Sidebar.ContentAppearDuration);
+            AnimationManager.AnimateIn(this.canvasToAnimate, direction: AnimationManager.Direction.Right, duration: SidebarAnimationSettings.ContentAppearDuration);
             togglePrefab.gameObject.SetActive(false);
         }
         private void OnDisable()
         {
             if (this.canvasToAnimate == null)
                 return;
-            AnimationManager.AnimateOut(this.canvasToAnimate, direction: AnimationManager.Direction.Right, duration: AnimationSettings.Sidebar.ContentCloseDuration);
+            AnimationManager.AnimateOut(this.canvasToAnimate, direction: AnimationManager.Direction.Right, duration: SidebarAnimationSettings.ContentCloseDuration);
         }
 
         internal void Display(SidebarData.ChartGroup barChart)

@@ -32,7 +32,7 @@ namespace Intelmatix.Modules.Sidebar.Graphics
 
         private void Start()
         {
-            AnimationManager.AnimateIn(this.canvasToAnimate, direction: AnimationManager.Direction.Right, duration: AnimationSettings.Sidebar.ContentAppearDuration);
+            AnimationManager.AnimateIn(this.canvasToAnimate, direction: AnimationManager.Direction.Right, duration: SidebarAnimationSettings.ContentAppearDuration);
             togglePrefab.gameObject.SetActive(false);
         }
         private void OnEnable()

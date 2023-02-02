@@ -80,7 +80,7 @@ namespace Intelmatix.Modules.Sidebar
         }
         private void CloseSidebar()
         {
-            backgroundAnimation.HideRect(AnimationSettings.Sidebar.BackgroundCloseDuration);
+            backgroundAnimation.HideRect(SidebarAnimationSettings.BackgroundCloseDuration);
             AnimationManager.AnimateOut(Instance.buttonToAnimate, direction: AnimationManager.Direction.Up);
             DestroyGraphics();
         }
@@ -90,11 +90,11 @@ namespace Intelmatix.Modules.Sidebar
         {
             // CloseSidebar();
 
-            backgroundAnimation.ShowRect(AnimationSettings.Sidebar.BackgroundAppearDuration);
+            backgroundAnimation.ShowRect(SidebarAnimationSettings.BackgroundAppearDuration);
             DestroyGraphics();
 
-            var delay = AnimationSettings.Sidebar.ContentAppearDelay;
-            var delay_between = AnimationSettings.Sidebar.DelayBetweenCharts;
+            var delay = SidebarAnimationSettings.ContentAppearDelay;
+            var delay_between = SidebarAnimationSettings.DelayBetweenCharts;
 
             LeanTween.cancel(this.gameObject);
 
@@ -145,7 +145,7 @@ namespace Intelmatix.Modules.Sidebar
                 var worldPosition = lineChart.transform.position;
                 lineChart.transform.SetParent(parentOfGraphicsTemporal, true);
                 lineChart.transform.position = worldPosition;
-                Destroy(lineChart.gameObject, AnimationSettings.Sidebar.ContentCloseDuration);
+                Destroy(lineChart.gameObject, SidebarAnimationSettings.ContentCloseDuration);
             });
             instanceBarCharts?.ForEach(BarChart =>
             {
@@ -153,7 +153,7 @@ namespace Intelmatix.Modules.Sidebar
                 var worldPosition = BarChart.transform.position;
                 BarChart.transform.SetParent(parentOfGraphicsTemporal, true);
                 BarChart.transform.position = worldPosition;
-                Destroy(BarChart.gameObject, AnimationSettings.Sidebar.ContentCloseDuration);
+                Destroy(BarChart.gameObject, SidebarAnimationSettings.ContentCloseDuration);
             });
             instanceTableCharts?.ForEach(tableChart =>
             {
@@ -161,7 +161,7 @@ namespace Intelmatix.Modules.Sidebar
                 var worldPosition = tableChart.transform.position;
                 tableChart.transform.SetParent(parentOfGraphicsTemporal, true);
                 tableChart.transform.position = worldPosition;
-                Destroy(tableChart.gameObject, AnimationSettings.Sidebar.ContentCloseDuration);
+                Destroy(tableChart.gameObject, SidebarAnimationSettings.ContentCloseDuration);
             });
 
             instanceLineCharts = new();

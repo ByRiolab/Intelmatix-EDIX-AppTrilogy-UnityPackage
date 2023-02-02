@@ -3,7 +3,7 @@ using Intelmatix.Modules.Questions.Primitives;
 using Intelmatix.Modules.Questions.Components;
 using UnityEngine.UI;
 
-namespace Intelmatix.Modules.Questions
+namespace Intelmatix.Modules.UI
 {
     public class UIManager : Singleton<UIManager>
     {
