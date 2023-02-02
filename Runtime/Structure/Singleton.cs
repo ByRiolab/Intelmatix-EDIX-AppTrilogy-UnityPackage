@@ -16,12 +16,19 @@ namespace Intelmatix.Base
             {
                 if (instance == null)
                 {
-                    Debug.LogFormat("No instance of type {0} found", typeof(T).Name);
-                    return null;
+                    instance = FindObjectOfType<T>();
+                    if (instance == null)
+                    {
+                        GameObject go = new GameObject();
+                        go.name = typeof(T).Name;
+                        instance = go.AddComponent<T>();
+                    }
+
                 }
                 return instance;
             }
         }
+
 
         void Awake()
         {
@@ -43,6 +50,8 @@ namespace Intelmatix.Base
         }
 
     }
+
+
     public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         private static T instance;
@@ -53,12 +62,19 @@ namespace Intelmatix.Base
             {
                 if (instance == null)
                 {
-                    Debug.LogFormat("No instance of type {0} found", typeof(T).Name);
-                    return null;
+                    instance = FindObjectOfType<T>();
+                    if (instance == null)
+                    {
+                        GameObject go = new GameObject();
+                        go.name = typeof(T).Name;
+                        instance = go.AddComponent<T>();
+                    }
+
                 }
                 return instance;
             }
         }
+
 
         void Awake()
         {
