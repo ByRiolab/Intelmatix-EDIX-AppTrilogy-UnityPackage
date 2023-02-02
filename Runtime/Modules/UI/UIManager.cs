@@ -1,10 +1,12 @@
 using UnityEngine;
-using Intelmatix.Modules.Questions.Primitives;
-using Intelmatix.Modules.Questions.Components;
 using UnityEngine.UI;
 
 namespace Intelmatix.Modules.UI
 {
+    using Intelmatix.Base;
+    using Intelmatix.Modules.UI.Primitives;
+    using Intelmatix.Modules.UI.Templates;
+
     public class UIManager : Singleton<UIManager>
     {
         [Header("Data References")]

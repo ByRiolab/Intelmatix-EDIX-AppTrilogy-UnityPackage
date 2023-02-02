@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Intelmatix.Base;
 using UnityEngine;
 
 namespace Intelmatix.Modules.Sidebar

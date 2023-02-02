@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using Intelmatix.Modules.Sidebar.Components;
 using Intelmatix.Modules.Sidebar.Primitives;
 using UnityEngine;
 using UnityEngine.UI;

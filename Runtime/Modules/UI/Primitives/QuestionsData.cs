@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Intelmatix.Modules.Questions.Primitives
+namespace Intelmatix.Modules.UI.Primitives
 {
     [Serializable]
     public class QuestionsData

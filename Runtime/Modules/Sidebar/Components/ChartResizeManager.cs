@@ -19,13 +19,6 @@ namespace Intelmatix.Modules.Sidebar.Components
             minimizeButton.onClick.AddListener(chartResizer.MinimizeChart);
             maximizeButton.onClick.AddListener(chartResizer.MaximizeChart);
 
-            // var lenght = lineChart.AxisConfig.HorizontalAxisConfig.LabelsCount;
-            // if(lenght>7)
-            // {
-            //     lineChartTemplate.AxisConfig.HorizontalAxisConfig.LabelsConfig.LabelColor
-
-
-            // }
             minimizeButton.onClick.AddListener(() =>
             {
                 minimizeButton.gameObject.SetActive(false);

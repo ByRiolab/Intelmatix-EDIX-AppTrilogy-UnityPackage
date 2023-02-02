@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Intelmatix.Modules.Sidebar.Primitives;
 using Intelmatix.Modules.Sidebar.Graphics;
 using Intelmatix.Exoa.Responsive;
+using Intelmatix.Base;
 
 namespace Intelmatix.Modules.Sidebar
 {
