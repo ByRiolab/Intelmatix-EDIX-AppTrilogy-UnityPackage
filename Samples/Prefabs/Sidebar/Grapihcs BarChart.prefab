@@ -155,7 +155,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: weekly
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4d56628d0723f40f6b7bd700181b4207, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &524608118683368300
@@ -491,8 +491,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: weekly
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e2e949779c6f146e3a288b02f550a2d0, type: 2}
+  m_sharedMaterial: {fileID: -6323987121526522042, guid: e2e949779c6f146e3a288b02f550a2d0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -624,7 +624,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bb94585de240e4812a61e862f86533e4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3fc7463071f0a42d68fc1bac037b8979, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 0
@@ -902,8 +902,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Overall Sales Store
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b1242c766ed9d45c5bce49d53e5f4dac, type: 2}
-  m_sharedMaterial: {fileID: -6245380361334667240, guid: b1242c766ed9d45c5bce49d53e5f4dac, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1129,8 +1129,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: (SAR)
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: fe29feff293d34badb975a393f68e79b, type: 2}
-  m_sharedMaterial: {fileID: -6323987121526522042, guid: fe29feff293d34badb975a393f68e79b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1221,7 +1221,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1905465995996908926}
   - component: {fileID: 1905465995996908920}
-  - component: {fileID: 2180345198124607054}
+  - component: {fileID: 3753371894027509349}
   m_Layer: 5
   m_Name: Grapihcs BarChart
   m_TagString: Untagged
@@ -1267,7 +1267,7 @@ MonoBehaviour:
   settings:
     type: 0
     percentageValue: 0
---- !u!114 &2180345198124607054
+--- !u!114 &3753371894027509349
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1276,7 +1276,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1905465995996908925}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c34f1614d1404ba9bd4ee83ee270517, type: 3}
+  m_Script: {fileID: 11500000, guid: 76caf5985cffe4d8ea4033f4c106103f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   titleText: {fileID: 1905465995487202363}
@@ -1542,7 +1542,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e54b83e38b06f4a34875e21364d4cafb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4e96d43dd84e441e795a7fdc9c13c321, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1723,12 +1723,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4977971662924659466}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22b180e3076d4435392108c4670f8c9a, type: 3}
+  m_Script: {fileID: 11500000, guid: afc04f97717444dae91baa5a2fe0b5db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   minimizeButton: {fileID: 1243348838171466312}
   maximizeButton: {fileID: 207836253868072234}
-  chartResizer: {fileID: 4202956985880986666}
+  chartResizer: {fileID: 8466517081945787329}
   responsiveContainer: {fileID: 1905465996646105378}
   lineChart: {fileID: 0}
 --- !u!1 &4982574145238204810
@@ -2037,7 +2037,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0962403a74cad4b35bffe47121f5c8de, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f426bb5139a50477fa4ae34733a9cc88, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2158,7 +2158,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b4d1b185465724294807bfd63d0003ad, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8c726829dc07441689926f063594d764, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2429,7 +2429,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5860517941064561691}
-  - component: {fileID: 4202956985880986666}
+  - component: {fileID: 8466517081945787329}
   m_Layer: 5
   m_Name: <chart-resizer>
   m_TagString: Untagged
@@ -2457,7 +2457,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4202956985880986666
+--- !u!114 &8466517081945787329
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2466,10 +2466,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8130525475710182955}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f198b3da6a2fe470681e03734ea90ae8, type: 3}
+  m_Script: {fileID: 11500000, guid: 176be1e7928f745bbae68c20be5f30ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chart: {fileID: 1905465996646105377}
+  chart: {fileID: 644426321744761673}
   minimizeSize: 1000
   maximizeSize: 1600
   animationTime: 1
@@ -2541,7 +2541,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bb94585de240e4812a61e862f86533e4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3fc7463071f0a42d68fc1bac037b8979, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 0
@@ -2619,8 +2619,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: day
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e2e949779c6f146e3a288b02f550a2d0, type: 2}
+  m_sharedMaterial: {fileID: -6323987121526522042, guid: e2e949779c6f146e3a288b02f550a2d0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
