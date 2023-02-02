@@ -29,6 +29,16 @@ namespace Intelmatix.Modules.Sidebar
         private List<StackedBarchart> instanceBarCharts = new List<StackedBarchart>();
         private List<TableChart> instanceTableCharts = new List<TableChart>();
 
+
+        // #region Delegates and Events
+        // #endregion
+        public delegate void OnSidebarClosed();
+        public static event OnSidebarClosed OnSidebarClosedEvent;
+
+        public delegate void OnSidebarOpened();
+        public static event OnSidebarOpened OnSidebarOpenedEvent;
+
+
         void Start()
         {
             // closeButton.onClick.AddListener(CloseSidebar);

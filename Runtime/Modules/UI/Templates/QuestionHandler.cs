@@ -20,6 +20,7 @@ namespace Intelmatix.Modules.UI.Templates
         [Header("Components")]
         [SerializeField] private TextVerticalSizeAdjuster textVerticalSizeAdjuster;
 
+
         private void OnEnable()
         {
             if (canvasToAnimate != null)
@@ -53,6 +54,7 @@ namespace Intelmatix.Modules.UI.Templates
                         titleText.alpha = value;
                     }, titleText.alpha, 1f, duration);
                     // LeanTween.moveLocal(this.canvasToAnimate.gameObject, Vector3.up * 75f,duration).setEase(LeanTweenType.easeOutBack);
+                    UIManager.SelectQuestion(question);
                 }
                 else
                 {
@@ -63,6 +65,7 @@ namespace Intelmatix.Modules.UI.Templates
 
                     if (!toggleGroup.AnyTogglesOn())
                     {
+                        UIManager.SelectQuestion(null);
                     }
                     // LeanTween.moveLocal(this.canvasToAnimate.gameObject, Vector3.zero,duration).setEase(LeanTweenType.easeOutBack);
                 }

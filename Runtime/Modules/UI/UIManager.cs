@@ -6,6 +6,7 @@ namespace Intelmatix.Modules.UI
     using Intelmatix.Base;
     using Intelmatix.Modules.UI.Primitives;
     using Intelmatix.Modules.UI.Templates;
+    using static Intelmatix.Modules.UI.Primitives.QuestionsData;
 
     public class UIManager : Singleton<UIManager, QuestionsReference>
     {
@@ -27,7 +28,16 @@ namespace Intelmatix.Modules.UI
 
         private QuestionsReference questionsReference => dataReference;
 
+        #region Callbacks
+        // public delegate void OnValueChanged(bool value, ToggleGroup toggleGroup);
+        public delegate void OnQuestionSelected(Question question);
+        public static event OnQuestionSelected OnQuestionSelectedEvent;
+        #endregion
 
+        public static void SelectQuestion(Question question)
+        {
+            OnQuestionSelectedEvent?.Invoke(question);
+        }
         void OnEnable()
         {
             if (Object.ReferenceEquals(questionsReference, null)) return;
