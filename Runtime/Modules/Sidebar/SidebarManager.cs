@@ -182,7 +182,7 @@ namespace Intelmatix.Modules.Sidebar
                 item.enabled = false;
                 var worldPosition = item.transform.position;
                 item.transform.SetParent(parentOfGraphicsTemporal, true);
-                item.transform.position = worldPosition;
+                // item.transform.position = worldPosition;
                 Destroy(item.gameObject, SidebarAnimationSettings.ContentCloseDuration);
             });
             list.Clear();
