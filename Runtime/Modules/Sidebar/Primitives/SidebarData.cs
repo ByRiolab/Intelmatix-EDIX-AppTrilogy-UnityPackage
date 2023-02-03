@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
-using System.IO;
 
 namespace Intelmatix.Modules.Sidebar.Primitives
 {
@@ -127,26 +126,45 @@ namespace Intelmatix.Modules.Sidebar.Primitives
             public AxisConfig AxisConfig => axis_config;
             public Data Data => data;
 
+            // ffffff -> rgb(255, 255, 255)
+            // ffca00 -> rgb(255, 202, 0)
+            // d5a7ff -> rgb(213, 167, 255)
+            // ff00ff -> rgb(255, 0, 255)
+            // 00b99a -> rgb(0, 185, 154)
+            // ff6321 -> rgb(255, 99, 33)
+            private Color[] colors = new Color[] {
+                new Color(1, 1, 1),
+                new Color(255 / 255f, 202 / 255f, 0 / 255f),
+                new Color(213 / 255f, 167 / 255f, 255 / 255f),
+                new Color(255 / 255f, 0 / 255f, 255 / 255f),
+                new Color(0 / 255, 185 / 255f, 154 / 255f),
+                new Color(255 / 255f, 99 / 255f, 33 / 255f)
+            };
 
             public List<AwesomeCharts.LineDataSet> GetLineDataSets()
             {
                 AwesomeCharts.LineEntry line = null;
-
+                var index = 0;
                 List<AwesomeCharts.LineDataSet> lineDataSets = new List<AwesomeCharts.LineDataSet>();
                 foreach (var dataSet in data.DataSets)
                 {
                     AwesomeCharts.LineDataSet lineDataSet = new AwesomeCharts.LineDataSet();
-                    lineDataSet.LineColor = Color.white;
 
-                    // Predicted line
-                    if (line != null && dataSet.Title.ToLower().Equals("predict"))
+                    if (data.DataSets.Length > 2 && index < colors.Length)
                     {
-                        lineDataSet.Entries.Add(line);
-                        // ColorUtility.TryParseHtmlString("00FF9A", out Color color);
-                        lineDataSet.LineColor = new Color(0, 255 / 255, 154 / 255);
-                        // lineDataSet.LineColor = new Color(0, 255, 154)
+                        lineDataSet.LineColor = colors[index++];
                     }
-                    // lineDataSet.LineThickness = 1;
+                    else
+                    {
+                        lineDataSet.LineColor = Color.white;
+
+                        if (line != null && dataSet.Title.ToLower().Equals("predict"))
+                        {
+                            lineDataSet.Entries.Add(line);
+                            lineDataSet.LineColor = new Color(0, 255 / 255f, 154 / 255f); // 00FF9A
+                        }
+                    }
+
                     lineDataSet.LineThickness = 1f;
                     lineDataSet.Title = dataSet.Title;
                     foreach (var entry in dataSet.Entries)
@@ -163,9 +181,19 @@ namespace Intelmatix.Modules.Sidebar.Primitives
             public List<AwesomeCharts.BarDataSet> GetBarDataSets()
             {
                 List<AwesomeCharts.BarDataSet> barDataSets = new List<AwesomeCharts.BarDataSet>();
+                var index = 0;
                 foreach (var dataSet in data.DataSets)
                 {
                     AwesomeCharts.BarDataSet barDataSet = new AwesomeCharts.BarDataSet();
+                    if (data.DataSets.Length > 2 && index < colors.Length)
+                    {
+                        barDataSet.BarColors.Add(colors[index++]);
+                    }
+                    else
+                    {
+                        barDataSet.BarColors.Add(Color.white);
+                    }
+                    // barDataSet.BarColor = Color.white;
                     //barDataSet.BarColors = Color.white;
                     // lineDataSet.LineThickness = 1;
                     //barDataSet. = 1f;

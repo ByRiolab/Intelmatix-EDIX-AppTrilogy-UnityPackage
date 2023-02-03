@@ -35,7 +35,7 @@ namespace Intelmatix.Modules.Sidebar.Graphics
             parentOfOptions.DestroyChildren();
             rowHandlerPrefab.gameObject.SetActive(false);
 
-            Debug.Log("verticalLayoutGroup.preferredHeight: " + verticalLayoutGroup.preferredHeight);
+            // Debug.Log("verticalLayoutGroup.preferredHeight: " + verticalLayoutGroup.preferredHeight);
             foreach (var row in tableChart.Rows)
             {
                 var instance = Instantiate(rowHandlerPrefab, parentOfOptions);

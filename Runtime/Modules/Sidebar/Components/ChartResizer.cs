@@ -23,7 +23,7 @@ namespace Intelmatix.Modules.Sidebar.Components
         [SerializeField] private LeanTweenType animationType = LeanTweenType.easeOutCubic;
         [SerializeField] private Direction direction;
 
-        private float marginBottom = 30;
+        private float marginBottom = 60;
 
         public delegate void ChartResizeEvent();
         public event ChartResizeEvent OnChartResizeStart;
