@@ -26,8 +26,13 @@ namespace Intelmatix.Modules.UI.Primitives
         {
             [SerializeField] private string title;
             [SerializeField] private string path;
+            [SerializeField] private string mode;
+
             public string Title => title;
             public string Path => path;
+            public string Mode => mode;
+
+            public bool IsCognitive => mode.ToLower() == "cognitive";
 
             public void OpenMap()
             {

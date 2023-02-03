@@ -32,6 +32,10 @@ namespace Intelmatix.Modules.UI.Templates
 
         public void Display(Question question, ToggleGroup toggleGroup)
         {
+            if (question.IsCognitive)
+            {
+                this.gameObject.SetActive(false);
+            }
             this.name = "<li-question> [" + question.Title + "]";
             titleText.text = question.Title;
             textVerticalSizeAdjuster.UpdateSize();

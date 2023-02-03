@@ -24,6 +24,8 @@ namespace Intelmatix.Modules.Sidebar
         [SerializeField] private StackedLineChart lineChartPrefab;
         [SerializeField] private StackedBarchart barchartPrefab;
         [SerializeField] private ProductTableChart tableChartPrefab;
+        [Space]
+        [SerializeField] private DecideOptions decideOptionsPrefab;
 
         private List<StackedLineChart> instanceLineCharts = new List<StackedLineChart>();
         private List<StackedBarchart> instanceBarCharts = new List<StackedBarchart>();
@@ -75,6 +77,28 @@ namespace Intelmatix.Modules.Sidebar
             backgroundAnimation.HideRect(SidebarAnimationSettings.BackgroundCloseDuration);
             // AnimationManager.AnimateOut(Instance.buttonToAnimate, direction: AnimationManager.Direction.Up);
             DestroyGraphics();
+        }
+
+        public static void OpenDecisionPanel(UnityEngine.Events.UnityAction humanMonde, UnityEngine.Events.UnityAction cognitiveMode)
+        {
+            Instance.backgroundAnimation.ShowRect(SidebarAnimationSettings.BackgroundAppearDuration);
+            Instance.DestroyGraphics();
+
+            var delay = SidebarAnimationSettings.ContentAppearDelay;
+            var delay_between = SidebarAnimationSettings.DelayBetweenCharts;
+
+            LeanTween.cancel(Instance.gameObject);
+
+            LeanTween.delayedCall(Instance.gameObject, delay, () =>
+            {
+                var instance = Instantiate(Instance.decideOptionsPrefab, Instance.parentOfGraphics);
+                instance.Display(humanMonde, cognitiveMode);
+            });
+            // Instance.humanButton.onClick.AddListener(humanMonde);
+            // Instance.cognitiveButton.onClick.AddListener(cognitiveMode);
+            // Debug.Log("OpenDecisionPanel");
+            // Instance.OpenDecisionPanelInternal(humanMonde, cognitiveMode);
+            // Instance.OpenDecisionPanelInternal();
         }
 
 

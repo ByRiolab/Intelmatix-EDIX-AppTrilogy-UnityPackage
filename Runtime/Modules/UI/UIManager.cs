@@ -65,11 +65,34 @@ namespace Intelmatix.Modules.UI
 
                     instance.Display(tab, toggleGroup);
 
-                    instance.SetOnValueChanged((value) =>
+                    instance.SetOnValueChanged((isSelected) =>
                     {
                         currentPanel?.Hide();
                         currentPanel = null;
-                        if (value)
+                        // currentPanel?.Hide();
+                        // currentPanel = null;
+
+                        // var isCognitive = tab.Questions.TrueForAll(question => question.IsCognitive == true);
+                        var cognitiveQuestion = tab.Questions.Find(question => question.IsCognitive == true);
+                        var isCognitive = cognitiveQuestion != null;
+
+                        if (isCognitive && isSelected)
+                        {
+                            Sidebar.SidebarManager.OpenDecisionPanel(
+                                humanMonde: () =>
+                                {
+                                    currentPanel = Instantiate(questionsPanel, parentOfQuestions);
+                                    currentPanel.Display(tab);
+                                },
+                                cognitiveMode: () =>
+                                {
+                                    currentPanel = Instantiate(questionsPanel, parentOfQuestions);
+                                    currentPanel.Display(tab);
+                                }
+                            );
+
+                        }
+                        else if (isSelected)
                         {
                             currentPanel = Instantiate(questionsPanel, parentOfQuestions);
                             currentPanel.Display(tab);

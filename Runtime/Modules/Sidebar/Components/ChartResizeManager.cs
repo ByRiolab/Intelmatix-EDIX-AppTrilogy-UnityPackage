@@ -89,7 +89,7 @@ namespace Intelmatix.Modules.Sidebar.Components
                 var width = barChart.GetComponent<RectTransform>().sizeDelta.x;
                 var length = barChart.GetChartData().DataSets.First().Entries.Count + 1;
                 barChart.Config.BarSpacing = (int)(width / length);
-                Debug.Log("width: " + width + " length: " + length + " barChart.Config.BarSpacing: " + barChart.Config.BarSpacing);
+                // Debug.Log("width: " + width + " length: " + length + " barChart.Config.BarSpacing: " + barChart.Config.BarSpacing);
 
             }
 
