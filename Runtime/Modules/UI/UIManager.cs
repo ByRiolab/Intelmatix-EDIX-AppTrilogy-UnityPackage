@@ -30,13 +30,16 @@ namespace Intelmatix.Modules.UI
 
         #region Callbacks
         // public delegate void OnValueChanged(bool value, ToggleGroup toggleGroup);
-        public delegate void OnQuestionSelected(Question question);
-        public static event OnQuestionSelected OnQuestionSelectedEvent;
+        public delegate void OnQuestionSelectedEvent(Question question);
+        public static event OnQuestionSelectedEvent OnQuestionSelected;
+
+        public delegate void OnTabSelectedEvent(Tab tab);
+        public static event OnTabSelectedEvent OnTabSelected;
         #endregion
 
         public static void SelectQuestion(Question question)
         {
-            OnQuestionSelectedEvent?.Invoke(question);
+            OnQuestionSelected?.Invoke(question);
         }
         void OnEnable()
         {
@@ -67,6 +70,15 @@ namespace Intelmatix.Modules.UI
 
                     instance.SetOnValueChanged((isSelected) =>
                     {
+                        if (isSelected)
+                        {
+                            OnTabSelected?.Invoke(tab);
+                        }
+                        else if (!toggleGroup.AnyTogglesOn())
+                        {
+                            OnTabSelected?.Invoke(null);
+                        }
+
                         currentPanel?.Hide();
                         currentPanel = null;
                         // currentPanel?.Hide();
@@ -75,25 +87,33 @@ namespace Intelmatix.Modules.UI
                         // var isCognitive = tab.Questions.TrueForAll(question => question.IsCognitive == true);
                         var cognitiveQuestion = tab.Questions.Find(question => question.IsCognitive == true);
                         var isCognitive = cognitiveQuestion != null;
+                        Debug.Log("Is cognitive: " + isCognitive);
 
                         if (isCognitive && isSelected)
                         {
+                            Debug.Log("Cognitive mode");
                             Sidebar.SidebarManager.OpenDecisionPanel(
                                 humanMonde: () =>
                                 {
+                                    currentPanel?.Hide();
+                                    currentPanel = null;
                                     currentPanel = Instantiate(questionsPanel, parentOfQuestions);
                                     currentPanel.Display(tab);
                                 },
                                 cognitiveMode: () =>
                                 {
-                                    currentPanel = Instantiate(questionsPanel, parentOfQuestions);
-                                    currentPanel.Display(tab);
+                                    currentPanel?.Hide();
+                                    currentPanel = null;
+                                    OnQuestionSelected?.Invoke(cognitiveQuestion);
                                 }
                             );
 
                         }
                         else if (isSelected)
                         {
+
+                            currentPanel?.Hide();
+                            currentPanel = null;
                             currentPanel = Instantiate(questionsPanel, parentOfQuestions);
                             currentPanel.Display(tab);
                         }

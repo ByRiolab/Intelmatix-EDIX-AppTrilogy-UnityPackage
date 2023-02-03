@@ -6,6 +6,8 @@ using Intelmatix.Modules.Sidebar.Primitives;
 using Intelmatix.Modules.Sidebar.Graphics;
 using Intelmatix.Exoa.Responsive;
 using Intelmatix.Base;
+using Intelmatix.Modules.UI;
+using static Intelmatix.Modules.UI.Primitives.QuestionsData;
 
 namespace Intelmatix.Modules.Sidebar
 {
@@ -30,6 +32,7 @@ namespace Intelmatix.Modules.Sidebar
         private List<StackedLineChart> instanceLineCharts = new List<StackedLineChart>();
         private List<StackedBarchart> instanceBarCharts = new List<StackedBarchart>();
         private List<ProductTableChart> instanceTableCharts = new List<ProductTableChart>();
+        private List<DecideOptions> instanceDecideOptions = new List<DecideOptions>();
 
 
         // #region Delegates and Events
@@ -55,6 +58,7 @@ namespace Intelmatix.Modules.Sidebar
             parentOfGraphics.DestroyChildren();
 
             sidebarReference.OnDataChanged += SetupSidebar;
+            UIManager.OnTabSelected += OnTabSelected;
             // buttonToAnimate.alpha = 0;
             // buttonToAnimate.blocksRaycasts = false;
         }
@@ -62,7 +66,13 @@ namespace Intelmatix.Modules.Sidebar
         {
             if (Object.ReferenceEquals(sidebarReference, null)) return;
             sidebarReference.OnDataChanged -= SetupSidebar;
+            UIManager.OnTabSelected -= OnTabSelected;
         }
+        private void OnTabSelected(Tab tab)
+        {
+            CloseSidebar();
+        }
+
 
         public static void Close()
         {
@@ -93,6 +103,7 @@ namespace Intelmatix.Modules.Sidebar
             {
                 var instance = Instantiate(Instance.decideOptionsPrefab, Instance.parentOfGraphics);
                 instance.Display(humanMonde, cognitiveMode);
+                Instance.instanceDecideOptions.Add(instance);
             });
             // Instance.humanButton.onClick.AddListener(humanMonde);
             // Instance.cognitiveButton.onClick.AddListener(cognitiveMode);
@@ -158,6 +169,14 @@ namespace Intelmatix.Modules.Sidebar
 
         private void DestroyGraphics()
         {
+            instanceDecideOptions?.ForEach(decideOptions =>
+            {
+                decideOptions.enabled = false;
+                var worldPosition = decideOptions.transform.position;
+                decideOptions.transform.SetParent(parentOfGraphicsTemporal, true);
+                decideOptions.transform.position = worldPosition;
+                Destroy(decideOptions.gameObject, SidebarAnimationSettings.ContentCloseDuration);
+            });
             instanceLineCharts?.ForEach(lineChart =>
             {
                 lineChart.enabled = false;
@@ -186,6 +205,7 @@ namespace Intelmatix.Modules.Sidebar
             instanceLineCharts = new();
             instanceBarCharts = new();
             instanceTableCharts = new();
+            instanceDecideOptions = new();
         }
 
     }

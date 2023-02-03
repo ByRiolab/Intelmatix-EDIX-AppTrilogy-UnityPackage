@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AllowSwitchOff: 0
+  m_AllowSwitchOff: 1
 --- !u!225 &2126151014653924396
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -176,7 +176,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggleGroup: {fileID: 5803583169683942458}
+  humanCanvasGroup: {fileID: 1599498992824229968}
   humanButton: {fileID: 5984006582939641301}
+  cognitiveCanvasGroup: {fileID: 6908371647896548545}
   cognitiveButton: {fileID: 7091774554553153628}
   canvasGroup: {fileID: 2126151014653924396}
 --- !u!1 &3436913162087073117
@@ -327,6 +329,7 @@ GameObject:
   - component: {fileID: 5270263721715529706}
   - component: {fileID: 5140803387266306304}
   - component: {fileID: 7091774554553153628}
+  - component: {fileID: 6908371647896548545}
   m_Layer: 5
   m_Name: <toggle>[Cognitive]
   m_TagString: Untagged
@@ -407,6 +410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetGraphics:
   - {fileID: 2656001521112945907}
+  - {fileID: 5270263721715529706}
 --- !u!114 &7091774554553153628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -454,7 +458,19 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
+--- !u!225 &6908371647896548545
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4367017386797707107}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5113377462676637978
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,6 +693,7 @@ GameObject:
   - component: {fileID: 2870923310268747819}
   - component: {fileID: 8971045935086327580}
   - component: {fileID: 5984006582939641301}
+  - component: {fileID: 1599498992824229968}
   m_Layer: 5
   m_Name: <toggle>[Human on the Loop]
   m_TagString: Untagged
@@ -757,6 +774,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetGraphics:
   - {fileID: 2889508076509094857}
+  - {fileID: 2870923310268747819}
 --- !u!114 &5984006582939641301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -805,3 +823,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!225 &1599498992824229968
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8066492392641251019}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
