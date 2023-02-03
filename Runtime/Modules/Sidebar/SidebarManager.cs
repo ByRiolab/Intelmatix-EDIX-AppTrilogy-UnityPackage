@@ -27,27 +27,17 @@ namespace Intelmatix.Modules.Sidebar
         [SerializeField] private StackedBarchart barchartPrefab;
         [SerializeField] private ProductTableChart tableChartPrefab;
         [Space]
-        [SerializeField] private DecideOptions decideOptionsPrefab;
+        [SerializeField] private DecideMode decideModePrefab;
+        [SerializeField] private DecideOption decideOptionPrefab;
 
         private List<StackedLineChart> instanceLineCharts = new List<StackedLineChart>();
         private List<StackedBarchart> instanceBarCharts = new List<StackedBarchart>();
         private List<ProductTableChart> instanceTableCharts = new List<ProductTableChart>();
-        private List<DecideOptions> instanceDecideOptions = new List<DecideOptions>();
-
-
-        // #region Delegates and Events
-        // #endregion
-        // public delegate void OnSidebarClosed();
-        // public static event OnSidebarClosed OnSidebarClosedEvent;
-
-        // public delegate void OnSidebarOpened();
-        // public static event OnSidebarOpened OnSidebarOpenedEvent;
-
+        private List<DecideMode> instanceDecideModes = new List<DecideMode>();
+        private List<DecideOption> instanceDecideOptions = new List<DecideOption>();
 
         void Start()
         {
-            // closeButton.onClick.AddListener(CloseSidebar);
-
             instanceLineCharts = new();
             instanceBarCharts = new();
             instanceTableCharts = new();
@@ -59,8 +49,6 @@ namespace Intelmatix.Modules.Sidebar
 
             sidebarReference.OnDataChanged += SetupSidebar;
             UIManager.OnTabSelected += OnTabSelected;
-            // buttonToAnimate.alpha = 0;
-            // buttonToAnimate.blocksRaycasts = false;
         }
         void OnDisable()
         {
@@ -73,11 +61,11 @@ namespace Intelmatix.Modules.Sidebar
             CloseSidebar();
         }
 
-
         public static void Close()
         {
             Instance.CloseSidebar();
         }
+
         public static void ShowCloseButton()
         {
             // AnimationManager.AnimateIn(Instance.buttonToAnimate, direction: AnimationManager.Direction.Up);
@@ -101,9 +89,9 @@ namespace Intelmatix.Modules.Sidebar
 
             LeanTween.delayedCall(Instance.gameObject, delay, () =>
             {
-                var instance = Instantiate(Instance.decideOptionsPrefab, Instance.parentOfGraphics);
+                var instance = Instantiate(Instance.decideModePrefab, Instance.parentOfGraphics);
                 instance.Display(humanMonde, cognitiveMode);
-                Instance.instanceDecideOptions.Add(instance);
+                Instance.instanceDecideModes.Add(instance);
             });
             // Instance.humanButton.onClick.AddListener(humanMonde);
             // Instance.cognitiveButton.onClick.AddListener(cognitiveMode);
@@ -115,6 +103,7 @@ namespace Intelmatix.Modules.Sidebar
 
         private void SetupSidebar(SidebarData sidebar)
         {
+            Debug.Log("SetupSidebar, decisions: " + sidebar.Decisions.Count);
             // CloseSidebar();
 
             backgroundAnimation.ShowRect(SidebarAnimationSettings.BackgroundAppearDuration);
@@ -170,6 +159,14 @@ namespace Intelmatix.Modules.Sidebar
         private void DestroyGraphics()
         {
             instanceDecideOptions?.ForEach(decideOptions =>
+            {
+                decideOptions.enabled = false;
+                var worldPosition = decideOptions.transform.position;
+                decideOptions.transform.SetParent(parentOfGraphicsTemporal, true);
+                decideOptions.transform.position = worldPosition;
+                Destroy(decideOptions.gameObject, SidebarAnimationSettings.ContentCloseDuration);
+            });
+            instanceDecideModes?.ForEach(decideOptions =>
             {
                 decideOptions.enabled = false;
                 var worldPosition = decideOptions.transform.position;

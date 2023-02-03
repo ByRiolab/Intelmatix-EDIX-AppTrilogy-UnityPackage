@@ -3,7 +3,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 namespace Intelmatix.Modules.Sidebar
 {
-    public class DecideOptions : MonoBehaviour
+    public class DecideMode : MonoBehaviour
     {
         [Header("Toggle")]
         [SerializeField] private ToggleGroup toggleGroup;
@@ -34,26 +34,9 @@ namespace Intelmatix.Modules.Sidebar
             {
                 cognitiveCanvasGroup.LeanAlpha(value ? 1 : alpha, duration);
             });
-            // humanButton.onValueChanged.AddListener((value) =>
-            // {
-            //     if (value)
-            //     {
-            //         humanMonde?.Invoke();
-            //     }
-            // });
-            // cognitiveButton.onValueChanged.AddListener((value) =>
-            // {
-            //     if (value)
-            //     {
-            //         cognitiveMode?.Invoke();
-            //     }
-            // });
         }
         public void Display(UnityEngine.Events.UnityAction humanMonde, UnityEngine.Events.UnityAction cognitiveMode)
         {
-            // humanButton.onClick.RemoveAllListeners();
-            // humanButton.onClick.AddListener(onClick);
-
             humanButton.onValueChanged.AddListener((value) =>
             {
                 if (value)

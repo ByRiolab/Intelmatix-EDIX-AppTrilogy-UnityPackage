@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 1114383780384270847}
   - component: {fileID: 9133809467592635752}
   m_Layer: 5
-  m_Name: Options Decide
+  m_Name: Decide Mode Options
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1186000634410188320}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69a793b2dbaeb4c1393f7a4158ac341f, type: 3}
+  m_Script: {fileID: 11500000, guid: dc398931451654ccf905b088dd2a500a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   toggleGroup: {fileID: 5803583169683942458}

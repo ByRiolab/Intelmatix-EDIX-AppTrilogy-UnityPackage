@@ -87,11 +87,10 @@ namespace Intelmatix.Modules.UI
                         // var isCognitive = tab.Questions.TrueForAll(question => question.IsCognitive == true);
                         var cognitiveQuestion = tab.Questions.Find(question => question.IsCognitive == true);
                         var isCognitive = cognitiveQuestion != null;
-                        Debug.Log("Is cognitive: " + isCognitive);
+                        // Debug.Log("Is cognitive: " + isCognitive);
 
                         if (isCognitive && isSelected)
                         {
-                            Debug.Log("Cognitive mode");
                             Sidebar.SidebarManager.OpenDecisionPanel(
                                 humanMonde: () =>
                                 {

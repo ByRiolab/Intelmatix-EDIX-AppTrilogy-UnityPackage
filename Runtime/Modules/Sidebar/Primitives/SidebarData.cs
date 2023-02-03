@@ -8,27 +8,47 @@ namespace Intelmatix.Modules.Sidebar.Primitives
     [Serializable]
     public class SidebarData
     {
-        //[SerializeField] private StoreData store;
-        //public StoreData Store => store;
         [SerializeField] private string title;
         [SerializeField] private string current_filter;
         [SerializeField] private List<ChartGroup> linecharts;
         [SerializeField] private List<ChartGroup> barcharts;
         [SerializeField] private List<DataTable> tables;
         [SerializeField] private List<FiltersData> filters;
+        [SerializeField] private List<Decision> decisions;
 
-        // #region Brian Castro solution. Cambiar estructura por que es ineficiente.
-        // [SerializeField] private List<Decision> decisions;
-        // #endregion
+
         public string Title => title;
-        #region Filters
         public string CurrentFilter => current_filter;
-        public List<FiltersData> Filters => filters;
-        #endregion
 
+        public List<FiltersData> Filters => filters;
         public List<DataTable> TableCharts => tables;
         public List<ChartGroup> LineCharts => linecharts;
         public List<ChartGroup> BarCharts => barcharts;
+        public List<Decision> Decisions => decisions;
+
+        [SerializeField]
+        public class Decision
+        {
+            [SerializeField] private int id;
+            [SerializeField] private string label;
+            [SerializeField] private List<KPI> kpi;
+            public int Id => id;
+            public string Label => label;
+            public List<KPI> KPI => kpi;
+        }
+
+        [SerializeField]
+        public class KPI
+        {
+            [SerializeField] private int id;
+            [SerializeField] private string kpi_value;
+            [SerializeField] private string subtitle;
+
+            public int Id => id;
+            public string KPIValue => kpi_value;
+            public string Subtitle => subtitle;
+        }
+
 
         [Serializable]
         public class StoreData
@@ -330,5 +350,6 @@ namespace Intelmatix.Modules.Sidebar.Primitives
                 return new AwesomeCharts.BarEntry((long)this.Position, this.Value);
             }
         }
+
     }
 }
