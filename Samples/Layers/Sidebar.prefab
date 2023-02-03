@@ -156,7 +156,8 @@ MonoBehaviour:
   lineChartPrefab: {fileID: 8650556479266069994, guid: 7100783b348d840bebd2afc4182fe96a, type: 3}
   barchartPrefab: {fileID: 3753371894027509349, guid: d446f255322904913b044b1b44f8eb6e, type: 3}
   tableChartPrefab: {fileID: 788340389942416997, guid: 16cbf693ffb794431bf73f9411f9b5aa, type: 3}
-  decideOptionsPrefab: {fileID: 9133809467592635752, guid: 92a0f8537ad6a409db1af1f86ca08c2c, type: 3}
+  decideModePrefab: {fileID: 9133809467592635752, guid: 92a0f8537ad6a409db1af1f86ca08c2c, type: 3}
+  decideOptionPrefab: {fileID: 4158473386376877487, guid: 134701a34669449fcb78c689b9ad7de4, type: 3}
 --- !u!114 &961249237017299204
 MonoBehaviour:
   m_ObjectHideFlags: 0
