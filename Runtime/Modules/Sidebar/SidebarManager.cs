@@ -66,10 +66,6 @@ namespace Intelmatix.Modules.Sidebar
             Instance.CloseSidebar();
         }
 
-        public static void ShowCloseButton()
-        {
-            // AnimationManager.AnimateIn(Instance.buttonToAnimate, direction: AnimationManager.Direction.Up);
-        }
         private void CloseSidebar()
         {
             backgroundAnimation.HideRect(SidebarAnimationSettings.BackgroundCloseDuration);

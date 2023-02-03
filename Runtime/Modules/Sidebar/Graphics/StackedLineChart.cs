@@ -40,7 +40,7 @@ namespace Intelmatix.Modules.Sidebar.Graphics
         {
             // if (this.gameObject != null && this.canvasToAnimate == null)
             //     return;
-            // AnimationManager.AnimateOut(this.canvasToAnimate, direction: AnimationManager.Direction.Right, duration: AnimationSettings.Sidebar.ContentCloseDuration);
+            AnimationManager.AnimateOut(this.canvasToAnimate, direction: AnimationManager.Direction.Right, duration: SidebarAnimationSettings.ContentCloseDuration);
         }
 
         internal void Display(SidebarData.ChartGroup lineChart)
@@ -74,7 +74,7 @@ namespace Intelmatix.Modules.Sidebar.Graphics
             }
             else
             {
-                Debug.LogWarning("No charts found for line chart group: " + lineChart.Title);
+                // Debug.LogWarning("No charts found for line chart group: " + lineChart.Title);
             }
         }
 
