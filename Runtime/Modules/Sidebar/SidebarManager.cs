@@ -103,7 +103,13 @@ namespace Intelmatix.Modules.Sidebar
 
         private void SetupSidebar(SidebarData sidebar)
         {
-            Debug.Log("SetupSidebar, decisions: " + sidebar.Decisions.Count);
+            if (sidebar == null)
+            {
+                Debug.LogWarning("SetupSidebar, sidebar is null");
+                return;
+            }
+            if (sidebar.Decisions != null)
+                Debug.Log("SetupSidebar, decisions: " + sidebar.Decisions.Count);
             // CloseSidebar();
 
             backgroundAnimation.ShowRect(SidebarAnimationSettings.BackgroundAppearDuration);
@@ -155,82 +161,28 @@ namespace Intelmatix.Modules.Sidebar
         }
 
 
-
         private void DestroyGraphics()
         {
-            instanceDecideOptions?.ForEach(decideOptions =>
-            {
-                decideOptions.enabled = false;
-                var worldPosition = decideOptions.transform.position;
-                decideOptions.transform.SetParent(parentOfGraphicsTemporal, true);
-                decideOptions.transform.position = worldPosition;
-                Destroy(decideOptions.gameObject, SidebarAnimationSettings.ContentCloseDuration);
-            });
-            instanceDecideModes?.ForEach(decideOptions =>
-            {
-                decideOptions.enabled = false;
-                var worldPosition = decideOptions.transform.position;
-                decideOptions.transform.SetParent(parentOfGraphicsTemporal, true);
-                decideOptions.transform.position = worldPosition;
-                Destroy(decideOptions.gameObject, SidebarAnimationSettings.ContentCloseDuration);
-            });
-            instanceLineCharts?.ForEach(lineChart =>
-            {
-                lineChart.enabled = false;
-                var worldPosition = lineChart.transform.position;
-                lineChart.transform.SetParent(parentOfGraphicsTemporal, true);
-                lineChart.transform.position = worldPosition;
-                Destroy(lineChart.gameObject, SidebarAnimationSettings.ContentCloseDuration);
-            });
-            instanceBarCharts?.ForEach(BarChart =>
-            {
-                BarChart.enabled = false;
-                var worldPosition = BarChart.transform.position;
-                BarChart.transform.SetParent(parentOfGraphicsTemporal, true);
-                BarChart.transform.position = worldPosition;
-                Destroy(BarChart.gameObject, SidebarAnimationSettings.ContentCloseDuration);
-            });
-            instanceTableCharts?.ForEach(tableChart =>
-            {
-                tableChart.enabled = false;
-                var worldPosition = tableChart.transform.position;
-                tableChart.transform.SetParent(parentOfGraphicsTemporal, true);
-                tableChart.transform.position = worldPosition;
-                Destroy(tableChart.gameObject, SidebarAnimationSettings.ContentCloseDuration);
-            });
+            DestroyObjectOfList(instanceLineCharts);
+            DestroyObjectOfList(instanceBarCharts);
+            DestroyObjectOfList(instanceTableCharts);
+            DestroyObjectOfList(instanceDecideModes);
+            DestroyObjectOfList(instanceDecideOptions);
+        }
 
-            instanceLineCharts = new();
-            instanceBarCharts = new();
-            instanceTableCharts = new();
-            instanceDecideOptions = new();
+        private void DestroyObjectOfList<T>(List<T> list) where T : MonoBehaviour
+        {
+            list.ForEach(item =>
+            {
+                item.enabled = false;
+                var worldPosition = item.transform.position;
+                item.transform.SetParent(parentOfGraphicsTemporal, true);
+                item.transform.position = worldPosition;
+                Destroy(item.gameObject, SidebarAnimationSettings.ContentCloseDuration);
+            });
+            list.Clear();
         }
 
     }
 }
 
-
-// [SerializeField] private RectTransform transformBackground;
-
-// private void Start()
-// {
-//     transformBackground.LeanMoveX(1884f, 0);
-// }
-
-// private void OnEnable()
-// {
-//     //HideRect();
-// }
-
-// public void HideRect(float duration = 1f)
-// {
-//     // Ocultar el rectángulo moviéndolo a la posición final (posición x = 1884)
-//     LeanTween.cancel(transformBackground);
-//     LeanTween.moveX(transformBackground, 1884f, duration).setEaseInOutSine();
-// }
-
-// public void ShowRect(float duration = 1f)
-// {
-//     // Mostrar el rectángulo moviéndolo a la posición inicial (posición x = 0)
-//     LeanTween.cancel(transformBackground);
-//     LeanTween.moveX(transformBackground, 0f, duration).setEaseInOutSine();
-// }

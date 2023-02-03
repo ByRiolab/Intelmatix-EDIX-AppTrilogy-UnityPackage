@@ -270,7 +270,7 @@ namespace Intelmatix.Modules.Sidebar.Primitives
 
 
                 // bind custom values
-                if (this.AxisConfig.HorizontalAxisconfig.CustomValues.Count > 0 && this.AxisConfig.HorizontalAxisconfig.CustomValues.Count < 7)
+                if (this.AxisConfig.HorizontalAxisconfig.CustomValues.Count > 0)
                 {
                     lineChartTemplate.AxisConfig.HorizontalAxisConfig.ValueFormatterConfig.CustomValues = this.AxisConfig.HorizontalAxisconfig.CustomValues;
                     // lineChartTemplate.AxisConfig.HorizontalAxisConfig.LabelsCount = this.AxisConfig.HorizontalAxisconfig.CustomValues;
@@ -288,7 +288,7 @@ namespace Intelmatix.Modules.Sidebar.Primitives
                 lineChartTemplate.Config.BarSpacing = (int)(width / length);
 
 
-                Debug.Log("BarSpacing width " + width + " length " + length + " spacing " + lineChartTemplate.Config.BarSpacing);
+                // Debug.Log("BarSpacing width " + width + " length " + length + " spacing " + lineChartTemplate.Config.BarSpacing);
                 // if (this.AxisConfig.HorizontalAxisconfig.LabelsCount > 7)
                 // {
                 //     lineChartTemplate.AxisConfig.HorizontalAxisConfig.LabelsConfig.LabelColor = new Color(1, 1, 1, 0);

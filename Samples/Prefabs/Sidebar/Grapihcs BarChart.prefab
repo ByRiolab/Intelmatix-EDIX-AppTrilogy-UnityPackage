@@ -1854,7 +1854,7 @@ MonoBehaviour:
         customValues: []
     horizontalAxisConfig:
       labelsConfig:
-        labelSize: 29
+        labelSize: 22
         labelColor: {r: 1, g: 1, b: 1, a: 1}
         labelMargin: 7
       bounds:
