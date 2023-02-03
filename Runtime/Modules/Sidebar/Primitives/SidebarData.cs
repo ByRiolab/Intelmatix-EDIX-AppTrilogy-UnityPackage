@@ -26,7 +26,7 @@ namespace Intelmatix.Modules.Sidebar.Primitives
         public List<ChartGroup> BarCharts => barcharts;
         public List<Decision> Decisions => decisions;
 
-        [SerializeField]
+        [System.Serializable]
         public class Decision
         {
             [SerializeField] private int id;
@@ -37,7 +37,7 @@ namespace Intelmatix.Modules.Sidebar.Primitives
             public List<KPI> KPI => kpi;
         }
 
-        [SerializeField]
+        [System.Serializable]
         public class KPI
         {
             [SerializeField] private int id;

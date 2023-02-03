@@ -104,9 +104,6 @@ namespace Intelmatix.Modules.Sidebar
                 Debug.LogWarning("SetupSidebar, sidebar is null");
                 return;
             }
-            if (sidebar.Decisions != null)
-                Debug.Log("SetupSidebar, decisions: " + sidebar.Decisions.Count);
-            // CloseSidebar();
 
             backgroundAnimation.ShowRect(SidebarAnimationSettings.BackgroundAppearDuration);
             DestroyGraphics();
@@ -150,6 +147,18 @@ namespace Intelmatix.Modules.Sidebar
                         instanceTableCharts.Add(instance);
                         responsiveContainer.Resize(true);
                     }
+                });
+                delay += delay_between;
+            });
+
+            sidebar.Decisions.ForEach(decision =>
+            {
+                LeanTween.delayedCall(this.gameObject, delay, () =>
+                {
+                    var instance = Instantiate(decideOptionPrefab, parentOfGraphics);
+                    instance.Display(decision);
+                    instanceDecideOptions.Add(instance);
+                    responsiveContainer.Resize(true);
                 });
                 delay += delay_between;
             });
