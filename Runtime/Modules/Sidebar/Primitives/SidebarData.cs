@@ -230,6 +230,7 @@ namespace Intelmatix.Modules.Sidebar.Primitives
                     lineChartTemplate.AxisConfig.VerticalAxisConfig.ValueFormatterConfig.CustomValues = this.AxisConfig.VerticalAxisConfig.CustomValues;
                 }
 
+                lineChartTemplate.SetDirty();
 
                 // if (this.AxisConfig.HorizontalAxisconfig.LabelsCount > 7)
                 // {
@@ -260,7 +261,14 @@ namespace Intelmatix.Modules.Sidebar.Primitives
                     lineChartTemplate.AxisConfig.VerticalAxisConfig.LabelsCount = this.AxisConfig.VerticalAxisConfig.LabelsCount;
                 }
 
+                lineChartTemplate.SetDirty();
+                var length = this.data.DataSets[0].Entries.Length + 1;
+                var width = lineChartTemplate.GetComponent<RectTransform>().sizeDelta.x;
+                width = Mathf.Max(width, 518);
+                lineChartTemplate.Config.BarSpacing = (int)(width / length);
 
+
+                Debug.Log("BarSpacing width " + width + " length " + length + " spacing " + lineChartTemplate.Config.BarSpacing);
                 // if (this.AxisConfig.HorizontalAxisconfig.LabelsCount > 7)
                 // {
                 //     lineChartTemplate.AxisConfig.HorizontalAxisConfig.LabelsConfig.LabelColor = new Color(1, 1, 1, 0);

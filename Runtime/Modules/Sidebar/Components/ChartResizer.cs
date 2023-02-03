@@ -25,7 +25,7 @@ namespace Intelmatix.Modules.Sidebar.Components
 
         private float marginBottom = 60;
 
-        public delegate void ChartResizeEvent();
+        public delegate void ChartResizeEvent(float size);
         public event ChartResizeEvent OnChartResizeStart;
         public event ChartResizeEvent OnChartResizeUpdate;
         public event ChartResizeEvent OnChartResizeEnd;
@@ -45,17 +45,17 @@ namespace Intelmatix.Modules.Sidebar.Components
             {
                 return;
             }
-            OnChartResizeStart?.Invoke();
+            OnChartResizeStart?.Invoke(chart.sizeDelta.y);
 
             if (direction == Direction.Vertical)
             {
                 LeanTween.value(chart.gameObject, (float value) =>
                 {
                     chart.sizeDelta = new Vector2(chart.sizeDelta.x, value);
-                    OnChartResizeUpdate?.Invoke();
+                    OnChartResizeUpdate?.Invoke(value);
                 }, chart.sizeDelta.y, targetSize, animationTime).setEase(animationType).setOnComplete(() =>
                 {
-                    OnChartResizeEnd?.Invoke();
+                    OnChartResizeEnd?.Invoke(targetSize);
                 });
             }
             else
@@ -63,10 +63,10 @@ namespace Intelmatix.Modules.Sidebar.Components
                 LeanTween.value(chart.gameObject, (float value) =>
                 {
                     chart.sizeDelta = new Vector2(value, chart.sizeDelta.y);
-                    OnChartResizeUpdate?.Invoke();
+                    OnChartResizeUpdate?.Invoke(value);
                 }, chart.sizeDelta.x, targetSize, animationTime).setEase(animationType).setOnComplete(() =>
                 {
-                    OnChartResizeEnd?.Invoke();
+                    OnChartResizeEnd?.Invoke(targetSize);
                 });
             }
 

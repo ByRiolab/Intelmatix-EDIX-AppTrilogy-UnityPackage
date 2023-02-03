@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using AwesomeCharts;
 using Intelmatix.Exoa.Responsive;
+using System.Linq;
 
 namespace Intelmatix.Modules.Sidebar.Components
 {
@@ -12,6 +13,7 @@ namespace Intelmatix.Modules.Sidebar.Components
         [SerializeField] private ChartResizer chartResizer;
         [SerializeField] private ResponsiveContainer responsiveContainer;
         [SerializeField] private LineChart lineChart;
+        [SerializeField] private BarChart barChart;
 
         private void Start()
         {
@@ -76,10 +78,20 @@ namespace Intelmatix.Modules.Sidebar.Components
             chartResizer.OnChartResizeUpdate -= ManualResize;
         }
 
-        private void ManualResize()
+        private void ManualResize(float size)
         {
             responsiveContainer?.Resize(false);
             lineChart?.SetDirty();
+
+            if (barChart)
+            {
+                barChart.SetDirty();
+                var width = barChart.GetComponent<RectTransform>().sizeDelta.x;
+                var length = barChart.GetChartData().DataSets.First().Entries.Count + 1;
+                barChart.Config.BarSpacing = (int)(width / length);
+                Debug.Log("width: " + width + " length: " + length + " barChart.Config.BarSpacing: " + barChart.Config.BarSpacing);
+
+            }
 
         }
     }
