@@ -180,7 +180,7 @@ namespace Intelmatix.Modules.Sidebar
             list.ForEach(item =>
             {
                 item.enabled = false;
-                var worldPosition = item.transform.position;
+                // var worldPosition = item.transform.position;
                 item.transform.SetParent(parentOfGraphicsTemporal, true);
                 // item.transform.position = worldPosition;
                 Destroy(item.gameObject, SidebarAnimationSettings.ContentCloseDuration);

@@ -863,7 +863,7 @@ MonoBehaviour:
         position: 14.64
       - value: 10.25
         position: 14.64
-      lineThickness: 1
+      lineThickness: 2
       lineColor: {r: 1, g: 1, b: 1, a: 1}
       fillColor: {r: 1, g: 1, b: 1, a: 0}
       fillTexture: {fileID: 0}
@@ -937,6 +937,7 @@ MonoBehaviour:
   chartResizer: {fileID: 5581203354412176033}
   responsiveContainer: {fileID: 7878518440040290217}
   lineChart: {fileID: 3603483558504699648}
+  barChart: {fileID: 0}
 --- !u!1 &4505138518450690619
 GameObject:
   m_ObjectHideFlags: 0

@@ -1546,7 +1546,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4e96d43dd84e441e795a7fdc9c13c321, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a53be4f34eae240faae511a848151cad, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2292,6 +2292,7 @@ MonoBehaviour:
   chartResizer: {fileID: 4202956985880986666}
   responsiveContainer: {fileID: 1905465996646105378}
   lineChart: {fileID: 0}
+  barChart: {fileID: 0}
 --- !u!1 &5016181230402763637
 GameObject:
   m_ObjectHideFlags: 0
