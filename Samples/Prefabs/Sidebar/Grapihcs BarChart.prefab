@@ -1869,7 +1869,7 @@ MonoBehaviour:
         - 
       labelsAlignment: 0
   config:
-    barWidth: 2
+    barWidth: 4
     barSpacing: 16
     innerBarSpacing: 0
     sizingMethod: 1
