@@ -23,7 +23,6 @@ namespace Intelmatix.Settings
 
 
         [Space]
-
         [SerializeField] private float notificationAppearDuration = 1f;
         [SerializeField] private float notificationCloseDuration = 1f;
         [SerializeField] private float notificationAppearDelay = 1f;
