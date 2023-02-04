@@ -46,7 +46,7 @@ namespace Intelmatix.Examples.Templates
         {
             this.notification = notification;
         }
-        private void Show()
+        public void Show()
         {
             RecursivelyShowCards(0);
         }
