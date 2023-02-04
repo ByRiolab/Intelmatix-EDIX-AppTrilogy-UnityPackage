@@ -4,12 +4,13 @@ using UnityEngine;
 
 namespace Intelmatix.Data
 {
+    [System.Serializable]
     public class StoreData : DataReference<StoreData>
     {
         public List<KPI> KPIs { get; set; }
         public List<Notification> Cards { get; set; }
 
-
+        [System.Serializable]
         public class KPI
         {
             public string Id { get; set; }
@@ -19,6 +20,7 @@ namespace Intelmatix.Data
             public string Type { get; set; }
         }
 
+        [System.Serializable]
         public class Card
         {
             [SerializeField] private int id;
@@ -37,6 +39,7 @@ namespace Intelmatix.Data
             }
         }
 
+        [System.Serializable]
         public class Notification
         {
             [SerializeField] private string position;
