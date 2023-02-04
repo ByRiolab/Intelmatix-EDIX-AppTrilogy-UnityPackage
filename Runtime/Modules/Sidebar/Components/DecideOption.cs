@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using static Intelmatix.Modules.Sidebar.Primitives.SidebarData;
+using static Intelmatix.Data.SidebarData;
 
 namespace Intelmatix.Modules.Sidebar
 {

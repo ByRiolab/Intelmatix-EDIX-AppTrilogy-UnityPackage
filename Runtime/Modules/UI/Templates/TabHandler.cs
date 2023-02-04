@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using static Intelmatix.Modules.UI.Primitives.QuestionsData;
+using static Intelmatix.Data.QuestionsData;
 
 namespace Intelmatix.Templates
 {

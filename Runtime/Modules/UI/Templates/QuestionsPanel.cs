@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using static Intelmatix.Modules.UI.Primitives.QuestionsData;
+using static Intelmatix.Data.QuestionsData;
 
 namespace Intelmatix.Templates
 {

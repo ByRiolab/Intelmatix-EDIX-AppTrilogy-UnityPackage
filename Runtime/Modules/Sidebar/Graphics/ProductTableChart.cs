@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using static Intelmatix.Modules.Sidebar.Primitives.SidebarData;
 using UnityEngine.UI;
 using Intelmatix.Modules.Sidebar.Components;
+using static Intelmatix.Data.SidebarData;
+using Intelmatix.Settings;
 
 namespace Intelmatix.Templates
 {
@@ -16,7 +17,7 @@ namespace Intelmatix.Templates
 
         [Space]
         [Header("Components")]
-        [SerializeField] private Components.RowHandler rowHandlerPrefab;
+        [SerializeField] private RowHandler rowHandlerPrefab;
         [SerializeField] private ChartResizer chartResizeManager;
 
         [Header("Animation")]

@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
-using static Intelmatix.Modules.Sidebar.Primitives.SidebarData;
 using UnityEngine.UI;
+using static Intelmatix.Data.SidebarData;
 
 namespace Intelmatix.Modules.Sidebar.Components
 {

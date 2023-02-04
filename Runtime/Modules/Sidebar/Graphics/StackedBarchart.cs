@@ -1,11 +1,13 @@
 using System.Collections.Generic;
-using Intelmatix.Modules.Sidebar.Primitives;
 using UnityEngine;
 using UnityEngine.UI;
 using AwesomeCharts;
 using TMPro;
 using System.Linq;
 using Intelmatix;
+using Intelmatix.Data;
+using Intelmatix.Settings;
+
 namespace Intelmatix.Templates
 {
     public class StackedBarchart : MonoBehaviour

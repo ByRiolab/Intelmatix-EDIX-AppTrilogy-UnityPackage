@@ -1,13 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
-using AwesomeCharts;
-using UnityEngine.UI;
-using Intelmatix.Modules.Sidebar.Graphics;
 using Intelmatix.Exoa.Responsive;
 using Intelmatix.Base;
-using Intelmatix.Modules.UI;
+using static Intelmatix.Data.QuestionsData;
+using Intelmatix;
+using Intelmatix.Data;
+using Intelmatix.Modules.Sidebar;
+using Intelmatix.Templates;
+using Intelmatix.Settings;
 
-namespace Intelmati
+namespace Intelmatix
 {
     public class SidebarManager : Singleton<SidebarManager, SidebarReference>
     {

@@ -20,5 +20,26 @@ namespace Intelmatix.Settings
         public static float ContentAppearDuration => Instance.contentAppearDuration;
         public static float ContentCloseDuration => Instance.contentCloseDuration;
         public static float DelayBetweenCharts => Instance.delayBetweenCharts;
+
+
+        [Space]
+
+        [SerializeField] private float notificationAppearDuration = 1f;
+        [SerializeField] private float notificationCloseDuration = 1f;
+        [SerializeField] private float notificationAppearDelay = 1f;
+        [SerializeField] private float notificationCloseDelay = 1f;
+        [SerializeField] private float notificationDelayBetweenNotifications = 1f;
+        [SerializeField] private float notificationAppearDistance = 4;
+        [SerializeField] private float notificationCloseDistance = 20f;
+
+        public static float NotificationAppearDuration => Instance.notificationAppearDuration;
+        public static float NotificationCloseDuration => Instance.notificationCloseDuration;
+        public static float NotificationAppearDelay => Instance.notificationAppearDelay;
+        public static float NotificationCloseDelay => Instance.notificationCloseDelay;
+        public static float NotificationDelayBetweenNotifications => Instance.notificationDelayBetweenNotifications;
+        public static float NotificationAppearDistance => Instance.notificationAppearDistance;
+        public static float NotificationCloseDistance => Instance.notificationCloseDistance;
+
+
     }
 }

@@ -4,9 +4,9 @@ using UnityEngine.UI;
 namespace Intelmatix
 {
     using Intelmatix.Base;
-    using Intelmatix.Modules.UI.Primitives;
-    using Intelmatix.Modules.UI.Templates;
-    using static Intelmatix.Modules.UI.Primitives.QuestionsData;
+    using Intelmatix.Data;
+    using Intelmatix.Templates;
+    using static Intelmatix.Data.QuestionsData;
 
     public class UIManager : Singleton<UIManager, QuestionsReference>
     {
@@ -91,7 +91,7 @@ namespace Intelmatix
 
                         if (isCognitive && isSelected)
                         {
-                            Sidebar.SidebarManager.OpenDecisionPanel(
+                            SidebarManager.OpenDecisionPanel(
                                 humanMonde: () =>
                                 {
                                     currentPanel?.Hide();
