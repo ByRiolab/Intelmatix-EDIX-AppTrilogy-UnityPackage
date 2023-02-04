@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Intelmatix.Modules.API
+namespace Intelmatix.Data
 {
     /// <summary>
     /// <description>

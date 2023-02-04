@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Intelmatix.Base;
 using UnityEngine;
 
-namespace Intelmatix.Modules.Sidebar
+namespace Intelmatix.Settings
 {
     public class SidebarAnimationSettings : Singleton<SidebarAnimationSettings>
     {

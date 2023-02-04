@@ -45,6 +45,7 @@ namespace Intelmatix.Modules.Sidebar.Components
                     break;
                 case "Mshroom":
                     image.sprite = mshroomSprite;
+                    titleText.text = "Mushroom";
                     break;
                 default:
                     image.sprite = tomatoSprite;

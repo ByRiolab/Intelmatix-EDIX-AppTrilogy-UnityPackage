@@ -1825,7 +1825,7 @@ MonoBehaviour:
   titleText: {fileID: 1299982203128194716}
   valueText: {fileID: 3411327986256078964}
   image: {fileID: 0}
-  tomatoSprite: {fileID: 21300000, guid: a5f94f756b38a430095f3ab094385a76, type: 3}
+  tomatoSprite: {fileID: 21300000, guid: 915ccc8b7ee1e4cebae2688ced6bcd1b, type: 3}
   potatoSprite: {fileID: 21300000, guid: a5f94f756b38a430095f3ab094385a76, type: 3}
   lettuceSprite: {fileID: 21300000, guid: f65f75be9f650445eab7a81cf291eb47, type: 3}
   onionSprite: {fileID: 21300000, guid: 3787e054d177e415cbadefee9dd1d2c5, type: 3}

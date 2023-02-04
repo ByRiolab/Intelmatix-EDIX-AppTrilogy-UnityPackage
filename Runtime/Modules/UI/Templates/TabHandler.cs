@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using static Intelmatix.Modules.UI.Primitives.QuestionsData;
 
-namespace Intelmatix.Modules.UI.Templates
+namespace Intelmatix.Templates
 {
 
     public class TabHandler : MonoBehaviour

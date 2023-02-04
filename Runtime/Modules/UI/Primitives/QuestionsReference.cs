@@ -2,7 +2,7 @@
 using Intelmatix.Structure;
 using UnityEngine;
 
-namespace Intelmatix.Modules.UI.Primitives
+namespace Intelmatix.Data
 {
     [CreateAssetMenu(fileName = "Questions", menuName = "Intelmatix/References/Questions", order = 1)]
     public class QuestionsReference : DataReference<QuestionsData> { }

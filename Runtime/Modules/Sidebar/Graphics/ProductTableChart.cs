@@ -6,7 +6,7 @@ using static Intelmatix.Modules.Sidebar.Primitives.SidebarData;
 using UnityEngine.UI;
 using Intelmatix.Modules.Sidebar.Components;
 
-namespace Intelmatix.Modules.Sidebar.Graphics
+namespace Intelmatix.Templates
 {
     public class ProductTableChart : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Intelmatix.Modules.UI
+namespace Intelmatix
 {
     using Intelmatix.Base;
     using Intelmatix.Modules.UI.Primitives;

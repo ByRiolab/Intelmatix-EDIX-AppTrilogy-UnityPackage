@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-namespace Intelmatix.Modules.Sidebar.Primitives
+namespace Intelmatix.Data
 {
     [Serializable]
     public class SidebarData
@@ -239,7 +239,7 @@ namespace Intelmatix.Modules.Sidebar.Primitives
                 lineChartTemplate.AxisConfig.VerticalAxisConfig.Bounds.Min = this.AxisConfig.VerticalAxisConfig.Min;
 
                 // bind custom values
-                if (this.AxisConfig.HorizontalAxisconfig.CustomValues.Count > 0 && this.AxisConfig.HorizontalAxisconfig.CustomValues.Count < 7)
+                if (this.AxisConfig.HorizontalAxisconfig.CustomValues.Count > 0)
                 {
                     lineChartTemplate.AxisConfig.HorizontalAxisConfig.ValueFormatterConfig.CustomValues = this.AxisConfig.HorizontalAxisconfig.CustomValues;
                     lineChartTemplate.AxisConfig.HorizontalAxisConfig.LabelsCount = this.AxisConfig.HorizontalAxisconfig.CustomValues.Count;

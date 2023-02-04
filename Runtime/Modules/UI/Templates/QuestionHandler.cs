@@ -5,7 +5,7 @@ using Intelmatix.Modules.UI.Components;
 using TMPro;
 using static Intelmatix.Modules.UI.Primitives.QuestionsData;
 
-namespace Intelmatix.Modules.UI.Templates
+namespace Intelmatix.Templates
 {
 
     public class QuestionHandler : MonoBehaviour

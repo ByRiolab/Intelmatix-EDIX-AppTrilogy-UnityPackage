@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using static Intelmatix.Modules.UI.Primitives.QuestionsData;
 
-namespace Intelmatix.Modules.UI.Templates
+namespace Intelmatix.Templates
 {
     public class QuestionsPanel : MonoBehaviour
     {

@@ -6,7 +6,7 @@ using AwesomeCharts;
 using TMPro;
 using System.Linq;
 using Intelmatix;
-namespace Intelmatix.Modules.Sidebar.Graphics
+namespace Intelmatix.Templates
 {
     public class StackedBarchart : MonoBehaviour
     {

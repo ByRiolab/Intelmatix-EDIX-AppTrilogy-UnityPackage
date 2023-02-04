@@ -6,7 +6,7 @@ using UnityEngine;
 using static Intelmatix.Modules.Sidebar.Primitives.SidebarData;
 using UnityEngine.UI;
 
-namespace Intelmatix.Modules.Sidebar.Graphics
+namespace Intelmatix.Templates
 {
     public class DataTableChart : MonoBehaviour
     {

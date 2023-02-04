@@ -839,12 +839,12 @@ MonoBehaviour:
       valueFormatterConfig:
         valueDecimalPlaces: 0
         customValues:
-        - Store1
-        - Store2
-        - Store3
-        - Store4
-        - Store5
-        - Store6
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
   config:
     valueIndicatorSize: 36
     showValueIndicators: 1
