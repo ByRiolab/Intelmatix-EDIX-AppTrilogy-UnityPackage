@@ -43,15 +43,15 @@ namespace Intelmatix.Data
         public class Notification
         {
             [SerializeField] private string position;
-            [SerializeField] private List<Card> cards;
+            [SerializeField] private List<Card> labels;
 
             public string Position => position;
-            public List<Card> Cards => cards;
+            public List<Card> Cards => labels;
 
             public Notification(string position, List<Card> cards)
             {
                 this.position = position;
-                this.cards = cards;
+                this.labels = cards;
             }
         }
     }
