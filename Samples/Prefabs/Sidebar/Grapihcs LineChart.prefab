@@ -846,7 +846,7 @@ MonoBehaviour:
         - Store5
         - Store6
   config:
-    valueIndicatorSize: 12
+    valueIndicatorSize: 24
     showValueIndicators: 1
     popupPrefab: {fileID: 6196819270328144897, guid: 3b4db65b1ddb65f4eac50f1a290b417c, type: 3}
   data:

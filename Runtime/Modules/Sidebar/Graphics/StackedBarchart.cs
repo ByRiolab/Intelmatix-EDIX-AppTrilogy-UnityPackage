@@ -67,6 +67,10 @@ namespace Intelmatix.Modules.Sidebar.Graphics
                     toggles.Add(toggle);
                 }
                 toggles.First().isOn = true;
+                if (toggles.Count == 1)
+                {
+                    toggles.First().gameObject.SetActive(false);
+                }
             }
             else
             {

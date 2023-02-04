@@ -186,7 +186,7 @@ namespace Intelmatix.Modules.Sidebar.Primitives
                     }
 
                     // lineDataSet.LineThickness = 1f;
-                    lineDataSet.LineThickness = 5f;
+                    lineDataSet.LineThickness = 2f;
                     lineDataSet.Title = dataSet.Title;
                     foreach (var entry in dataSet.Entries)
                     {

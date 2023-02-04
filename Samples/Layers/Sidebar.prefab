@@ -220,7 +220,7 @@ MonoBehaviour:
   contentAppearDelay: 0.5
   contentAppearDuration: 2
   contentCloseDuration: 1
-  delayBetweenCharts: 1
+  delayBetweenCharts: 0.5
 --- !u!1 &3999897429603671945
 GameObject:
   m_ObjectHideFlags: 0
