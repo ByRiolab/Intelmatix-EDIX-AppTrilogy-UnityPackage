@@ -1152,7 +1152,7 @@ GameObject:
   - component: {fileID: 1905465995996908920}
   - component: {fileID: 1630355916000225252}
   m_Layer: 5
-  m_Name: Grapihcs DataTable
+  m_Name: Grapihcs DataTable - Decrepited
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1828,9 +1828,9 @@ MonoBehaviour:
   tomatoSprite: {fileID: 21300000, guid: 915ccc8b7ee1e4cebae2688ced6bcd1b, type: 3}
   potatoSprite: {fileID: 21300000, guid: a5f94f756b38a430095f3ab094385a76, type: 3}
   lettuceSprite: {fileID: 21300000, guid: f65f75be9f650445eab7a81cf291eb47, type: 3}
-  onionSprite: {fileID: 21300000, guid: 3787e054d177e415cbadefee9dd1d2c5, type: 3}
+  onionSprite: {fileID: 21300000, guid: 5d51201815c844d6d8a7c0777034aa9f, type: 3}
   pepperSprite: {fileID: 21300000, guid: 972d5e4a208284183afde65e11f682fa, type: 3}
-  mshroomSprite: {fileID: 21300000, guid: 8e55c167172354b1180605a55374ff97, type: 3}
+  mshroomSprite: {fileID: 21300000, guid: 3012fd88d26a4475ab31ef461c09e1e8, type: 3}
 --- !u!1 &2784955714951436898
 GameObject:
   m_ObjectHideFlags: 0
