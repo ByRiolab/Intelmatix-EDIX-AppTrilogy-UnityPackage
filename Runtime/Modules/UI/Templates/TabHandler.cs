@@ -60,8 +60,14 @@ namespace Intelmatix.Templates
                     }, titleText.alpha, 1f, duration);
                     LeanTween.moveLocal(this.canvasToAnimate.gameObject, Vector3.up * 75f, duration)
                         .setEase(LeanTweenType.easeOutBack)
-                        .setOnComplete(() => this.canvasToAnimate.blocksRaycasts = true)
-                        .setOnStart(() => this.canvasToAnimate.blocksRaycasts = false);
+                        .setOnComplete(() =>
+                        {
+                            this.canvasToAnimate.blocksRaycasts = true;
+                        })
+                        .setOnStart(() =>
+                        {
+                            this.canvasToAnimate.blocksRaycasts = false;
+                        });
                 }
                 else
                 {
@@ -71,8 +77,15 @@ namespace Intelmatix.Templates
                     }, titleText.alpha, 0.25f, duration);
                     LeanTween.moveLocal(this.canvasToAnimate.gameObject, Vector3.zero, duration)
                         .setEase(LeanTweenType.easeOutBack)
-                        .setOnComplete(() => this.canvasToAnimate.blocksRaycasts = true)
-                        .setOnStart(() => this.canvasToAnimate.blocksRaycasts = false);
+                        .setOnComplete(() =>
+                        {
+                            this.canvasToAnimate.blocksRaycasts = true;
+                        })
+                        .setOnStart(() =>
+                        {
+                            this.canvasToAnimate.blocksRaycasts = false;
+                        });
+
                 }
             });
         }
