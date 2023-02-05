@@ -75,7 +75,7 @@ namespace Intelmatix.Examples.Templates
             LeanTween.cancel(this.canvasToAnimate.gameObject);
             AnimationManager.AnimateOut(this.canvasToAnimate,
                 direction: AnimationManager.Direction.Up,
-                distance: SidebarAnimationSettings.NotificationCloseDistance, duration: .5f).setOnComplete(() =>
+                distance: SidebarAnimationSettings.NotificationCloseDistance).setOnComplete(() =>
             {
                 Destroy(this.gameObject);
             });
