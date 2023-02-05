@@ -223,9 +223,9 @@ MonoBehaviour:
   delayBetweenCharts: 0.5
   notificationAppearDuration: 1
   notificationCloseDuration: 1
-  notificationAppearDelay: 2
-  notificationCloseDelay: 1
-  notificationDelayBetweenNotifications: 1.5
+  notificationAppearDelay: 4.5
+  notificationCloseDelay: 3.75
+  notificationDelayBetweenNotifications: 0.5
   notificationAppearDistance: 10
   notificationCloseDistance: 20
 --- !u!1 &3999897429603671945

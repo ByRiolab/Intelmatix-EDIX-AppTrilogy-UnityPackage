@@ -119,10 +119,10 @@ MonoBehaviour:
   canvasToAnimate: {fileID: 7411195802342487291}
   text: {fileID: 2771367809185745012}
   image: {fileID: 1874880661355944443}
-  inventorySprite: {fileID: 21300000, guid: b2d094715b8b84a04945ac9d8a9e9267, type: 3}
-  marketingSprite: {fileID: 21300000, guid: f4877121e683e42b2a71dc84836cd818, type: 3}
-  staffSprite: {fileID: 21300000, guid: cb4ee0b98634e455b8f75930ceba7d9d, type: 3}
-  supplierSprite: {fileID: 21300000, guid: 3cf7cf9b187604faeb5dbd9e6c1e7eed, type: 3}
+  inventorySprite: {fileID: 21300000, guid: ea31b4d24e7694724a7953aa126a45e3, type: 3}
+  marketingSprite: {fileID: 21300000, guid: c077cf3a921a043cf86070d4471c3763, type: 3}
+  staffSprite: {fileID: 21300000, guid: d1bc9d4a65038439b91c752ffc0dc1a3, type: 3}
+  supplierSprite: {fileID: 21300000, guid: c4fa4a599893749b48ace80adc70b1f7, type: 3}
 --- !u!225 &7411195802342487291
 CanvasGroup:
   m_ObjectHideFlags: 0
