@@ -26,48 +26,15 @@ namespace Intelmatix.Modules.Sidebar.Components
                 minimizeButton.gameObject.SetActive(false);
                 maximizeButton.gameObject.SetActive(true);
 
+                // lineChart?.HorizontalDisplay(false);
 
-
-                // if (lineChart)
-                // {
-                //     var lenght = lineChart.AxisConfig.HorizontalAxisConfig.LabelsCount;
-                //     if (lenght > 7)
-                //     {
-                //         var labelConfig = lineChart.AxisConfig.HorizontalAxisConfig.LabelsConfig;
-
-                //         LeanTween.cancel(this.gameObject);
-                //         LeanTween.value(this.gameObject, (float val) =>
-                //         {
-                //             labelConfig.LabelColor = new Color(1, 1, 1, val);
-                //         }, labelConfig.LabelColor.a, 0, 0.2f).setOnComplete(() =>
-                //         {
-                //             labelConfig.LabelColor = new Color(1, 1, 1, 0);
-                //         }).setEase(LeanTweenType.easeOutQuad);
-                //     }
-                // }
             });
             maximizeButton.onClick.AddListener(() =>
             {
                 minimizeButton.gameObject.SetActive(true);
                 maximizeButton.gameObject.SetActive(false);
 
-                // if (lineChart)
-                // {
-                //     var lenght = lineChart.AxisConfig.HorizontalAxisConfig.LabelsCount;
-                //     if (lenght > 7)
-                //     {
-                //         var labelConfig = lineChart.AxisConfig.HorizontalAxisConfig.LabelsConfig;
-
-                //         LeanTween.cancel(this.gameObject);
-                //         LeanTween.value(this.gameObject, (float val) =>
-                //         {
-                //             labelConfig.LabelColor = new Color(1, 1, 1, val);
-                //         }, labelConfig.LabelColor.a, 1, 0.2f).setOnComplete(() =>
-                //         {
-                //             labelConfig.LabelColor = new Color(1, 1, 1, 1);
-                //         }).setEase(LeanTweenType.easeOutQuad);
-                //     }
-                // }
+                // lineChart?.HorizontalDisplay(true);
             });
 
             chartResizer.OnChartResizeUpdate += ManualResize;
@@ -81,14 +48,17 @@ namespace Intelmatix.Modules.Sidebar.Components
         private void ManualResize(float size)
         {
             responsiveContainer?.Resize(false);
+
+            lineChart?.SetLabelOpacity(size);
             lineChart?.SetDirty();
 
             if (barChart)
             {
-                barChart.SetDirty();
                 var width = barChart.GetComponent<RectTransform>().sizeDelta.x;
                 var length = barChart.GetChartData().DataSets.First().Entries.Count + 1;
                 barChart.Config.BarSpacing = (int)(width / length);
+                barChart.SetLabelOpacity(size);
+                barChart.SetDirty();
                 // Debug.Log("width: " + width + " length: " + length + " barChart.Config.BarSpacing: " + barChart.Config.BarSpacing);
 
             }

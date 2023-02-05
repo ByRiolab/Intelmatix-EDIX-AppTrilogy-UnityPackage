@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-
+using System;
 namespace Intelmatix
 {
     public static class Helpers
@@ -37,14 +37,17 @@ namespace Intelmatix
 
         public static string GetNumberConversion(this float number)
         {
-            if (number > 1000000000) // use B
-                return (number / 1000000000).ToString("0.0") + "B";
-            else if (number > 1000000) // use M
-                return (number / 1000000).ToString("0.0") + "M";
-            else if (number > 1000) // use K
-                return (number / 1000).ToString("0.0") + "K";
+            var isPositive = number >= 0;
+            var absNumber = Math.Abs(number);
+            var suffix = isPositive ? "" : "-";
+            if (absNumber >= 1000000000) // use B
+                return suffix + (absNumber / 1000000000).ToString("0") + "B";
+            else if (absNumber >= 1000000) // use M
+                return suffix + (absNumber / 1000000).ToString("0") + "M";
+            else if (absNumber >= 1000) // use K
+                return suffix + (absNumber / 1000).ToString("0") + "K";
             else
-                return number.ToString("0.0");
+                return suffix + absNumber.ToString("0");
         }
 
         public static void SetPositionY(this LineRenderer lineRenderer, float y, int index = 1)
@@ -56,6 +59,26 @@ namespace Intelmatix
         {
             var line = lineRenderer.GetPosition(index);
             return line.y;
+        }
+
+        public static void SetLabelOpacity(this AwesomeCharts.LineChart lineChart, float opacity)
+        {
+            var labelConfig = lineChart.AxisConfig.HorizontalAxisConfig.LabelsConfig;
+            labelConfig.LabelColor = new Color(1, 1, 1, opacity);
+            if (lineChart.AxisConfig.HorizontalAxisConfig.LabelsCount < 12)
+            {
+                lineChart.AxisConfig.HorizontalAxisConfig.LabelsConfig.LabelColor = new Color(1, 1, 1, 1);
+            }
+        }
+
+        public static void SetLabelOpacity(this AwesomeCharts.BarChart barChart, float opacity)
+        {
+            var labelConfig = barChart.AxisConfig.HorizontalAxisConfig.LabelsConfig;
+            labelConfig.LabelColor = new Color(1, 1, 1, opacity);
+            if (barChart.GetChartData().DataSets.Count > 0 && barChart.GetChartData().DataSets[0].Entries.Count < 12)
+            {
+                barChart.AxisConfig.HorizontalAxisConfig.LabelsConfig.LabelColor = new Color(1, 1, 1, 1);
+            }
         }
     }
 

@@ -20,6 +20,7 @@ namespace Intelmatix
         [SerializeField] private Transform parentOfGraphicsTemporal;
         [SerializeField] private ResponsiveContainer responsiveContainer;
         [SerializeField] private BakgroundAnim backgroundAnimation;
+        [SerializeField] private KPIController kpiController;
         [Space]
 
         [Header("Graphics")]
@@ -56,9 +57,17 @@ namespace Intelmatix
             sidebarReference.OnDataChanged -= SetupSidebar;
             // UIManager.OnTabSelected -= OnTabSelected;
         }
-        public void SetKPI()
+        public static void AddKPIDecision(List<SidebarData.KPIDecision> kpis)
         {
-
+            Instance?.kpiController.AddKPIDecision(kpis);
+        }
+        public static void RemoveKPIDecision(List<SidebarData.KPIDecision> kpis)
+        {
+            Instance?.kpiController.RemoveKPIDecision(kpis);
+        }
+        public static void SetKPI(List<StoreData.KPI> kpis)
+        {
+            Instance?.kpiController.SetKPI(kpis);
         }
         // private void OnTabSelected(Tab tab)
         // {

@@ -7,17 +7,22 @@ namespace Intelmatix.Data
     [System.Serializable]
     public class StoreData : DataReference<StoreData>
     {
-        public List<KPI> KPIs { get; set; }
         public List<Notification> Notifications { get; set; }
+
 
         [System.Serializable]
         public class KPI
         {
-            public string Id { get; set; }
-            public string Kpi { get; set; }
-            public int KpiValue { get; set; }
-            public string Subtitle { get; set; }
-            public string Type { get; set; }
+            [SerializeField] private int id;
+            [SerializeField] private float kpi_value;
+            [SerializeField] private string kpi;
+            [SerializeField] private string subtitle;
+            [SerializeField] private string type;
+
+            public int ID => id;
+            public float KPIValue => kpi_value;
+            public string Title => kpi;
+            public string Subtitle => subtitle;
         }
 
         [System.Serializable]

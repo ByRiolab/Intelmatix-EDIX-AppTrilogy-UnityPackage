@@ -32,6 +32,7 @@ namespace Intelmatix.Modules.Sidebar
             });
         }
 
+        private bool isAdded = false;
         public void Display(Decision decision)
         {
             this.labelText.text = decision.Label;
@@ -39,8 +40,17 @@ namespace Intelmatix.Modules.Sidebar
             {
                 if (value)
                 {
+                    isAdded = true;
+                    SidebarManager.AddKPIDecision(decision.KPI);
                     Debug.Log("Decision: " + decision.Label);
                     // decision?.action?.Invoke();
+                }
+                else
+                {
+                    if (isAdded)
+                    {
+                        SidebarManager.RemoveKPIDecision(decision.KPI);
+                    }
                 }
             });
             // cognitiveButton.onValueChanged.AddListener((value) =>

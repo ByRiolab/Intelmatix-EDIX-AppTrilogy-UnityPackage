@@ -45,17 +45,17 @@ namespace Intelmatix.Modules.Sidebar.Components
             {
                 return;
             }
-            OnChartResizeStart?.Invoke(chart.sizeDelta.y);
+            OnChartResizeStart?.Invoke(CurrentPercentage);
 
             if (direction == Direction.Vertical)
             {
                 LeanTween.value(chart.gameObject, (float value) =>
                 {
                     chart.sizeDelta = new Vector2(chart.sizeDelta.x, value);
-                    OnChartResizeUpdate?.Invoke(value);
+                    OnChartResizeUpdate?.Invoke(CurrentPercentage);
                 }, chart.sizeDelta.y, targetSize, animationTime).setEase(animationType).setOnComplete(() =>
                 {
-                    OnChartResizeEnd?.Invoke(targetSize);
+                    OnChartResizeEnd?.Invoke(CurrentPercentage);
                 });
             }
             else
@@ -63,14 +63,27 @@ namespace Intelmatix.Modules.Sidebar.Components
                 LeanTween.value(chart.gameObject, (float value) =>
                 {
                     chart.sizeDelta = new Vector2(value, chart.sizeDelta.y);
-                    OnChartResizeUpdate?.Invoke(value);
+                    OnChartResizeUpdate?.Invoke(CurrentPercentage);
                 }, chart.sizeDelta.x, targetSize, animationTime).setEase(animationType).setOnComplete(() =>
                 {
-                    OnChartResizeEnd?.Invoke(targetSize);
+                    OnChartResizeEnd?.Invoke(CurrentPercentage);
                 });
             }
+        }
 
-
+        public float CurrentPercentage
+        {
+            get
+            {
+                if (direction == Direction.Vertical)
+                {
+                    return (chart.sizeDelta.y - minimizeSize) / (maximizeSize - minimizeSize);
+                }
+                else
+                {
+                    return (chart.sizeDelta.x - minimizeSize) / (maximizeSize - minimizeSize);
+                }
+            }
         }
 
         public void MaximizeChart()

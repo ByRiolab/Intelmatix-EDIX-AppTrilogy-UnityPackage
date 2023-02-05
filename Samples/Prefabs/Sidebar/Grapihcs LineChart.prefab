@@ -1851,6 +1851,7 @@ MonoBehaviour:
   toggleGroup: {fileID: 7796016935076182959}
   togglePrefab: {fileID: 7132848365389965494}
   lineChartTemplate: {fileID: 3603483558504699648}
+  chartResizer: {fileID: 5581203354412176033}
   canvasToAnimate: {fileID: 1151407493348695838}
 --- !u!114 &7878518439615224819
 MonoBehaviour:

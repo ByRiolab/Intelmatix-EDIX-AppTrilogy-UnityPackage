@@ -7,6 +7,7 @@ using System.Linq;
 using Intelmatix;
 using Intelmatix.Data;
 using Intelmatix.Settings;
+using Intelmatix.Modules.Sidebar.Components;
 
 namespace Intelmatix.Templates
 {
@@ -24,6 +25,7 @@ namespace Intelmatix.Templates
 
         [Space]
         [SerializeField] private BarChart BarChartTemplate;
+        [SerializeField] private ChartResizer chartResizer;
 
 
         [Header("Animation")]
@@ -83,7 +85,6 @@ namespace Intelmatix.Templates
 
         private void FillTemplate(SidebarData.Chart chart)
         {
-            chart.ApplyBarAxisConfiguration(BarChartTemplate);
 
             // bind data
             BarChartTemplate.GetChartData().Clear();
@@ -94,6 +95,7 @@ namespace Intelmatix.Templates
                 BarChartTemplate.GetChartData().DataSets.Add(dataSet);
             }
             BarChartTemplate.SetDirty();
+            chart.ApplyBarAxisConfiguration(BarChartTemplate, chartResizer.CurrentPercentage);
 
         }
 

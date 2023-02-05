@@ -1286,6 +1286,7 @@ MonoBehaviour:
   togglePrefab: {fileID: 1574986870877683261}
   BarChartTemplate: {fileID: 8585987332830271222}
   canvasToAnimate: {fileID: 8709138140085848469}
+  chartResizer: {fileID: 8466517081945787329}
 --- !u!1 &1905465996503447284
 GameObject:
   m_ObjectHideFlags: 0

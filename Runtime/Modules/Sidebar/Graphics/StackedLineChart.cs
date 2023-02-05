@@ -6,6 +6,7 @@ using TMPro;
 using System.Linq;
 using Intelmatix.Data;
 using Intelmatix.Settings;
+using Intelmatix.Modules.Sidebar.Components;
 
 namespace Intelmatix.Templates
 {
@@ -22,6 +23,7 @@ namespace Intelmatix.Templates
 
         [Space]
         [SerializeField] private LineChart lineChartTemplate;
+        [SerializeField] private ChartResizer chartResizer;
 
 
         [Header("Animation")]
@@ -85,7 +87,7 @@ namespace Intelmatix.Templates
 
         private void FillTemplate(SidebarData.Chart chart)
         {
-            chart.ApplyAxisConfiguration(lineChartTemplate);
+            chart.ApplyAxisConfiguration(lineChartTemplate, chartResizer.CurrentPercentage);
 
             // bind data
             lineChartTemplate.GetChartData().Clear();

@@ -31,22 +31,49 @@ namespace Intelmatix.Data
         {
             [SerializeField] private int id;
             [SerializeField] private string label;
-            [SerializeField] private List<KPI> kpi;
+            [SerializeField] private List<KPIDecision> kpi;
             public int Id => id;
             public string Label => label;
-            public List<KPI> KPI => kpi;
+            public List<KPIDecision> KPI => kpi;
         }
-
         [System.Serializable]
-        public class KPI
+        public class KPIDecision
         {
             [SerializeField] private int id;
-            [SerializeField] private string kpi_value;
+            [SerializeField] private int kpi_value;
             [SerializeField] private string subtitle;
+            /// <summary>
+            /// operation is a enum with values: "decrement", "increment", "neutral"
+            /// </summary>
+            [SerializeField] private string operation;
 
             public int Id => id;
-            public string KPIValue => kpi_value;
+            public int ExtraValue => kpi_value;
             public string Subtitle => subtitle;
+
+            public enum Operation
+            {
+                decrement,
+                increment,
+                neutral
+            }
+            public Operation OperationType
+            {
+                get
+                {
+                    switch (operation)
+                    {
+                        case "decrement":
+                            return Operation.decrement;
+                        case "increment":
+                            return Operation.increment;
+                        case "neutral":
+                            return Operation.neutral;
+                        default:
+                            return Operation.neutral;
+                    }
+                }
+            }
         }
 
 
@@ -228,8 +255,12 @@ namespace Intelmatix.Data
                 return barDataSets;
             }
 
-
-            public void ApplyAxisConfiguration(AwesomeCharts.LineChart lineChartTemplate)
+            int CalculateFontSize(int labelCount, int minFontSize = 29, int maxFontSize = 19, int minLabelCount = 7, int maxLabelCount = 40)
+            {
+                int fontSize = (int)(minFontSize + (maxFontSize - minFontSize) * (labelCount - minLabelCount) / (maxLabelCount - minLabelCount));
+                return fontSize;
+            }
+            public void ApplyAxisConfiguration(AwesomeCharts.LineChart lineChartTemplate, float opacity)
             {
                 // bind axis config
                 lineChartTemplate.AxisConfig.HorizontalAxisConfig.Bounds.Max = this.AxisConfig.HorizontalAxisconfig.Max;
@@ -242,7 +273,9 @@ namespace Intelmatix.Data
                 if (this.AxisConfig.HorizontalAxisconfig.CustomValues.Count > 0)
                 {
                     lineChartTemplate.AxisConfig.HorizontalAxisConfig.ValueFormatterConfig.CustomValues = this.AxisConfig.HorizontalAxisconfig.CustomValues;
-                    lineChartTemplate.AxisConfig.HorizontalAxisConfig.LabelsCount = this.AxisConfig.HorizontalAxisconfig.CustomValues.Count;
+                    var labelCount = lineChartTemplate.AxisConfig.HorizontalAxisConfig.LabelsCount = this.AxisConfig.HorizontalAxisconfig.CustomValues.Count;
+
+                    lineChartTemplate.AxisConfig.HorizontalAxisConfig.LabelsConfig.LabelSize = CalculateFontSize(labelCount);
                 }
 
                 if (this.AxisConfig.VerticalAxisConfig.CustomValues.Count > 0)
@@ -250,6 +283,7 @@ namespace Intelmatix.Data
                     lineChartTemplate.AxisConfig.VerticalAxisConfig.LabelsCount = this.AxisConfig.VerticalAxisConfig.LabelsCount;
                     lineChartTemplate.AxisConfig.VerticalAxisConfig.ValueFormatterConfig.CustomValues = this.AxisConfig.VerticalAxisConfig.CustomValues;
                 }
+                lineChartTemplate.SetLabelOpacity(opacity);
 
                 lineChartTemplate.SetDirty();
 
@@ -260,7 +294,7 @@ namespace Intelmatix.Data
             }
 
 
-            public void ApplyBarAxisConfiguration(AwesomeCharts.BarChart lineChartTemplate)
+            public void ApplyBarAxisConfiguration(AwesomeCharts.BarChart lineChartTemplate, float opacity)
             {
                 // bind axis config
                 lineChartTemplate.AxisConfig.HorizontalAxisConfig.Bounds.Max = this.AxisConfig.HorizontalAxisconfig.Max;
@@ -269,12 +303,37 @@ namespace Intelmatix.Data
                 lineChartTemplate.AxisConfig.VerticalAxisConfig.Bounds.Max = this.AxisConfig.VerticalAxisConfig.Max;
                 lineChartTemplate.AxisConfig.VerticalAxisConfig.Bounds.Min = this.AxisConfig.VerticalAxisConfig.Min;
 
-
                 // bind custom values
                 if (this.AxisConfig.HorizontalAxisconfig.CustomValues.Count > 0)
                 {
                     lineChartTemplate.AxisConfig.HorizontalAxisConfig.ValueFormatterConfig.CustomValues = this.AxisConfig.HorizontalAxisconfig.CustomValues;
-                    // lineChartTemplate.AxisConfig.HorizontalAxisConfig.LabelsCount = this.AxisConfig.HorizontalAxisconfig.CustomValues;
+                    var labelCount = this.AxisConfig.HorizontalAxisconfig.CustomValues.Count;
+
+                    float chartCount = 0;
+
+                    foreach (var word in this.AxisConfig.HorizontalAxisconfig.CustomValues)
+                    {
+                        chartCount += word.ToCharArray().Length;
+                    }
+                    // si son 10 chars o mas, se reduce el tamaño de la fuente
+                    // si son 5 chars o menos, se aumenta el tamaño de la fuente
+                    // si son 7 chars, se mantiene el tamaño de la fuente
+                    if (chartCount > 40)
+                    {
+                        lineChartTemplate.AxisConfig.HorizontalAxisConfig.LabelsConfig.LabelSize = CalculateFontSize(labelCount, minLabelCount: 4, minFontSize: 15);
+                    }
+                    else if (chartCount > 30)
+                    {
+                        lineChartTemplate.AxisConfig.HorizontalAxisConfig.LabelsConfig.LabelSize = CalculateFontSize(labelCount, minLabelCount: 4, minFontSize: 19);
+                    }
+                    else if (chartCount < 7)
+                    {
+                        lineChartTemplate.AxisConfig.HorizontalAxisConfig.LabelsConfig.LabelSize = CalculateFontSize(labelCount, minLabelCount: 4, minFontSize: 29, maxFontSize: 19);
+                    }
+                    else
+                    {
+                        lineChartTemplate.AxisConfig.HorizontalAxisConfig.LabelsConfig.LabelSize = CalculateFontSize(labelCount, minLabelCount: 4, minFontSize: 29);
+                    }
                 }
                 if (this.AxisConfig.VerticalAxisConfig.CustomValues.Count > 0)
                 {
@@ -287,6 +346,8 @@ namespace Intelmatix.Data
                 var width = lineChartTemplate.GetComponent<RectTransform>().sizeDelta.x;
                 width = Mathf.Max(width, 518);
                 lineChartTemplate.Config.BarSpacing = (int)(width / length);
+
+                lineChartTemplate.SetLabelOpacity(opacity);
 
 
                 // Debug.Log("BarSpacing width " + width + " length " + length + " spacing " + lineChartTemplate.Config.BarSpacing);
