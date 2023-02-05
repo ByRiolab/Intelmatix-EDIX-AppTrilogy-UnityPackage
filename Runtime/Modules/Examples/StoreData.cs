@@ -46,12 +46,12 @@ namespace Intelmatix.Data
             [SerializeField] private List<Card> cards;
 
             public string Position => position;
-            public List<Card> Cards => labels;
+            public List<Card> Cards => cards;
 
             public Notification(string position, List<Card> cards)
             {
                 this.position = position;
-                this.labels = cards;
+                this.cards = cards;
             }
         }
     }
