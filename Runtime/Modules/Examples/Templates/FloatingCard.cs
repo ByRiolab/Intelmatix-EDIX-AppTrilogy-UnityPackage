@@ -69,6 +69,17 @@ namespace Intelmatix.Examples.Templates
                 });
             });
         }
+
+        public void Hide()
+        {
+            LeanTween.cancel(this.canvasToAnimate.gameObject);
+            AnimationManager.AnimateOut(this.canvasToAnimate,
+                direction: AnimationManager.Direction.Up,
+                distance: SidebarAnimationSettings.NotificationCloseDistance, duration: .5f).setOnComplete(() =>
+            {
+                Destroy(this.gameObject);
+            });
+        }
     }
 
 }

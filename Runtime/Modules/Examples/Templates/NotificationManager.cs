@@ -42,30 +42,38 @@ namespace Intelmatix.Examples.Templates
         //     Show();
         // }
 
+        private List<FloatingCard> floatingCards = new List<FloatingCard>();
         public void SetData(Notification notification)
         {
             this.notification = notification;
         }
         public void Show()
         {
+            floatingCards.Clear();
             RecursivelyShowCards(0);
         }
+
 
         private void RecursivelyShowCards(int index)
         {
             var instance = Instantiate(floatingCard, parentOfCards);
             instance.SetData(notification.Cards[index % notification.Cards.Count]);
             instance.Show();
+            floatingCards.Add(instance);
             LeanTween.delayedCall(this.gameObject, SidebarAnimationSettings.NotificationAppearDelay, () =>
             {
+                floatingCards.Remove(instance);
                 RecursivelyShowCards(index + 1);
-
             });
         }
 
         public void Hide(bool destroy = false)
         {
             LeanTween.cancel(this.gameObject);
+            foreach (var card in floatingCards)
+            {
+                card.Hide();
+            }
             if (destroy)
             {
                 Destroy(this.gameObject);
