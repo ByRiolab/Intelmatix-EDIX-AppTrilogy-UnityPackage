@@ -8,7 +8,7 @@ namespace Intelmatix.Data
     public class StoreData : DataReference<StoreData>
     {
         public List<KPI> KPIs { get; set; }
-        public List<Notification> Cards { get; set; }
+        public List<Notification> Notifications { get; set; }
 
         [System.Serializable]
         public class KPI
@@ -43,7 +43,7 @@ namespace Intelmatix.Data
         public class Notification
         {
             [SerializeField] private string position;
-            [SerializeField] private List<Card> labels;
+            [SerializeField] private List<Card> cards;
 
             public string Position => position;
             public List<Card> Cards => labels;
