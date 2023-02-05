@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static Intelmatix.Data.StoreData;
+
 namespace Intelmatix.Data
 {
     [Serializable]
@@ -9,6 +11,8 @@ namespace Intelmatix.Data
 
         [SerializeField] private List<Tab> tabs;
         public List<Tab> Tabs => tabs;
+        [SerializeField] private List<KPI> kpis;
+        public List<KPI> KPIs => kpis;
 
         [Serializable]
         public class Tab
