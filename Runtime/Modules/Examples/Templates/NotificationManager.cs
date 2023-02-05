@@ -15,6 +15,7 @@ namespace Intelmatix.Examples.Templates
         [SerializeField] private FloatingCard floatingCard;
         [SerializeField] private RectTransform parentOfCards;
 
+        private bool isOnAnimation = false;
         public void Awake()
         {
             parentOfCards.DestroyChildren();
@@ -50,12 +51,17 @@ namespace Intelmatix.Examples.Templates
         public void Show()
         {
             floatingCards.Clear();
+            isOnAnimation = true;
             RecursivelyShowCards(0);
         }
 
 
         private void RecursivelyShowCards(int index)
         {
+            if (isOnAnimation == false)
+            {
+                return;
+            }
             var instance = Instantiate(floatingCard, parentOfCards);
             instance.SetData(notification.Cards[index % notification.Cards.Count]);
             instance.Show();
@@ -69,6 +75,7 @@ namespace Intelmatix.Examples.Templates
 
         public void Hide(bool destroy = false)
         {
+            isOnAnimation = false;
             LeanTween.cancel(this.gameObject);
             foreach (var card in floatingCards)
             {
@@ -76,7 +83,7 @@ namespace Intelmatix.Examples.Templates
             }
             if (destroy)
             {
-                Destroy(this.gameObject);
+                Destroy(this.gameObject, 6f);
             }
         }
 
