@@ -15,6 +15,8 @@ namespace Intelmatix
     {
         private SidebarReference sidebarReference => dataReference;
 
+        [SerializeField] public QuestionsReference questionsReference;
+
         [Header("References")]
         [SerializeField] private Transform parentOfGraphics;
         [SerializeField] private Transform parentOfGraphicsTemporal;
@@ -48,14 +50,22 @@ namespace Intelmatix
             if (Object.ReferenceEquals(sidebarReference, null)) return;
             parentOfGraphics.DestroyChildren();
 
+            questionsReference.OnDataChanged += SetupKPI;
+
             sidebarReference.OnDataChanged += SetupSidebar;
             // UIManager.OnTabSelected += OnTabSelected;
         }
         void OnDisable()
         {
             if (Object.ReferenceEquals(sidebarReference, null)) return;
+            questionsReference.OnDataChanged -= SetupKPI;
+
             sidebarReference.OnDataChanged -= SetupSidebar;
             // UIManager.OnTabSelected -= OnTabSelected;
+        }
+        private void SetupKPI(QuestionsData questionsData)
+        {
+            kpiController.SetKPI(questionsData.KPIs);
         }
         public static void AddKPIDecision(List<SidebarData.KPIDecision> kpis)
         {
