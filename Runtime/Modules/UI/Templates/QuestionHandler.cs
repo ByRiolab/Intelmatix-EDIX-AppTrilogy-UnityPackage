@@ -75,10 +75,10 @@ namespace Intelmatix.Templates
                         titleText.alpha = value;
                     }, titleText.alpha, 0.25f, duration).setOnComplete(() =>
                     {
-                        this.canvasToAnimate.blocksRaycasts = false;
+                        this.canvasToAnimate.blocksRaycasts = true;
                     }).setOnStart(() =>
                     {
-                        this.canvasToAnimate.blocksRaycasts = true;
+                        this.canvasToAnimate.blocksRaycasts = false;
                     });
 
                     if (!toggleGroup.AnyTogglesOn())

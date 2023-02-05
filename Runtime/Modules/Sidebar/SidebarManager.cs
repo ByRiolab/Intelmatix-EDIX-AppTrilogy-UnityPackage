@@ -56,6 +56,10 @@ namespace Intelmatix
             sidebarReference.OnDataChanged -= SetupSidebar;
             // UIManager.OnTabSelected -= OnTabSelected;
         }
+        public void SetKPI()
+        {
+
+        }
         // private void OnTabSelected(Tab tab)
         // {
         //     if(tab.)
