@@ -98,6 +98,7 @@ namespace Intelmatix
                                     currentPanel = null;
                                     currentPanel = Instantiate(questionsPanel, parentOfQuestions);
                                     currentPanel.Display(tab);
+                                    OnTabSelected?.Invoke(tab);
                                 },
                                 cognitiveMode: () =>
                                 {
