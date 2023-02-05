@@ -63,7 +63,7 @@ namespace Intelmatix
             {
                 canvasGroup.blocksRaycasts = true;
             }
-            LeanTween.cancel(canvasGroup.gameObject);
+            // LeanTween.cancel(canvasGroup.gameObject);
             LeanTween.alphaCanvas(canvasGroup, 1, duration).setEase(easeType).setOnComplete(() =>
             {
                 canvasGroup.blocksRaycasts = true;
