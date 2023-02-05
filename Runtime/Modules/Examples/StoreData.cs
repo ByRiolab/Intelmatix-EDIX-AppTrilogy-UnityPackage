@@ -23,6 +23,15 @@ namespace Intelmatix.Data
             public float KPIValue => kpi_value;
             public string Title => kpi;
             public string Subtitle => subtitle;
+
+            public KPI(int id, float kpi_value, string kpi, string subtitle, string type)
+            {
+                this.id = id;
+                this.kpi_value = kpi_value;
+                this.kpi = kpi;
+                this.subtitle = subtitle;
+                this.type = type;
+            }
         }
 
         [System.Serializable]
