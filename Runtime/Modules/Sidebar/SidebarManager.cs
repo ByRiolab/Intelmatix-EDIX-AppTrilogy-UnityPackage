@@ -48,18 +48,19 @@ namespace Intelmatix
             parentOfGraphics.DestroyChildren();
 
             sidebarReference.OnDataChanged += SetupSidebar;
-            UIManager.OnTabSelected += OnTabSelected;
+            // UIManager.OnTabSelected += OnTabSelected;
         }
         void OnDisable()
         {
             if (Object.ReferenceEquals(sidebarReference, null)) return;
             sidebarReference.OnDataChanged -= SetupSidebar;
-            UIManager.OnTabSelected -= OnTabSelected;
+            // UIManager.OnTabSelected -= OnTabSelected;
         }
-        private void OnTabSelected(Tab tab)
-        {
-            CloseSidebar();
-        }
+        // private void OnTabSelected(Tab tab)
+        // {
+        //     if(tab.)
+        //     CloseSidebar();
+        // }
 
         public static void Close()
         {
