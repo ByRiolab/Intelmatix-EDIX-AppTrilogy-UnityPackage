@@ -28,46 +28,46 @@ namespace Intelmatix.Modules.Sidebar.Components
 
 
 
-                if (lineChart)
-                {
-                    var lenght = lineChart.AxisConfig.HorizontalAxisConfig.LabelsCount;
-                    if (lenght > 7)
-                    {
-                        var labelConfig = lineChart.AxisConfig.HorizontalAxisConfig.LabelsConfig;
+                // if (lineChart)
+                // {
+                //     var lenght = lineChart.AxisConfig.HorizontalAxisConfig.LabelsCount;
+                //     if (lenght > 7)
+                //     {
+                //         var labelConfig = lineChart.AxisConfig.HorizontalAxisConfig.LabelsConfig;
 
-                        LeanTween.cancel(this.gameObject);
-                        LeanTween.value(this.gameObject, (float val) =>
-                        {
-                            labelConfig.LabelColor = new Color(1, 1, 1, val);
-                        }, labelConfig.LabelColor.a, 0, 0.2f).setOnComplete(() =>
-                        {
-                            labelConfig.LabelColor = new Color(1, 1, 1, 0);
-                        }).setEase(LeanTweenType.easeOutQuad);
-                    }
-                }
+                //         LeanTween.cancel(this.gameObject);
+                //         LeanTween.value(this.gameObject, (float val) =>
+                //         {
+                //             labelConfig.LabelColor = new Color(1, 1, 1, val);
+                //         }, labelConfig.LabelColor.a, 0, 0.2f).setOnComplete(() =>
+                //         {
+                //             labelConfig.LabelColor = new Color(1, 1, 1, 0);
+                //         }).setEase(LeanTweenType.easeOutQuad);
+                //     }
+                // }
             });
             maximizeButton.onClick.AddListener(() =>
             {
                 minimizeButton.gameObject.SetActive(true);
                 maximizeButton.gameObject.SetActive(false);
 
-                if (lineChart)
-                {
-                    var lenght = lineChart.AxisConfig.HorizontalAxisConfig.LabelsCount;
-                    if (lenght > 7)
-                    {
-                        var labelConfig = lineChart.AxisConfig.HorizontalAxisConfig.LabelsConfig;
+                // if (lineChart)
+                // {
+                //     var lenght = lineChart.AxisConfig.HorizontalAxisConfig.LabelsCount;
+                //     if (lenght > 7)
+                //     {
+                //         var labelConfig = lineChart.AxisConfig.HorizontalAxisConfig.LabelsConfig;
 
-                        LeanTween.cancel(this.gameObject);
-                        LeanTween.value(this.gameObject, (float val) =>
-                        {
-                            labelConfig.LabelColor = new Color(1, 1, 1, val);
-                        }, labelConfig.LabelColor.a, 1, 0.2f).setOnComplete(() =>
-                        {
-                            labelConfig.LabelColor = new Color(1, 1, 1, 1);
-                        }).setEase(LeanTweenType.easeOutQuad);
-                    }
-                }
+                //         LeanTween.cancel(this.gameObject);
+                //         LeanTween.value(this.gameObject, (float val) =>
+                //         {
+                //             labelConfig.LabelColor = new Color(1, 1, 1, val);
+                //         }, labelConfig.LabelColor.a, 1, 0.2f).setOnComplete(() =>
+                //         {
+                //             labelConfig.LabelColor = new Color(1, 1, 1, 1);
+                //         }).setEase(LeanTweenType.easeOutQuad);
+                //     }
+                // }
             });
 
             chartResizer.OnChartResizeUpdate += ManualResize;

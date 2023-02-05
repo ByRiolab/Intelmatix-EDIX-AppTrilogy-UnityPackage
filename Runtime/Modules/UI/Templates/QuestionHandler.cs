@@ -56,7 +56,15 @@ namespace Intelmatix.Templates
                     LeanTween.value(gameObject, (float value) =>
                     {
                         titleText.alpha = value;
-                    }, titleText.alpha, 1f, duration);
+                    }, titleText.alpha, 1f, duration)
+                    .setOnComplete(() =>
+                    {
+                        this.canvasToAnimate.blocksRaycasts = true;
+                    })
+                    .setOnStart(() =>
+                    {
+                        this.canvasToAnimate.blocksRaycasts = false;
+                    });
                     // LeanTween.moveLocal(this.canvasToAnimate.gameObject, Vector3.up * 75f,duration).setEase(LeanTweenType.easeOutBack);
                     UIManager.SelectQuestion(question);
                 }
@@ -65,7 +73,13 @@ namespace Intelmatix.Templates
                     LeanTween.value(gameObject, (float value) =>
                     {
                         titleText.alpha = value;
-                    }, titleText.alpha, 0.25f, duration);
+                    }, titleText.alpha, 0.25f, duration).setOnComplete(() =>
+                    {
+                        this.canvasToAnimate.blocksRaycasts = false;
+                    }).setOnStart(() =>
+                    {
+                        this.canvasToAnimate.blocksRaycasts = true;
+                    });
 
                     if (!toggleGroup.AnyTogglesOn())
                     {
