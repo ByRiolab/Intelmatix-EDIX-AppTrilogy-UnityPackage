@@ -72,6 +72,10 @@ namespace Intelmatix.Examples.Templates
 
         public void Hide()
         {
+            if (this.canvasToAnimate == null)
+            {
+                return;
+            }
             LeanTween.cancel(this.canvasToAnimate.gameObject);
             AnimationManager.AnimateOut(this.canvasToAnimate,
                 direction: AnimationManager.Direction.Up,
