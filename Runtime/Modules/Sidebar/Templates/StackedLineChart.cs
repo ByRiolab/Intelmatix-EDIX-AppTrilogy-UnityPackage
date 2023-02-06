@@ -10,8 +10,9 @@ using Intelmatix.Modules.Sidebar.Components;
 
 namespace Intelmatix.Templates
 {
-    public class StackedLineChart : MonoBehaviour
+    public class StackedLineChart : BaseChart<SidebarData.ChartGroup>
     {
+
         [Header("References")]
         [SerializeField] private TextMeshProUGUI titleText;
         [SerializeField] private TextMeshProUGUI subtitleText;
@@ -46,7 +47,7 @@ namespace Intelmatix.Templates
             AnimationManager.AnimateOut(this.canvasToAnimate, direction: AnimationManager.Direction.Right, duration: SidebarAnimationSettings.ContentCloseDuration);
         }
 
-        internal void Display(SidebarData.ChartGroup lineChart)
+        public override void Display(SidebarData.ChartGroup lineChart)
         {
             this.name = "<line-chart> [" + lineChart.Title + "]";
             titleText.text = lineChart.Title;

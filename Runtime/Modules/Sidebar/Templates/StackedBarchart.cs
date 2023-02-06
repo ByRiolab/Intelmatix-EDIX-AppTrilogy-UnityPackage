@@ -11,7 +11,7 @@ using Intelmatix.Modules.Sidebar.Components;
 
 namespace Intelmatix.Templates
 {
-    public class StackedBarchart : MonoBehaviour
+    public class StackedBarchart : BaseChart<SidebarData.ChartGroup>
     {
 
         [Header("References")]
@@ -43,7 +43,7 @@ namespace Intelmatix.Templates
             AnimationManager.AnimateOut(this.canvasToAnimate, direction: AnimationManager.Direction.Right, duration: SidebarAnimationSettings.ContentCloseDuration);
         }
 
-        internal void Display(SidebarData.ChartGroup barChart)
+        public override void Display(SidebarData.ChartGroup barChart)
         {
             this.name = "<bar-chart> [" + barChart.Title + "]";
             titleText.text = barChart.Title;

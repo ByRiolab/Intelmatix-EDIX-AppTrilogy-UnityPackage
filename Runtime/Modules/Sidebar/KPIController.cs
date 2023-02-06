@@ -99,6 +99,20 @@ namespace Intelmatix.Templates
                 currentValue = newValue;
 
             }
+            public void RestoreKPI(KPI kpi)
+            {
+                Color targetColor = Color.white;
+                LeanTween.cancel(value.gameObject);
+                LeanTween.value(value.gameObject, value.color, targetColor, 0.5f).setOnUpdate((Color color) =>
+                {
+                    value.color = color;
+                });
+                LeanTween.value(value.gameObject, currentValue, kpi.KPIValue, 0.5f).setOnUpdate((float value) =>
+                {
+                    this.value.text = value.GetNumberConversion();
+                });
+                initialValue = currentValue = kpi.KPIValue;
+            }
 
         }
         private List<KPI> kpis = new List<KPI>();
@@ -150,10 +164,13 @@ namespace Intelmatix.Templates
 
         public void Restore()
         {
-
-            kpi1.SetKPI(kpis[0]);
-            kpi2.SetKPI(kpis[1]);
-            kpi3.SetKPI(kpis[2]);
+            if (kpis.Count == 0)
+            {
+                return;
+            }
+            kpi1.RestoreKPI(kpis[0]);
+            kpi2.RestoreKPI(kpis[1]);
+            kpi3.RestoreKPI(kpis[2]);
         }
     }
 }

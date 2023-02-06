@@ -31,14 +31,17 @@ namespace Intelmatix
         #region Callbacks
         // public delegate void OnValueChanged(bool value, ToggleGroup toggleGroup);
         public delegate void OnQuestionSelectedEvent(Question question);
+        public static event OnQuestionSelectedEvent PreQuestionSelectedEvent;
         public static event OnQuestionSelectedEvent OnQuestionSelected;
 
         public delegate void OnTabSelectedEvent(Tab tab);
+        public static event OnTabSelectedEvent PreTabSelectedEvent;
         public static event OnTabSelectedEvent OnTabSelected;
         #endregion
 
         public static void SelectQuestion(Question question)
         {
+            PreQuestionSelectedEvent?.Invoke(question);
             OnQuestionSelected?.Invoke(question);
         }
         void OnEnable()
@@ -52,6 +55,7 @@ namespace Intelmatix
             if (Object.ReferenceEquals(questionsReference, null)) return;
             questionsReference.OnDataChanged -= SetupQuestions;
         }
+
 
         void SetupQuestions(QuestionsData questionsData)
         {
@@ -72,10 +76,12 @@ namespace Intelmatix
                     {
                         if (isSelected)
                         {
+                            PreTabSelectedEvent?.Invoke(tab);
                             OnTabSelected?.Invoke(tab);
                         }
                         else if (!toggleGroup.AnyTogglesOn())
                         {
+                            PreTabSelectedEvent?.Invoke(null);
                             OnTabSelected?.Invoke(null);
                         }
 
@@ -98,12 +104,14 @@ namespace Intelmatix
                                     currentPanel = null;
                                     currentPanel = Instantiate(questionsPanel, parentOfQuestions);
                                     currentPanel.Display(tab);
+                                    PreTabSelectedEvent?.Invoke(tab);
                                     OnTabSelected?.Invoke(tab);
                                 },
                                 cognitiveMode: () =>
                                 {
                                     currentPanel?.Hide();
                                     currentPanel = null;
+                                    PreQuestionSelectedEvent?.Invoke(cognitiveQuestion);
                                     OnQuestionSelected?.Invoke(cognitiveQuestion);
                                 }
                             );

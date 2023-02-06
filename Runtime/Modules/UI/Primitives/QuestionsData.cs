@@ -37,6 +37,7 @@ namespace Intelmatix.Data
             public string Mode => mode;
 
             public bool IsCognitive => mode.ToLower() == "cognitive";
+            public bool IsHumanMode => mode.ToLower().Contains("human");
 
             public void OpenMap()
             {

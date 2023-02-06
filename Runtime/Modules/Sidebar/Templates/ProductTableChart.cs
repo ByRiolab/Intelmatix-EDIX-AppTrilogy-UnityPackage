@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
-using Intelmatix.Modules.Sidebar.Components;
-using Intelmatix.Settings;
-using TMPro;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
+using Intelmatix.Modules.Sidebar.Components;
 using static Intelmatix.Data.SidebarData;
+using Intelmatix.Settings;
 
 namespace Intelmatix.Templates
 {
-    public class DataTableChart : MonoBehaviour
+    public class ProductTableChart : BaseChart<DataTable>
     {
         [Header("References")]
         [SerializeField] private TextMeshProUGUI titleText;
@@ -24,9 +24,9 @@ namespace Intelmatix.Templates
         [SerializeField] private CanvasGroup canvasToAnimate;
         [SerializeField] private VerticalLayoutGroup verticalLayoutGroup;
 
-        public void Display(DataTable tableChart)
+        public override void Display(DataTable tableChart)
         {
-            this.name = "<table-data-chart> [" + tableChart.Title + "]";
+            this.name = "<table-product-chart> [" + tableChart.Title + "]";
             titleText.text = tableChart.Title;
 
             foreach (Transform child in parentOfOptions)

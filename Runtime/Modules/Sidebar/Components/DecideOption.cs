@@ -1,3 +1,4 @@
+using Intelmatix.Templates;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -6,7 +7,7 @@ using static Intelmatix.Data.SidebarData;
 
 namespace Intelmatix.Modules.Sidebar
 {
-    public class DecideOption : MonoBehaviour
+    public class DecideOption : BaseChart<Decision>
     {
         // [SerializeField] private ToggleGroup toggleGroup;
         [Header("Reference")]
@@ -33,7 +34,7 @@ namespace Intelmatix.Modules.Sidebar
         }
 
         private bool isAdded = false;
-        public void Display(Decision decision)
+        public override void Display(Decision decision)
         {
             this.labelText.text = decision.Label;
             this.toggleOption.onValueChanged.AddListener((value) =>

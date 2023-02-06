@@ -8,6 +8,7 @@ using Intelmatix.Data;
 using Intelmatix.Modules.Sidebar;
 using Intelmatix.Templates;
 using Intelmatix.Settings;
+using System.Linq;
 
 namespace Intelmatix
 {
@@ -33,18 +34,23 @@ namespace Intelmatix
         [SerializeField] private DecideMode decideModePrefab;
         [SerializeField] private DecideOption decideOptionPrefab;
 
-        private List<StackedLineChart> instanceLineCharts = new List<StackedLineChart>();
-        private List<StackedBarchart> instanceBarCharts = new List<StackedBarchart>();
-        private List<ProductTableChart> instanceTableCharts = new List<ProductTableChart>();
-        private List<DecideMode> instanceDecideModes = new List<DecideMode>();
-        private List<DecideOption> instanceDecideOptions = new List<DecideOption>();
+        private List<StackedLineChart> listOfLineCharts;
+        private List<StackedBarchart> listOfBarcharts;
+        private List<ProductTableChart> listOfTableCharts;
+        private List<DecideMode> listOfDecideModes;
+        private List<DecideOption> listOfDecideOptions;
+
 
         void Start()
         {
-            instanceLineCharts = new();
-            instanceBarCharts = new();
-            instanceTableCharts = new();
+            if (Object.ReferenceEquals(sidebarReference, null)) return;
+            listOfLineCharts = new List<StackedLineChart>();
+            listOfBarcharts = new List<StackedBarchart>();
+            listOfTableCharts = new List<ProductTableChart>();
+            listOfDecideModes = new List<DecideMode>();
+            listOfDecideOptions = new List<DecideOption>();
         }
+
         void OnEnable()
         {
             if (Object.ReferenceEquals(sidebarReference, null)) return;
@@ -54,14 +60,41 @@ namespace Intelmatix
 
             sidebarReference.OnDataChanged += SetupSidebar;
             // UIManager.OnTabSelected += OnTabSelected;
+            UIManager.PreQuestionSelectedEvent += OnQuestionSelected;
+            UIManager.PreTabSelectedEvent += OnTabSelectedHandler;
         }
+
         void OnDisable()
         {
             if (Object.ReferenceEquals(sidebarReference, null)) return;
             questionsReference.OnDataChanged -= SetupKPI;
 
             sidebarReference.OnDataChanged -= SetupSidebar;
+            UIManager.PreQuestionSelectedEvent -= OnQuestionSelected;
+            UIManager.PreTabSelectedEvent -= OnTabSelectedHandler;
             // UIManager.OnTabSelected -= OnTabSelected;
+        }
+        void OnTabSelectedHandler(Tab tab)
+        {
+            var isCognitiveMode = tab.Questions.Any(q => q.IsCognitive || q.IsHumanMode);
+            if (tab == null || !isCognitiveMode)
+            {
+                RestoreKPI();
+                CloseSidebar();
+            }
+        }
+        void OnQuestionSelected(Question question)
+        {
+            if (question == null || !question.IsCognitive && !question.IsHumanMode)
+            {
+                RestoreKPI();
+                CloseSidebar();
+            }
+
+        }
+        private void RestoreKPI()
+        {
+            Instance?.kpiController.Restore();
         }
         private void SetupKPI(QuestionsData questionsData)
         {
@@ -79,11 +112,6 @@ namespace Intelmatix
         {
             Instance?.kpiController.SetKPI(kpis);
         }
-        // private void OnTabSelected(Tab tab)
-        // {
-        //     if(tab.)
-        //     CloseSidebar();
-        // }
 
         public static void Close()
         {
@@ -110,19 +138,26 @@ namespace Intelmatix
             LeanTween.delayedCall(Instance.gameObject, delay, () =>
             {
                 var instance = Instantiate(Instance.decideModePrefab, Instance.parentOfGraphics);
-                instance.Display(humanMonde, cognitiveMode);
-                Instance.instanceDecideModes.Add(instance);
+                instance.Display(humanMonde: () =>
+                {
+                    Instance.DestroyObjectOfList(Instance.listOfDecideOptions);
+                    Instance.RestoreKPI();
+                    humanMonde?.Invoke();
+                }, cognitiveMode: () =>
+                {
+                    Instance.DestroyObjectOfList(Instance.listOfDecideOptions);
+                    Instance.RestoreKPI();
+                    cognitiveMode?.Invoke();
+                });
+                Instance.listOfDecideModes.Add(instance);
             });
-            // Instance.humanButton.onClick.AddListener(humanMonde);
-            // Instance.cognitiveButton.onClick.AddListener(cognitiveMode);
-            // Debug.Log("OpenDecisionPanel");
-            // Instance.OpenDecisionPanelInternal(humanMonde, cognitiveMode);
-            // Instance.OpenDecisionPanelInternal();
         }
 
 
         private void SetupSidebar(SidebarData sidebar)
         {
+            LeanTween.cancel(this.gameObject);
+
             if (sidebar == null)
             {
                 Debug.LogWarning("SetupSidebar, sidebar is null");
@@ -130,77 +165,55 @@ namespace Intelmatix
             }
 
             backgroundAnimation.ShowRect(SidebarAnimationSettings.BackgroundAppearDuration);
-            DestroyGraphics();
 
             var delay = SidebarAnimationSettings.ContentAppearDelay;
-            var delay_between = SidebarAnimationSettings.DelayBetweenCharts;
-
-            LeanTween.cancel(this.gameObject);
-
-            sidebar.LineCharts.ForEach(lineChart =>
+            if (sidebar.Decisions.Count > 0)
             {
-                LeanTween.delayedCall(this.gameObject, delay, () =>
-                {
-                    var instance = Instantiate(lineChartPrefab, parentOfGraphics);
-                    instance.Display(lineChart);
-                    instanceLineCharts.Add(instance);
-                    responsiveContainer.Resize(true);
-                });
-                delay += delay_between;
-            });
-            sidebar.BarCharts.ForEach(BarChart =>
-            {
-                LeanTween.delayedCall(this.gameObject, delay, () =>
-                {
-                    StackedBarchart instance = Instantiate(barchartPrefab, parentOfGraphics);
-                    instance.Display(BarChart);
-                    instanceBarCharts.Add(instance);
-                    responsiveContainer.Resize(true);
-                });
-                delay += delay_between;
-            });
+                DestroyObjectOfList(listOfDecideOptions);
 
-            sidebar.TableCharts.ForEach(tableChart =>
+                InstantiateObjectsFromList(sidebar.Decisions, decideOptionPrefab, listOfDecideOptions, ref delay);
+            }
+            else
             {
-                LeanTween.delayedCall(this.gameObject, delay, () =>
-                {
-                    if (tableChart.TableType == "product")
-                    {
-                        ProductTableChart instance = Instantiate(tableChartPrefab, parentOfGraphics);
-                        instance.Display(tableChart);
-                        instanceTableCharts.Add(instance);
-                        responsiveContainer.Resize(true);
-                    }
-                });
-                delay += delay_between;
-            });
-
-            sidebar.Decisions.ForEach(decision =>
-            {
-                LeanTween.delayedCall(this.gameObject, delay, () =>
-                {
-                    var instance = Instantiate(decideOptionPrefab, parentOfGraphics);
-                    instance.Display(decision);
-                    instanceDecideOptions.Add(instance);
-                    responsiveContainer.Resize(true);
-                });
-                delay += delay_between;
-            });
+                DestroyGraphics();
+                InstantiateObjectsFromList(sidebar.LineCharts, lineChartPrefab, listOfLineCharts, ref delay);
+                InstantiateObjectsFromList(sidebar.BarCharts, barchartPrefab, listOfBarcharts, ref delay);
+                InstantiateObjectsFromList(sidebar.TableCharts, tableChartPrefab, listOfTableCharts, ref delay);
+                InstantiateObjectsFromList(sidebar.Decisions, decideOptionPrefab, listOfDecideOptions, ref delay);
+            }
 
         }
 
 
         private void DestroyGraphics()
         {
-            DestroyObjectOfList(instanceLineCharts);
-            DestroyObjectOfList(instanceBarCharts);
-            DestroyObjectOfList(instanceTableCharts);
-            DestroyObjectOfList(instanceDecideModes);
-            DestroyObjectOfList(instanceDecideOptions);
+            DestroyObjectOfList(listOfLineCharts);
+            DestroyObjectOfList(listOfBarcharts);
+            DestroyObjectOfList(listOfTableCharts);
+            DestroyObjectOfList(listOfDecideModes);
+            DestroyObjectOfList(listOfDecideOptions);
+        }
+
+        private void InstantiateObjectsFromList<T, X>(List<T> list, X prefab, List<X> instantiateList, ref float initialDelay) where X : BaseChart<T>
+        {
+            var delay = initialDelay;
+            list.ForEach(item =>
+            {
+                LeanTween.delayedCall(this.gameObject, delay, () =>
+                {
+                    var instance = Instantiate(prefab, parentOfGraphics);
+                    instance.transform.SetAsLastSibling();
+                    instance.Display(item);
+                    instantiateList.Add(instance);
+                });
+                delay += SidebarAnimationSettings.DelayBetweenCharts;
+            });
+            initialDelay = delay;
         }
 
         private void DestroyObjectOfList<T>(List<T> list) where T : MonoBehaviour
         {
+            LeanTween.cancel(this.gameObject);
             list.ForEach(item =>
             {
                 item.enabled = false;
@@ -215,3 +228,76 @@ namespace Intelmatix
     }
 }
 
+
+
+
+// private List<StackedLineChart> instanceLineCharts = new List<StackedLineChart>();
+// private List<StackedBarchart> instanceBarCharts = new List<StackedBarchart>();
+// private List<ProductTableChart> instanceTableCharts = new List<ProductTableChart>();
+// private List<DecideMode> instanceDecideModes = new List<DecideMode>();
+// private List<DecideOption> instanceDecideOptions = new List<DecideOption>();
+
+
+
+// sidebar.LineCharts.ForEach(lineChart =>
+// {
+//     LeanTween.delayedCall(this.gameObject, delay, () =>
+//     {
+//         var instance = Instantiate(lineChartPrefab, parentOfGraphics);
+//         instance.Display(lineChart);
+//         instanceLineCharts.Add(instance);
+//         responsiveContainer.Resize(true);
+//     });
+//     delay += delay_between;
+// });
+// sidebar.BarCharts.ForEach(BarChart =>
+// {
+//     LeanTween.delayedCall(this.gameObject, delay, () =>
+//     {
+//         StackedBarchart instance = Instantiate(barchartPrefab, parentOfGraphics);
+//         instance.Display(BarChart);
+//         instanceBarCharts.Add(instance);
+//         responsiveContainer.Resize(true);
+//     });
+//     delay += delay_between;
+// });
+
+// sidebar.TableCharts.ForEach(tableChart =>
+// {
+//     LeanTween.delayedCall(this.gameObject, delay, () =>
+//     {
+//         if (tableChart.TableType == "product")
+//         {
+//             ProductTableChart instance = Instantiate(tableChartPrefab, parentOfGraphics);
+//             instance.Display(tableChart);
+//             instanceTableCharts.Add(instance);
+//             responsiveContainer.Resize(true);
+//         }
+//     });
+//     delay += delay_between;
+// });
+
+// sidebar.Decisions.ForEach(decision =>
+// {
+//     LeanTween.delayedCall(this.gameObject, delay, () =>
+//     {
+//         var instance = Instantiate(decideOptionPrefab, parentOfGraphics);
+//         instance.Display(decision);
+//         instanceDecideOptions.Add(instance);
+//         responsiveContainer.Resize(true);
+//     });
+//     delay += delay_between;
+// });
+
+// private void OnTabSelected(Tab tab)
+// {
+//     if(tab.)
+//     CloseSidebar();
+// }
+
+
+// Instance.humanButton.onClick.AddListener(humanMonde);
+// Instance.cognitiveButton.onClick.AddListener(cognitiveMode);
+// Debug.Log("OpenDecisionPanel");
+// Instance.OpenDecisionPanelInternal(humanMonde, cognitiveMode);
+// Instance.OpenDecisionPanelInternal();
