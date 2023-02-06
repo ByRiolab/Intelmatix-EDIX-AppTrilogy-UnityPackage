@@ -35,6 +35,10 @@ namespace Intelmatix.Templates
                 value.color = Color.white;
 
                 this.kpi = kpi;
+                this.increaseColor = increaseColor;
+                this.decreaseColor = decreaseColor;
+                this.neutralColor = neutralColor;
+
 
                 LeanTween.cancel(value.gameObject);
             }

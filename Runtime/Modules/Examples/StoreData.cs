@@ -17,16 +17,16 @@ namespace Intelmatix.Data
             [SerializeField] private float kpi_value;
             [SerializeField] private string kpi;
             [SerializeField] private string subtitle;
-            [SerializeField] private string type;
+            // [SerializeField] private string type;
 
             public int ID => id;
             public float KPIValue => kpi_value;
             public string Title => kpi;
             public string Subtitle => subtitle;
 
-            private string increment = "good";
+            [SerializeField] private string increment = "good";
 
-            public bool IsGood => type == increment;
+            public bool IsGood => increment == "good";
 
             public KPI(int id, float kpi_value, string kpi, string subtitle, string type)
             {
@@ -34,7 +34,7 @@ namespace Intelmatix.Data
                 this.kpi_value = kpi_value;
                 this.kpi = kpi;
                 this.subtitle = subtitle;
-                this.type = type;
+                // this.type = type;
             }
         }
 

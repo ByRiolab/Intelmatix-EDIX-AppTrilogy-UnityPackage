@@ -47,10 +47,6 @@ namespace Intelmatix.Data
             /// </summary>
             [SerializeField] private string operation;
 
-            /// <summary>
-            /// "good" or "bad" or "neutral"
-            /// </summary>
-            [SerializeField] private string kpi_type;
 
 
             public int Id => id;
@@ -83,23 +79,6 @@ namespace Intelmatix.Data
                             return Operation.neutral;
                         default:
                             return Operation.neutral;
-                    }
-                }
-            }
-            public KPIType KPI_Type
-            {
-                get
-                {
-                    switch (kpi_type)
-                    {
-                        case "good":
-                            return KPIType.good;
-                        case "bad":
-                            return KPIType.bad;
-                        case "neutral":
-                            return KPIType.neutral;
-                        default:
-                            return KPIType.neutral;
                     }
                 }
             }
