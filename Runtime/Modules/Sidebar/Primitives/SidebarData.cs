@@ -47,6 +47,12 @@ namespace Intelmatix.Data
             /// </summary>
             [SerializeField] private string operation;
 
+            /// <summary>
+            /// "good" or "bad" or "neutral"
+            /// </summary>
+            [SerializeField] private string kpi_type;
+
+
             public int Id => id;
             public int ExtraValue => kpi_value;
             public string Subtitle => subtitle;
@@ -55,6 +61,12 @@ namespace Intelmatix.Data
             {
                 decrement,
                 increment,
+                neutral
+            }
+            public enum KPIType
+            {
+                good,
+                bad,
                 neutral
             }
             public Operation OperationType
@@ -71,6 +83,23 @@ namespace Intelmatix.Data
                             return Operation.neutral;
                         default:
                             return Operation.neutral;
+                    }
+                }
+            }
+            public KPIType KPI_Type
+            {
+                get
+                {
+                    switch (kpi_type)
+                    {
+                        case "good":
+                            return KPIType.good;
+                        case "bad":
+                            return KPIType.bad;
+                        case "neutral":
+                            return KPIType.neutral;
+                        default:
+                            return KPIType.neutral;
                     }
                 }
             }

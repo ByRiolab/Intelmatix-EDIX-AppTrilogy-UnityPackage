@@ -21,13 +21,21 @@ namespace Intelmatix.Templates
             private float initialValue;
             private float currentValue;
 
-            public void SetKPI(KPI kpi)
+            private Color increaseColor;
+            private Color decreaseColor;
+            private Color neutralColor;
+
+            private KPI kpi;
+            public void SetKPI(KPI kpi, Color increaseColor, Color decreaseColor, Color neutralColor)
             {
                 title.text = kpi.Title;
                 subtitle.text = kpi.Subtitle;
                 initialValue = currentValue = kpi.KPIValue;
                 value.text = kpi.KPIValue.GetNumberConversion();
                 value.color = Color.white;
+
+                this.kpi = kpi;
+
                 LeanTween.cancel(value.gameObject);
             }
 
@@ -46,11 +54,17 @@ namespace Intelmatix.Templates
                 Color targetColor = Color.white;
                 if (newValue > initialValue)
                 {
-                    targetColor = Color.green;
+                    if (kpi.IsGood) targetColor = increaseColor;
+                    else targetColor = decreaseColor;
                 }
                 else if (newValue < initialValue)
                 {
-                    targetColor = Color.red;
+                    if (kpi.IsGood) targetColor = decreaseColor;
+                    else targetColor = increaseColor;
+                }
+                else
+                {
+                    targetColor = neutralColor;
                 }
 
                 LeanTween.cancel(value.gameObject);
@@ -78,14 +92,21 @@ namespace Intelmatix.Templates
                     newValue += kpiDecision.ExtraValue;
                 }
 
+
                 Color targetColor = Color.white;
                 if (newValue > initialValue)
                 {
-                    targetColor = Color.green;
+                    if (kpi.IsGood) targetColor = increaseColor;
+                    else targetColor = decreaseColor;
                 }
                 else if (newValue < initialValue)
                 {
-                    targetColor = Color.red;
+                    if (kpi.IsGood) targetColor = decreaseColor;
+                    else targetColor = increaseColor;
+                }
+                else
+                {
+                    targetColor = neutralColor;
                 }
 
                 LeanTween.cancel(value.gameObject);
@@ -127,6 +148,8 @@ namespace Intelmatix.Templates
         [SerializeField] private Color decreaseColor = Color.red;
         [SerializeField] private Color neutralColor = Color.white;
 
+
+
         internal void AddKPIDecision(List<SidebarData.KPIDecision> kpis)
         {
             if (kpis.Count == 0)
@@ -158,9 +181,9 @@ namespace Intelmatix.Templates
             }
             this.kpis = kpis;
 
-            kpi1.SetKPI(kpis[0]);
-            kpi2.SetKPI(kpis[1]);
-            kpi3.SetKPI(kpis[2]);
+            kpi1.SetKPI(kpis[0], increaseColor, decreaseColor, neutralColor);
+            kpi2.SetKPI(kpis[1], increaseColor, decreaseColor, neutralColor);
+            kpi3.SetKPI(kpis[2], increaseColor, decreaseColor, neutralColor);
         }
 
         public void Restore()

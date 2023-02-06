@@ -34,7 +34,7 @@ namespace AwesomeCharts
                 string[] words = text.Split(' ');
                 if (words.Length > 1)
                 {
-                    textLabel.text = words[0][0] + words[1];
+                    textLabel.text = words[0][0] + " " + words[1];
                 }
                 else
                 {
@@ -51,6 +51,28 @@ namespace AwesomeCharts
             }
             else
                 textLabel.text = text;
+
+
+            string newText = textLabel.text;
+            if (textLabel.text.Contains("W "))
+            {
+                newText = textLabel.text.Replace("W ", "");
+            }
+            // else if (textLabel.text.Contains("W"))
+            // {
+            //     newText = textLabel.text.Replace("W", "");
+            // }
+            else if (textLabel.text.Contains("Weekly "))
+            {
+                newText = textLabel.text.Replace("Weekly ", "");
+            }
+            else if (textLabel.text.Contains("Weekly"))
+            {
+                newText = textLabel.text.Replace("Weekly", "");
+            }
+
+            textLabel.text = newText;
+
         }
 
         public override void SetLabelTextAlignment(TextAnchor anchor)

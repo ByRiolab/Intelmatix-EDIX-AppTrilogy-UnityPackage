@@ -24,6 +24,10 @@ namespace Intelmatix.Data
             public string Title => kpi;
             public string Subtitle => subtitle;
 
+            private string increment = "good";
+
+            public bool IsGood => type == increment;
+
             public KPI(int id, float kpi_value, string kpi, string subtitle, string type)
             {
                 this.id = id;
