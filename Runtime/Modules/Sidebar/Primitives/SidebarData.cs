@@ -148,8 +148,8 @@ namespace Intelmatix.Data
         {
             [SerializeField] private string unit;
             [SerializeField] private Extras extra;
-            [SerializeField] private float value;
-            public float Value => value;
+            [SerializeField] private string value;
+            public string Value => value;
             public string Unit => unit;
             public Extras Extra => extra;
 
