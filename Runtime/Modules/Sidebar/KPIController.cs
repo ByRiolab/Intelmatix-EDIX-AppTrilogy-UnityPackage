@@ -28,6 +28,7 @@ namespace Intelmatix.Templates
                 initialValue = currentValue = kpi.KPIValue;
                 value.text = kpi.KPIValue.GetNumberConversion();
                 value.color = Color.white;
+                LeanTween.cancel(value.gameObject);
             }
 
             public void AddKPIDecision(KPIDecision kpiDecision)
