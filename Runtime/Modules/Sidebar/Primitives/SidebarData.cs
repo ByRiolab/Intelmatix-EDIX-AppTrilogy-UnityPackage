@@ -129,6 +129,7 @@ namespace Intelmatix.Data
             public DataTable[] Data => data;
         }
 
+
         [Serializable]
         public class DataTable
         {
@@ -193,9 +194,6 @@ namespace Intelmatix.Data
                 new Color(59 / 255f, 182 / 255f, 128 / 255f),
                 new Color(255 / 255f, 0 / 255f, 255 / 255f),
                 new Color(0 / 255, 185 / 255f, 154 / 255f),
-                new Color(0 / 255, 185 / 255f, 154 / 255f),
-                new Color(0 / 255, 185 / 255f, 154 / 255f),
-                new Color(0 / 255, 185 / 255f, 154 / 255f),
                 new Color(255 / 255f, 99 / 255f, 33 / 255f)
             };
 
@@ -208,7 +206,14 @@ namespace Intelmatix.Data
                 {
                     AwesomeCharts.LineDataSet lineDataSet = new AwesomeCharts.LineDataSet();
 
-                    if (data.DataSets.Length > 2 && index < colors.Length)
+                    if (dataSet.ColorJson.R != 0 && dataSet.ColorJson.G != 0 && dataSet.ColorJson.B != 0)
+                    {
+
+                        lineDataSet.LineColor = dataSet.ColorJson.Color;
+                        Debug.Log(dataSet.ColorJson.Color);
+
+                    }
+                    else if (data.DataSets.Length > 2 && index < colors.Length)
                     {
                         lineDataSet.LineColor = colors[index++];
                     }
@@ -244,7 +249,13 @@ namespace Intelmatix.Data
                 foreach (var dataSet in data.DataSets)
                 {
                     AwesomeCharts.BarDataSet barDataSet = new AwesomeCharts.BarDataSet();
-                    if (data.DataSets.Length > 2 && index < colors.Length)
+                    if (dataSet.ColorJson.R != 0 && dataSet.ColorJson.G != 0 && dataSet.ColorJson.B != 0)
+                    {
+                        barDataSet.BarColors.Add(dataSet.ColorJson.Color);
+                        Debug.Log(dataSet.ColorJson.Color);
+
+                    }
+                    else if (data.DataSets.Length > 2 && index < colors.Length)
                     {
                         barDataSet.BarColors.Add(colors[index++]);
                     }
@@ -400,10 +411,28 @@ namespace Intelmatix.Data
         [Serializable]
         public class DataSet
         {
+            [SerializeField] private ColorJson color;
             [SerializeField] private string title;
             [SerializeField] private Entrie[] entries;
             public string Title => title;
             public Entrie[] Entries => entries;
+            public ColorJson ColorJson => color;
+        }
+        [Serializable]
+        public class ColorJson
+        {
+            [SerializeField] private float r;
+            [SerializeField] private float g;
+            [SerializeField] private float b;
+            [SerializeField] private float a;
+
+            public float R => r;
+            public float G => g;
+            public float B => b;
+            public float A => a;
+
+            public Color Color => new Color(r / 255f, g / 255f, b / 255f, a);
+
 
         }
         [Serializable]
