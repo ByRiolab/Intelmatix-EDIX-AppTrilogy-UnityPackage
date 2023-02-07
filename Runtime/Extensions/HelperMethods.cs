@@ -41,13 +41,13 @@ namespace Intelmatix
             var absNumber = Math.Abs(number);
             var suffix = isPositive ? "" : "-";
             if (absNumber >= 1000000000) // use B
-                return suffix + (absNumber / 1000000000).ToString("0") + "B";
+                return suffix + (absNumber / 1000000000).ToString("0.0") + "B";
             else if (absNumber >= 1000000) // use M
-                return suffix + (absNumber / 1000000).ToString("0") + "M";
+                return suffix + (absNumber / 1000000).ToString("0.0") + "M";
             else if (absNumber >= 1000) // use K
-                return suffix + (absNumber / 1000).ToString("0") + "K";
+                return suffix + (absNumber / 1000).ToString("0.0") + "K";
             else
-                return suffix + absNumber.ToString("0");
+                return suffix + absNumber.ToString("0.0");
         }
 
         public static void SetPositionY(this LineRenderer lineRenderer, float y, int index = 1)
