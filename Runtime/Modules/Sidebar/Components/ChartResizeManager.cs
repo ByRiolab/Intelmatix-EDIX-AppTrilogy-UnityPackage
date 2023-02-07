@@ -38,6 +38,8 @@ namespace Intelmatix.Modules.Sidebar.Components
             });
 
             chartResizer.OnChartResizeUpdate += ManualResize;
+
+            // chartResizer.MinimizeChart();
         }
 
         private void OnDisable()

@@ -31,10 +31,21 @@ namespace Intelmatix.Templates
         [Header("Animation")]
         [SerializeField] private CanvasGroup canvasToAnimate;
 
+
+        [Header("Hieght")]
+        [SerializeField] private float minHeight = 280;
+        [SerializeField] private float maxHeight = 330;
+        [SerializeField] private GameObject contentOfLegend;
+        [SerializeField] private RectTransform contentOfRectResponsive;
+        [SerializeField] private RectTransform contentOfParent;
+
+
         private void OnEnable()
         {
             AnimationManager.AnimateIn(this.canvasToAnimate, direction: AnimationManager.Direction.Right, duration: SidebarAnimationSettings.ContentAppearDuration);
             togglePrefab.gameObject.SetActive(false);
+
+
         }
         private void OnDisable()
         {
@@ -53,6 +64,27 @@ namespace Intelmatix.Templates
             if (barChart.Charts.Count > 0)
             {
                 FillTemplate(barChart.Charts[0]);
+                try
+                {
+                    if (barChart.Charts.First().Data.DataSets.Length > 1)
+                    {
+                        contentOfLegend.SetActive(true);
+                        this.contentOfRectResponsive.sizeDelta = new Vector2(this.contentOfRectResponsive.sizeDelta.x, maxHeight);
+                        this.contentOfParent.sizeDelta = new Vector2(this.contentOfParent.sizeDelta.x, maxHeight);
+                    }
+                    else
+                    {
+                        contentOfLegend.SetActive(false);
+                        this.contentOfRectResponsive.sizeDelta = new Vector2(this.contentOfRectResponsive.sizeDelta.x, minHeight);
+                        this.contentOfParent.sizeDelta = new Vector2(this.contentOfParent.sizeDelta.x, minHeight);
+                    }
+                }
+                catch
+                {
+                    this.contentOfRectResponsive.sizeDelta = new Vector2(this.contentOfRectResponsive.sizeDelta.x, minHeight);
+                    this.contentOfParent.sizeDelta = new Vector2(this.contentOfParent.sizeDelta.x, minHeight);
+                    contentOfLegend.SetActive(false);
+                }
 
                 // create toggles
                 parentOfOptions.DestroyChildren();
