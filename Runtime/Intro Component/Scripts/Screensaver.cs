@@ -22,7 +22,7 @@ namespace Intelmatix
         [SerializeField] private bool _isScreensaverActive = true;
 
         private float _timer;
-        void Start()
+        void Awake()
         {
             canvasGroup.alpha = 0;
             canvasGroup.blocksRaycasts = false;
