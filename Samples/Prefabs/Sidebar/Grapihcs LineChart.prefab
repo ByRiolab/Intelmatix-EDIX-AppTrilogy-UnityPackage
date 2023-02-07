@@ -775,7 +775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 683fff38d91928e4fad95ed4ef4b6b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  legendView: {fileID: 0}
+  legendView: {fileID: 2833878708839859936, guid: 0c6971b74a9044b96867f23803ac72d4, type: 3}
   gridConfig:
     verticalLinesCount: 0
     horizontalLinesCount: 0
@@ -851,7 +851,126 @@ MonoBehaviour:
     popupPrefab: {fileID: 6196819270328144897, guid: 3b4db65b1ddb65f4eac50f1a290b417c, type: 3}
   data:
     dataSets:
-    - title: 
+    - title: Hola
+      entries:
+      - value: 1
+        position: 0
+      - value: 7.5
+        position: 7.58
+      - value: 10.25
+        position: 15.9
+      - value: 10.25
+        position: 14.64
+      - value: 10.25
+        position: 14.64
+      lineThickness: 2
+      lineColor: {r: 1, g: 1, b: 1, a: 1}
+      fillColor: {r: 1, g: 1, b: 1, a: 0}
+      fillTexture: {fileID: 0}
+      useBezier: 0
+    - title: Hola
+      entries:
+      - value: 1
+        position: 0
+      - value: 7.5
+        position: 7.58
+      - value: 10.25
+        position: 15.9
+      - value: 10.25
+        position: 14.64
+      - value: 10.25
+        position: 14.64
+      lineThickness: 2
+      lineColor: {r: 1, g: 1, b: 1, a: 1}
+      fillColor: {r: 1, g: 1, b: 1, a: 0}
+      fillTexture: {fileID: 0}
+      useBezier: 0
+    - title: Hola
+      entries:
+      - value: 1
+        position: 0
+      - value: 7.5
+        position: 7.58
+      - value: 10.25
+        position: 15.9
+      - value: 10.25
+        position: 14.64
+      - value: 10.25
+        position: 14.64
+      lineThickness: 2
+      lineColor: {r: 1, g: 1, b: 1, a: 1}
+      fillColor: {r: 1, g: 1, b: 1, a: 0}
+      fillTexture: {fileID: 0}
+      useBezier: 0
+    - title: Hola
+      entries:
+      - value: 1
+        position: 0
+      - value: 7.5
+        position: 7.58
+      - value: 10.25
+        position: 15.9
+      - value: 10.25
+        position: 14.64
+      - value: 10.25
+        position: 14.64
+      lineThickness: 2
+      lineColor: {r: 1, g: 1, b: 1, a: 1}
+      fillColor: {r: 1, g: 1, b: 1, a: 0}
+      fillTexture: {fileID: 0}
+      useBezier: 0
+    - title: Hola
+      entries:
+      - value: 1
+        position: 0
+      - value: 7.5
+        position: 7.58
+      - value: 10.25
+        position: 15.9
+      - value: 10.25
+        position: 14.64
+      - value: 10.25
+        position: 14.64
+      lineThickness: 2
+      lineColor: {r: 1, g: 1, b: 1, a: 1}
+      fillColor: {r: 1, g: 1, b: 1, a: 0}
+      fillTexture: {fileID: 0}
+      useBezier: 0
+    - title: Hola
+      entries:
+      - value: 1
+        position: 0
+      - value: 7.5
+        position: 7.58
+      - value: 10.25
+        position: 15.9
+      - value: 10.25
+        position: 14.64
+      - value: 10.25
+        position: 14.64
+      lineThickness: 2
+      lineColor: {r: 1, g: 1, b: 1, a: 1}
+      fillColor: {r: 1, g: 1, b: 1, a: 0}
+      fillTexture: {fileID: 0}
+      useBezier: 0
+    - title: Hola
+      entries:
+      - value: 1
+        position: 0
+      - value: 7.5
+        position: 7.58
+      - value: 10.25
+        position: 15.9
+      - value: 10.25
+        position: 14.64
+      - value: 10.25
+        position: 14.64
+      lineThickness: 2
+      lineColor: {r: 1, g: 1, b: 1, a: 1}
+      fillColor: {r: 1, g: 1, b: 1, a: 0}
+      fillTexture: {fileID: 0}
+      useBezier: 0
+    - title: Hola
       entries:
       - value: 1
         position: 0
