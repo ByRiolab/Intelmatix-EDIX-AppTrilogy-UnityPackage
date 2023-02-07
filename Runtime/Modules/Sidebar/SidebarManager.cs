@@ -76,8 +76,14 @@ namespace Intelmatix
         }
         void OnTabSelectedHandler(Tab tab)
         {
+            if (tab == null)
+            {
+                RestoreKPI();
+                CloseSidebar();
+                return;
+            }
             var isCognitiveMode = tab.Questions.Any(q => q.IsCognitive || q.IsHumanMode);
-            if (tab == null || !isCognitiveMode)
+            if (!isCognitiveMode)
             {
                 RestoreKPI();
                 CloseSidebar();
