@@ -189,9 +189,12 @@ namespace Intelmatix.Data
             // ff6321 -> rgb(255, 99, 33)
             private Color[] colors = new Color[] {
                 new Color(1, 1, 1),
-                new Color(255 / 255f, 202 / 255f, 0 / 255f),
-                new Color(213 / 255f, 167 / 255f, 255 / 255f),
+                new Color(255 / 255f, 213 / 255f, 0 / 255f),
+                new Color(59 / 255f, 182 / 255f, 128 / 255f),
                 new Color(255 / 255f, 0 / 255f, 255 / 255f),
+                new Color(0 / 255, 185 / 255f, 154 / 255f),
+                new Color(0 / 255, 185 / 255f, 154 / 255f),
+                new Color(0 / 255, 185 / 255f, 154 / 255f),
                 new Color(0 / 255, 185 / 255f, 154 / 255f),
                 new Color(255 / 255f, 99 / 255f, 33 / 255f)
             };
