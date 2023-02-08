@@ -39,7 +39,14 @@ namespace Intelmatix
 
         void Update()
         {
-            if (_isScreensaverActive && (Input.anyKey || Input.GetMouseButton(0) || Input.GetMouseButton(1) || Input.GetMouseButton(2)))
+            var isInteractive = Input.anyKey || Input.GetMouseButton(0) || Input.GetMouseButton(1) || Input.GetMouseButton(2) || Input.touchCount > 0;
+
+            if (isInteractive)
+            {
+                _timer = 0f;
+
+            }
+            if (_isScreensaverActive && isInteractive)
             {
                 LeanTween.cancel(gameObject, true);
                 cubeController.EvaluateCandidates();
