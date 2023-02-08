@@ -15,6 +15,20 @@ namespace AwesomeCharts
 
         public override void SetLabelText(string text)
         {
+            //if text is a year show the year and dont show nothing else
+            if (text.Length == 4 && text[0] == '2' && text[1] == '0')
+            {
+                float year = 0;
+                if (float.TryParse(text, out year))
+                {
+                    if (year > 2000 && year < 2100)
+                        textLabel.text = text;
+                    else
+                        textLabel.text = "";
+                    return;
+                }
+            }
+
             //check if is a number
             float number;
             if (float.TryParse(text, out number))
@@ -48,6 +62,7 @@ namespace AwesomeCharts
                         textLabel.text = text;
                     }
                 }
+
             }
             else
                 textLabel.text = text;
