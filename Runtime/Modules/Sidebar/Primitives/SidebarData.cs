@@ -13,6 +13,7 @@ namespace Intelmatix.Data
         [SerializeField] private List<ChartGroup> linecharts;
         [SerializeField] private List<ChartGroup> barcharts;
         [SerializeField] private List<DataTable> tables;
+        [SerializeField] private List<Stadistics> table_statistics;
         [SerializeField] private List<FiltersData> filters;
         [SerializeField] private List<Decision> decisions;
 
@@ -25,6 +26,7 @@ namespace Intelmatix.Data
         public List<ChartGroup> LineCharts => linecharts;
         public List<ChartGroup> BarCharts => barcharts;
         public List<Decision> Decisions => decisions;
+        public List<Stadistics> TableStadistics => table_statistics;
 
         [System.Serializable]
         public class Decision
@@ -141,6 +143,43 @@ namespace Intelmatix.Data
             public string TableType => table_type;
             public List<RowInfo> Rows => rows;
 
+        }
+
+        [Serializable]
+        public class Stadistics
+        {
+            [SerializeField] private string title;
+            [SerializeField] private string subtitle;
+            [SerializeField] private List<RowStadistics> rows;
+            public string Title => title;
+            public string Subtitle => subtitle;
+            public List<RowStadistics> Row => rows;
+        }
+        [Serializable]
+        public class RowStadistics
+        {
+            [SerializeField] private string title;
+            [SerializeField] private DataStadistics data;
+            public string Title => title;
+            public DataStadistics Data => data;
+        }
+
+        [Serializable]
+        public class DataStadistics
+        {
+            [SerializeField] private float value;
+            [SerializeField] private string unit;
+            [SerializeField] private ExtraStadistics extra;
+            public float Value => value;
+            public string Unit => unit;
+            public ExtraStadistics Extra => extra;
+        }
+        [Serializable]
+        public class ExtraStadistics{
+            [SerializeField] private float value;
+            [SerializeField] private string type;
+            public float Value => value;
+            public string Type => type;
         }
 
         [Serializable]

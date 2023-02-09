@@ -30,6 +30,7 @@ namespace Intelmatix
         [SerializeField] private StackedLineChart lineChartPrefab;
         [SerializeField] private StackedBarchart barchartPrefab;
         [SerializeField] private ProductTableChart tableChartPrefab;
+        [SerializeField] private StadisticsTableChart StadisticsTablePrefab;
         [Space]
         [SerializeField] private DecideMode decideModePrefab;
         [SerializeField] private DecideOption decideOptionPrefab;
@@ -37,6 +38,7 @@ namespace Intelmatix
         private List<StackedLineChart> listOfLineCharts;
         private List<StackedBarchart> listOfBarcharts;
         private List<ProductTableChart> listOfTableCharts;
+        private List<StadisticsTableChart> listOfTableStadisticsCharts;
         private List<DecideMode> listOfDecideModes;
         private List<DecideOption> listOfDecideOptions;
 
@@ -47,6 +49,7 @@ namespace Intelmatix
             listOfLineCharts = new List<StackedLineChart>();
             listOfBarcharts = new List<StackedBarchart>();
             listOfTableCharts = new List<ProductTableChart>();
+            listOfTableStadisticsCharts = new List<StadisticsTableChart>();
             listOfDecideModes = new List<DecideMode>();
             listOfDecideOptions = new List<DecideOption>();
         }
@@ -185,6 +188,7 @@ namespace Intelmatix
                 InstantiateObjectsFromList(sidebar.LineCharts, lineChartPrefab, listOfLineCharts, ref delay);
                 InstantiateObjectsFromList(sidebar.BarCharts, barchartPrefab, listOfBarcharts, ref delay);
                 InstantiateObjectsFromList(sidebar.TableCharts, tableChartPrefab, listOfTableCharts, ref delay);
+                InstantiateObjectsFromList(sidebar.TableStadistics, StadisticsTablePrefab, listOfTableStadisticsCharts, ref delay);
                 InstantiateObjectsFromList(sidebar.Decisions, decideOptionPrefab, listOfDecideOptions, ref delay);
             }
 
@@ -196,6 +200,7 @@ namespace Intelmatix
             DestroyObjectOfList(listOfLineCharts);
             DestroyObjectOfList(listOfBarcharts);
             DestroyObjectOfList(listOfTableCharts);
+            DestroyObjectOfList(listOfTableStadisticsCharts);
             DestroyObjectOfList(listOfDecideModes);
             DestroyObjectOfList(listOfDecideOptions);
         }
