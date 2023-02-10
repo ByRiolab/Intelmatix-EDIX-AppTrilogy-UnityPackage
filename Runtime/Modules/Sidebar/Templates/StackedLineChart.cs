@@ -21,10 +21,21 @@ namespace Intelmatix.Templates
         [Space]
         [SerializeField] private ToggleGroup toggleGroup;
         [SerializeField] private Toggle togglePrefab;
+        [SerializeField] private TMP_Dropdown dropdown;
 
         [Space]
         [SerializeField] private LineChart lineChartTemplate;
         [SerializeField] private ChartResizer chartResizer;
+
+
+        private List<string> paths;
+        private List<string> options;
+
+        public static int contentDropdown;
+
+
+        public delegate void OnDropdownSelectedEvent(string path, int Content);
+        public static event OnDropdownSelectedEvent PreDropdownSelectedEvent;
 
 
         [Header("Animation")]
@@ -46,12 +57,33 @@ namespace Intelmatix.Templates
             //     return;
             AnimationManager.AnimateOut(this.canvasToAnimate, direction: AnimationManager.Direction.Right, duration: SidebarAnimationSettings.ContentCloseDuration);
         }
-
+        
         public override void Display(SidebarData.ChartGroup lineChart)
         {
             this.name = "<line-chart> [" + lineChart.Title + "]";
             titleText.text = lineChart.Title;
             subtitleText.text = lineChart.Subtitle;
+            if (SidebarManager.filters.Count == 0)
+            {
+                dropdown.gameObject.SetActive(false);
+            }
+            else
+            {
+                dropdown.gameObject.SetActive(true);
+                paths = new();
+                options = new();
+                Debug.Log(SidebarManager.filters[0].Path);
+                for (int i = 0; i < SidebarManager.filters.Count; i++)
+                {
+                    paths.Add(SidebarManager.filters[i].Path);
+                    options.Add(SidebarManager.filters[i].Filter);
+                    
+                }
+                dropdown.AddOptions(options);
+                dropdown.value = contentDropdown;
+                dropdown.onValueChanged.AddListener(SelectFromDropdown);
+            }
+
 
 
             if (lineChart.Charts.Count > 0)
@@ -73,6 +105,9 @@ namespace Intelmatix.Templates
                     toggle.GetComponentInChildren<TextMeshProUGUI>().text = chart.Item;
                     toggle.gameObject.SetActive(true);
                     toggles.Add(toggle);
+                    var rect = toggle.GetComponent<RectTransform>();
+                    rect.sizeDelta = new Vector2(rect.sizeDelta.x, rect.sizeDelta.y + 35);
+
                 }
                 toggles.First().isOn = true;
                 if (toggles.Count == 1)
@@ -84,6 +119,15 @@ namespace Intelmatix.Templates
             {
                 // Debug.LogWarning("No charts found for line chart group: " + lineChart.Title);
             }
+        }
+
+        void SelectFromDropdown(int value)
+        {
+            PreDropdownSelectedEvent?.Invoke(paths[value], value);
+            Debug.Log(options[value]);
+            dropdown.value = value;
+            contentDropdown = value;
+
         }
 
         private void FillTemplate(SidebarData.Chart chart)
@@ -99,7 +143,6 @@ namespace Intelmatix.Templates
                 lineChartTemplate.GetChartData().DataSets.Add(dataSet);
             }
             lineChartTemplate.SetDirty();
-
         }
 
 

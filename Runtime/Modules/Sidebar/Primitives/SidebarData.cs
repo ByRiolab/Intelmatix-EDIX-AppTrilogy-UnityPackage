@@ -247,10 +247,7 @@ namespace Intelmatix.Data
 
                     if (dataSet.ColorJson.R != 0 && dataSet.ColorJson.G != 0 && dataSet.ColorJson.B != 0)
                     {
-
                         lineDataSet.LineColor = dataSet.ColorJson.Color;
-                        Debug.Log(dataSet.ColorJson.Color);
-
                     }
                     else if (data.DataSets.Length > 2 && index < colors.Length)
                     {
@@ -304,7 +301,7 @@ namespace Intelmatix.Data
                     }
                     // barDataSet.BarColor = Color.white;
                     //barDataSet.BarColors = Color.white;
-                    // lineDataSet.LineThickness = 1;
+                    //lineDataSet.LineThickness = 1;
                     //barDataSet. = 1f;
                     barDataSet.Title = dataSet.Title;
                     foreach (var entry in dataSet.Entries)

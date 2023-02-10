@@ -26,6 +26,7 @@ namespace Intelmatix.Templates
         [Space]
         [SerializeField] private BarChart BarChartTemplate;
         [SerializeField] private ChartResizer chartResizer;
+        [SerializeField] private LegendView legendView;
 
 
         [Header("Animation")]
@@ -71,6 +72,7 @@ namespace Intelmatix.Templates
                         contentOfLegend.SetActive(true);
                         this.contentOfRectResponsive.sizeDelta = new Vector2(this.contentOfRectResponsive.sizeDelta.x, maxHeight);
                         this.contentOfParent.sizeDelta = new Vector2(this.contentOfParent.sizeDelta.x, maxHeight);
+                     
                     }
                     else
                     {
@@ -126,8 +128,10 @@ namespace Intelmatix.Templates
             {
                 BarChartTemplate.GetChartData().DataSets.Add(dataSet);
             }
+            BarChartTemplate.legendView = legendView;
             BarChartTemplate.SetDirty();
             chart.ApplyBarAxisConfiguration(BarChartTemplate, chartResizer.CurrentPercentage);
+            
 
         }
 

@@ -35,6 +35,8 @@ namespace Intelmatix
         [SerializeField] private DecideMode decideModePrefab;
         [SerializeField] private DecideOption decideOptionPrefab;
 
+        public static List<SidebarData.FiltersData> filters;
+
         private List<StackedLineChart> listOfLineCharts;
         private List<StackedBarchart> listOfBarcharts;
         private List<ProductTableChart> listOfTableCharts;
@@ -172,6 +174,7 @@ namespace Intelmatix
                 Debug.LogWarning("SetupSidebar, sidebar is null");
                 return;
             }
+            filters = sidebar.Filters;
 
             backgroundAnimation.ShowRect(SidebarAnimationSettings.BackgroundAppearDuration);
 
@@ -185,11 +188,11 @@ namespace Intelmatix
             else
             {
                 DestroyGraphics();
-                InstantiateObjectsFromList(sidebar.LineCharts, lineChartPrefab, listOfLineCharts, ref delay);
                 InstantiateObjectsFromList(sidebar.BarCharts, barchartPrefab, listOfBarcharts, ref delay);
                 InstantiateObjectsFromList(sidebar.TableCharts, tableChartPrefab, listOfTableCharts, ref delay);
                 InstantiateObjectsFromList(sidebar.TableStadistics, StadisticsTablePrefab, listOfTableStadisticsCharts, ref delay);
                 InstantiateObjectsFromList(sidebar.Decisions, decideOptionPrefab, listOfDecideOptions, ref delay);
+                InstantiateObjectsFromList(sidebar.LineCharts, lineChartPrefab, listOfLineCharts, ref delay);
             }
 
         }
