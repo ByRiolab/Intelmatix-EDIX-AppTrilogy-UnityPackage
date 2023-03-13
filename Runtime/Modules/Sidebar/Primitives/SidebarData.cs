@@ -404,6 +404,8 @@ namespace Intelmatix.Data
                 var width = lineChartTemplate.GetComponent<RectTransform>().sizeDelta.x;
                 width = Mathf.Max(width, 518);
                 lineChartTemplate.Config.BarSpacing = (int)(width / length);
+                if (lineChartTemplate.Config.BarSpacing == 16)
+                    lineChartTemplate.Config.BarSpacing = 3;
 
                 lineChartTemplate.SetLabelOpacity(opacity);
 

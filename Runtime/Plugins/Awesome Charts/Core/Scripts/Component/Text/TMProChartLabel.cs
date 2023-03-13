@@ -48,7 +48,7 @@ namespace AwesomeCharts
                 string[] words = text.Split(' ');
                 if (words.Length > 1)
                 {
-                    textLabel.text = words[0][0] + " " + words[1];
+                    textLabel.text = text;
                 }
                 else
                 {

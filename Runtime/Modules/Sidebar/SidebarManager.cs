@@ -98,7 +98,7 @@ namespace Intelmatix
         {
             if (question == null || !question.IsCognitive && !question.IsHumanMode)
             {
-                RestoreKPI();
+                //RestoreKPI();
                 CloseSidebar();
             }
 
