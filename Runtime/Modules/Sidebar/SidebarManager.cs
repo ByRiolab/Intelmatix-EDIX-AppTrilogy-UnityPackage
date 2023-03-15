@@ -115,6 +115,10 @@ namespace Intelmatix
         {
             Instance?.kpiController.AddKPIDecision(kpis);
         }
+        public static void AddKPIDecision(List<StoreData.KPI> kpis)
+        {
+            Instance?.kpiController.AddKPIDecision(kpis);
+        }
         public static void RemoveKPIDecision(List<SidebarData.KPIDecision> kpis)
         {
             Instance?.kpiController.RemoveKPIDecision(kpis);

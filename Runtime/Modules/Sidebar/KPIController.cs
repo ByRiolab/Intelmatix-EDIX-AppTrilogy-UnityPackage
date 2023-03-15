@@ -195,6 +195,17 @@ namespace Intelmatix.Templates
             kpi2.AddKPIDecision(kpis[1]);
             kpi3.AddKPIDecision(kpis[2]);
         }
+        internal void AddKPIDecision(List<KPI> kpis)
+        {
+            if (kpis.Count == 0)
+            {
+                return;
+            }
+
+            kpi1.AddKPIDecision(kpis[0]);
+            kpi2.AddKPIDecision(kpis[1]);
+            kpi3.AddKPIDecision(kpis[2]);
+        }
         internal void RemoveKPIDecision(List<SidebarData.KPIDecision> kpis)
         {
             if (kpis.Count == 0)
