@@ -38,7 +38,7 @@ namespace AwesomeCharts
                 else if (number > 1000000) // use M
                     textLabel.text = (number / 1000000).ToString("0") + "M";
                 else if (number > 1000) // use K
-                    textLabel.text = (number / 1000).ToString("0") + "K";
+                    textLabel.text = (number / 1000).ToString("1") + "K";
                 else
                     textLabel.text = number.ToString("0");
             }
