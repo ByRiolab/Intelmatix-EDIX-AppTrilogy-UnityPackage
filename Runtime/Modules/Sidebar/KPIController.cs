@@ -43,6 +43,36 @@ namespace Intelmatix.Templates
                 LeanTween.cancel(value.gameObject);
             }
 
+            public void AddKPIDecision(KPI kpiDecision)
+            {
+                var newValue = currentValue;
+                newValue = kpiDecision.KPIValue;
+                Color targetColor = Color.white;
+                if (newValue > initialValue)
+                {
+                    if (kpi.IsGood) targetColor = increaseColor;
+                    else targetColor = decreaseColor;
+                }
+                else if (newValue < initialValue)
+                {
+                    if (kpi.IsGood) targetColor = decreaseColor;
+                    else targetColor = increaseColor;
+                }
+                else
+                {
+                    targetColor = neutralColor;
+                }
+                LeanTween.cancel(value.gameObject);
+                LeanTween.value(value.gameObject, value.color, targetColor, 0.5f).setOnUpdate((Color color) =>
+                {
+                    value.color = color;
+                });
+                LeanTween.value(value.gameObject, currentValue, newValue, 0.5f).setOnUpdate((float value) =>
+                {
+                    this.value.text = value.GetNumberConversion();
+                });
+                currentValue = newValue;
+            }
             public void AddKPIDecision(KPIDecision kpiDecision)
             {
                 var newValue = currentValue;
