@@ -291,7 +291,7 @@ namespace Intelmatix.Data
                         Debug.Log(dataSet.ColorJson.Color);
 
                     }
-                    else if (data.DataSets.Length > 2 && index < colors.Length)
+                    else if (data.DataSets.Length >= 2 && index < colors.Length)
                     {
                         barDataSet.BarColors.Add(colors[index++]);
                     }
