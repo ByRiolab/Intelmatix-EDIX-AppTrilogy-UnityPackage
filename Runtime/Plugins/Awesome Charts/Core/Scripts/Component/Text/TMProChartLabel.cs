@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 
 namespace AwesomeCharts
@@ -38,7 +39,7 @@ namespace AwesomeCharts
                 else if (number > 1000000) // use M
                     textLabel.text = (number / 1000000).ToString("0") + "M";
                 else if (number > 1000) // use K
-                    textLabel.text = (number / 1000).ToString("1") + "K";
+                    textLabel.text = Math.Round(number / 1000, 2).ToString() + "K";
                 else
                     textLabel.text = number.ToString("0");
             }
