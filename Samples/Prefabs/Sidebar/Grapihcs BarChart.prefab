@@ -15644,6 +15644,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Legend Parent
       objectReference: {fileID: 0}
+    - target: {fileID: 5021813594902695228, guid: 2b1d734466a014f85a3b32f79e25f152,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5343079362011632950, guid: 2b1d734466a014f85a3b32f79e25f152,
         type: 3}
       propertyPath: m_Pivot.x
