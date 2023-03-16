@@ -43,6 +43,7 @@ namespace Intelmatix.Data
                 Points,
                 Arcs,
                 Mumaris,
+                Decide,
             }
             public VisualizationType Visualization => (VisualizationType)Enum.Parse(typeof(VisualizationType), visualization_type, true);
             public bool IsCognitive => mode.ToLower() == "cognitive";
