@@ -197,7 +197,6 @@ namespace Intelmatix
                 InstantiateObjectsFromList(sidebar.TableCharts, tableChartPrefab, listOfTableCharts, ref delay);
                 InstantiateObjectsFromList(sidebar.TableStadistics, StadisticsTablePrefab, listOfTableStadisticsCharts, ref delay);
                 InstantiateObjectsFromList(sidebar.Decisions, decideOptionPrefab, listOfDecideOptions, ref delay);
-                InstantiateObjectsFromList(sidebar.LineCharts, lineChartPrefab, listOfLineCharts, ref delay);
             }
 
         }
