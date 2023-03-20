@@ -75,7 +75,7 @@ namespace Intelmatix
         {
             var labelConfig = barChart.AxisConfig.HorizontalAxisConfig.LabelsConfig;
             labelConfig.LabelColor = new Color(1, 1, 1, opacity);
-            if (barChart.GetChartData().DataSets.Count > 0 && barChart.GetChartData().DataSets[0].Entries.Count < 12)
+            if (barChart.GetChartData().DataSets.Count > 0 && barChart.GetChartData().DataSets[0].Entries.Count < 7)
             {
                 barChart.AxisConfig.HorizontalAxisConfig.LabelsConfig.LabelColor = new Color(1, 1, 1, 1);
             }
