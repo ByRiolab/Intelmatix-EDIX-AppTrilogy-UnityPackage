@@ -192,6 +192,7 @@ namespace Intelmatix
             else
             {
                 DestroyGraphics();
+                InstantiateObjectsFromList(sidebar.LineCharts, lineChartPrefab, listOfLineCharts, ref delay);
                 InstantiateObjectsFromList(sidebar.BarCharts, barchartPrefab, listOfBarcharts, ref delay);
                 InstantiateObjectsFromList(sidebar.TableCharts, tableChartPrefab, listOfTableCharts, ref delay);
                 InstantiateObjectsFromList(sidebar.TableStadistics, StadisticsTablePrefab, listOfTableStadisticsCharts, ref delay);
