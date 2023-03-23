@@ -20,12 +20,13 @@ namespace Intelmatix.Modules.Sidebar.Components
         public void Display(RowStadistics row)
         {
             titleText.text = row.Title;
-            string ValueText = row.Data.Value.GetNumberConversion();
-            valueText.text = ValueText + " " + row.Data.Unit;
+            string ValueText = row.Data.Value.ToString();
+            valueText.text = ValueText;
 
+            Debug.Log(row.Data.Extra.Type);
             switch (row.Data.Extra.Type)
             {
-                case "increase":
+                case "increment":
                     image.sprite = increaseSprite;
                     valueText.color = Color.green;
                     break;
