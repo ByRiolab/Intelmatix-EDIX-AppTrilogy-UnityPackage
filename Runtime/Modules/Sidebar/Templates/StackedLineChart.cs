@@ -25,6 +25,8 @@ namespace Intelmatix.Templates
 
         [Space]
         [SerializeField] private LineChart lineChartTemplate;
+        [SerializeField] private LineChart lineChartLabel;
+        [SerializeField] private RectTransform lineChartContainer;
         [SerializeField] private ChartResizer chartResizer;
         [SerializeField] private ChartResizer chartResizerDropdown;
 
@@ -150,16 +152,37 @@ namespace Intelmatix.Templates
         private void FillTemplate(SidebarData.Chart chart)
         {
             chart.ApplyAxisConfiguration(lineChartTemplate, chartResizer.CurrentPercentage);
+            chart.ApplyAxisConfiguration(lineChartLabel, chartResizer.CurrentPercentage);
 
             // bind data
             lineChartTemplate.GetChartData().Clear();
+            lineChartLabel.GetChartData().Clear();
 
             var dataSets = chart.GetLineDataSets();
             foreach (var dataSet in dataSets)
             {
                 lineChartTemplate.GetChartData().DataSets.Add(dataSet);
+                lineChartLabel.GetChartData().DataSets.Add(dataSet);
+            }
+            if (chart.Data.DataSets.First().Entries.Count() < 40)
+            {
+                Debug.Log("Less than 40 data sets, data set count: " + lineChartTemplate.GetChartData().DataSets.Count);
+                // fill parent container
+                lineChartContainer.anchorMin = new Vector2(0, 0);
+                lineChartContainer.anchorMax = new Vector2(1, 1);
+                lineChartContainer.offsetMin = new Vector2(0, 0);
+                lineChartContainer.offsetMax = new Vector2(0, 0);
+            }
+            else
+            {
+                // pivot on left, maximum height & set the with to the width of the chart 17000
+                lineChartContainer.anchorMin = new Vector2(0, 0);
+                lineChartContainer.anchorMax = new Vector2(0, 1);
+                lineChartContainer.offsetMin = new Vector2(0, 0);
+                lineChartContainer.offsetMax = new Vector2(17000, 0);
             }
             lineChartTemplate.SetDirty();
+            lineChartLabel.SetDirty();
         }
 
 
