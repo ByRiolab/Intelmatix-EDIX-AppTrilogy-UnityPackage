@@ -164,7 +164,8 @@ namespace Intelmatix.Templates
                 lineChartTemplate.GetChartData().DataSets.Add(dataSet);
                 lineChartLabel.GetChartData().DataSets.Add(dataSet);
             }
-            if (chart.Data.DataSets.First().Entries.Count() < 40)
+            var entriesCount = chart.AxisConfig.HorizontalAxisconfig.CustomValues.Count;
+            if (entriesCount < 40)
             {
                 Debug.Log("Less than 40 data sets, data set count: " + lineChartTemplate.GetChartData().DataSets.Count);
                 // fill parent container
@@ -179,7 +180,8 @@ namespace Intelmatix.Templates
                 lineChartContainer.anchorMin = new Vector2(0, 0);
                 lineChartContainer.anchorMax = new Vector2(0, 1);
                 lineChartContainer.offsetMin = new Vector2(0, 0);
-                lineChartContainer.offsetMax = new Vector2(17000, 0);
+                lineChartContainer.offsetMax = new Vector2(17000 * (entriesCount / 156f), 0);
+                Debug.Log("Width of the container: " + entriesCount);
             }
             lineChartTemplate.SetDirty();
             lineChartLabel.SetDirty();
