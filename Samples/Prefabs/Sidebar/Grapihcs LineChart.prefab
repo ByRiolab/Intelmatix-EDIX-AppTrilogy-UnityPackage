@@ -2086,7 +2086,7 @@ MonoBehaviour:
         maxAutoValue: 1
       axisLabelPrefab: {fileID: 1168138860890990371, guid: 9955d808937a33548b3f245d3b2a0cee,
         type: 3}
-      labelsCount: 6
+      labelsCount: 5
       labelsAlignment: 0
       drawStartValue: 0
       drawEndValue: 0
