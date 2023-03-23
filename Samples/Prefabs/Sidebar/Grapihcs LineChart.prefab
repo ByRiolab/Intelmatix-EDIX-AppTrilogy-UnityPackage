@@ -67,6 +67,7 @@ GameObject:
   - component: {fileID: 6222216559748619240}
   - component: {fileID: 3894044144769528999}
   - component: {fileID: 3126445158778782711}
+  - component: {fileID: 8430769346317773167}
   m_Layer: 5
   m_Name: Image (1)
   m_TagString: Untagged
@@ -147,6 +148,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 0
+--- !u!225 &8430769346317773167
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663964239938981826}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &749127182049151494
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,7 +269,7 @@ MonoBehaviour:
   tomatoSprite: {fileID: 21300000, guid: 915ccc8b7ee1e4cebae2688ced6bcd1b, type: 3}
   potatoSprite: {fileID: 21300000, guid: a5f94f756b38a430095f3ab094385a76, type: 3}
   lettuceSprite: {fileID: 21300000, guid: f65f75be9f650445eab7a81cf291eb47, type: 3}
-  onionSprite: {fileID: 21300000, guid: 5d51201815c844d6d8a7c0777034aa9f, type: 3}
+  onionSprite: {fileID: 21300000, guid: 57751c5ef92b14bf4b7ecf6b2a73a83d, type: 3}
   pepperSprite: {fileID: 21300000, guid: 972d5e4a208284183afde65e11f682fa, type: 3}
   mshroomSprite: {fileID: 21300000, guid: 3012fd88d26a4475ab31ef461c09e1e8, type: 3}
   defaultSprite: {fileID: 21300000, guid: 1e0dd05c9e16cd645945259ab3ae5d1c, type: 3}
@@ -559,6 +572,7 @@ GameObject:
   - component: {fileID: 900871463753696360}
   - component: {fileID: 6480951772197205371}
   - component: {fileID: 1478994016454121412}
+  - component: {fileID: 3781256524118076769}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -655,6 +669,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3781256524118076769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196726896206353144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa53005ac83cf4c4dbc89595c7856241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasToAnimate: {fileID: 8430769346317773167}
 --- !u!1 &1277284971459594187
 GameObject:
   m_ObjectHideFlags: 0
@@ -960,7 +987,8 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e2e949779c6f146e3a288b02f550a2d0, type: 2}
-  m_sharedMaterial: {fileID: -6323987121526522042, guid: e2e949779c6f146e3a288b02f550a2d0, type: 2}
+  m_sharedMaterial: {fileID: -6323987121526522042, guid: e2e949779c6f146e3a288b02f550a2d0,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1205,7 +1233,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1e0dd05c9e16cd645945259ab3ae5d1c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5066b0ee9c9bb48558bf4757d174fe97, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1891,7 +1919,8 @@ MonoBehaviour:
   m_text: Option A
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e2e949779c6f146e3a288b02f550a2d0, type: 2}
-  m_sharedMaterial: {fileID: -6323987121526522042, guid: e2e949779c6f146e3a288b02f550a2d0, type: 2}
+  m_sharedMaterial: {fileID: -6323987121526522042, guid: e2e949779c6f146e3a288b02f550a2d0,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2016,7 +2045,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 683fff38d91928e4fad95ed4ef4b6b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  legendView: {fileID: 2833878708839859936, guid: 0c6971b74a9044b96867f23803ac72d4, type: 3}
+  legendView: {fileID: 2833878708839859936, guid: 0c6971b74a9044b96867f23803ac72d4,
+    type: 3}
   gridConfig:
     verticalLinesCount: 0
     horizontalLinesCount: 0
@@ -2054,7 +2084,8 @@ MonoBehaviour:
         max: 105.49
         minAutoValue: 1
         maxAutoValue: 1
-      axisLabelPrefab: {fileID: 1168138860890990371, guid: 9955d808937a33548b3f245d3b2a0cee, type: 3}
+      axisLabelPrefab: {fileID: 1168138860890990371, guid: 9955d808937a33548b3f245d3b2a0cee,
+        type: 3}
       labelsCount: 6
       labelsAlignment: 0
       drawStartValue: 0
@@ -2072,7 +2103,8 @@ MonoBehaviour:
         max: 100
         minAutoValue: 1
         maxAutoValue: 1
-      axisLabelPrefab: {fileID: 1168138860890990371, guid: 9955d808937a33548b3f245d3b2a0cee, type: 3}
+      axisLabelPrefab: {fileID: 1168138860890990371, guid: 9955d808937a33548b3f245d3b2a0cee,
+        type: 3}
       labelsCount: 6
       labelsAlignment: 0
       drawStartValue: 1
@@ -2089,7 +2121,8 @@ MonoBehaviour:
   config:
     valueIndicatorSize: 36
     showValueIndicators: 1
-    popupPrefab: {fileID: 6196819270328144897, guid: 3b4db65b1ddb65f4eac50f1a290b417c, type: 3}
+    popupPrefab: {fileID: 6196819270328144897, guid: 3b4db65b1ddb65f4eac50f1a290b417c,
+      type: 3}
   data:
     dataSets:
     - title: Hola
@@ -2349,7 +2382,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 768529489882512442}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2450,6 +2483,61 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &4346548279498872205
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1717951293754079468}
+  - component: {fileID: 515048562890812640}
+  m_Layer: 5
+  m_Name: <chart-resizer> Dropdown
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1717951293754079468
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4346548279498872205}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 768529489882512442}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &515048562890812640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4346548279498872205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 176be1e7928f745bbae68c20be5f30ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chart: {fileID: 7878518439615224821}
+  minimizeSize: 280
+  maximizeSize: 750
+  animationTime: 0.5
+  animationType: 6
+  direction: 1
 --- !u!1 &4456969031993758461
 GameObject:
   m_ObjectHideFlags: 0
@@ -2668,6 +2756,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2770615341505503888}
+  - {fileID: 1717951293754079468}
   - {fileID: 9211826814133470658}
   m_Father: {fileID: 7878518439615224821}
   m_RootOrder: 2
@@ -2743,7 +2832,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7ee48c5fba4919649a8a6094cbead669, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 73db4531ecd284e59925a421cb34097f, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -3682,6 +3771,7 @@ MonoBehaviour:
   dropdown: {fileID: 6437766127039361163}
   lineChartTemplate: {fileID: 3603483558504699648}
   chartResizer: {fileID: 5581203354412176033}
+  chartResizerDropdown: {fileID: 515048562890812640}
   canvasToAnimate: {fileID: 1151407493348695838}
 --- !u!114 &7878518439615224819
 MonoBehaviour:

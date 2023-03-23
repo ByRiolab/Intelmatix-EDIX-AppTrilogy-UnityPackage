@@ -286,7 +286,8 @@ MonoBehaviour:
   m_text: Tomatoes
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e2e949779c6f146e3a288b02f550a2d0, type: 2}
-  m_sharedMaterial: {fileID: -6323987121526522042, guid: e2e949779c6f146e3a288b02f550a2d0, type: 2}
+  m_sharedMaterial: {fileID: -6323987121526522042, guid: e2e949779c6f146e3a288b02f550a2d0,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1135,7 +1136,8 @@ MonoBehaviour:
   m_text: (SAR)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fe29feff293d34badb975a393f68e79b, type: 2}
-  m_sharedMaterial: {fileID: -6323987121526522042, guid: fe29feff293d34badb975a393f68e79b, type: 2}
+  m_sharedMaterial: {fileID: -6323987121526522042, guid: fe29feff293d34badb975a393f68e79b,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1712,7 +1714,8 @@ MonoBehaviour:
   m_text: 100 kgs
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e2e949779c6f146e3a288b02f550a2d0, type: 2}
-  m_sharedMaterial: {fileID: -6323987121526522042, guid: e2e949779c6f146e3a288b02f550a2d0, type: 2}
+  m_sharedMaterial: {fileID: -6323987121526522042, guid: e2e949779c6f146e3a288b02f550a2d0,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1905,7 +1908,7 @@ MonoBehaviour:
   tomatoSprite: {fileID: 21300000, guid: 915ccc8b7ee1e4cebae2688ced6bcd1b, type: 3}
   potatoSprite: {fileID: 21300000, guid: a5f94f756b38a430095f3ab094385a76, type: 3}
   lettuceSprite: {fileID: 21300000, guid: f65f75be9f650445eab7a81cf291eb47, type: 3}
-  onionSprite: {fileID: 21300000, guid: 5d51201815c844d6d8a7c0777034aa9f, type: 3}
+  onionSprite: {fileID: 21300000, guid: 57751c5ef92b14bf4b7ecf6b2a73a83d, type: 3}
   pepperSprite: {fileID: 21300000, guid: 972d5e4a208284183afde65e11f682fa, type: 3}
   mshroomSprite: {fileID: 21300000, guid: 3012fd88d26a4475ab31ef461c09e1e8, type: 3}
 --- !u!1 &2784955714951436898

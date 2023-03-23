@@ -26,6 +26,7 @@ namespace Intelmatix.Templates
         [Space]
         [SerializeField] private LineChart lineChartTemplate;
         [SerializeField] private ChartResizer chartResizer;
+        [SerializeField] private ChartResizer chartResizerDropdown;
 
 
         private List<string> paths;
@@ -57,7 +58,23 @@ namespace Intelmatix.Templates
             //     return;
             AnimationManager.AnimateOut(this.canvasToAnimate, direction: AnimationManager.Direction.Right, duration: SidebarAnimationSettings.ContentCloseDuration);
         }
-        
+        private bool _hasBeenExpanded = false;
+        private void Update()
+        {
+            if (dropdown.IsExpanded && !_hasBeenExpanded)
+            {
+                chartResizerDropdown.MaximizeChart();
+                _hasBeenExpanded = true;
+            }
+            else if (!dropdown.IsExpanded && _hasBeenExpanded)
+            {
+                chartResizerDropdown.MinimizeChart();
+                _hasBeenExpanded = false;
+            }
+
+            // _hasBeenExpanded = dropdown.IsExpanded;
+        }
+
         public override void Display(SidebarData.ChartGroup lineChart)
         {
             this.name = "<line-chart> [" + lineChart.Title + "]";
@@ -77,7 +94,7 @@ namespace Intelmatix.Templates
                 {
                     paths.Add(SidebarManager.filters[i].Path);
                     options.Add(SidebarManager.filters[i].Filter);
-                    
+
                 }
                 dropdown.AddOptions(options);
                 dropdown.value = contentDropdown;

@@ -175,7 +175,8 @@ namespace Intelmatix.Data
             public ExtraStadistics Extra => extra;
         }
         [Serializable]
-        public class ExtraStadistics{
+        public class ExtraStadistics
+        {
             [SerializeField] private float value;
             [SerializeField] private string type;
             public float Value => value;
@@ -316,7 +317,7 @@ namespace Intelmatix.Data
             int CalculateFontSize(int labelCount, int minFontSize = 29, int maxFontSize = 19, int minLabelCount = 7, int maxLabelCount = 40)
             {
                 int fontSize = (int)(minFontSize + (maxFontSize - minFontSize) * (labelCount - minLabelCount) / (maxLabelCount - minLabelCount));
-                return fontSize;
+                return Mathf.Clamp(fontSize, maxFontSize, minFontSize);
             }
             public void ApplyAxisConfiguration(AwesomeCharts.LineChart lineChartTemplate, float opacity)
             {
@@ -403,7 +404,7 @@ namespace Intelmatix.Data
                 var length = this.data.DataSets[0].Entries.Length + 1;
                 var width = lineChartTemplate.GetComponent<RectTransform>().sizeDelta.x;
                 width = Mathf.Max(width, 518);
-                lineChartTemplate.Config.BarSpacing = (int)(width / length)/3;
+                lineChartTemplate.Config.BarSpacing = (int)(width / length) / 3;
                 //if (lineChartTemplate.Config.BarSpacing == 16)
                 //    lineChartTemplate.Config.BarSpacing = 3;
 
