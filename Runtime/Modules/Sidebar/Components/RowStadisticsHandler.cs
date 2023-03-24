@@ -26,7 +26,7 @@ namespace Intelmatix.Modules.Sidebar.Components
             Debug.Log(row.Data.Extra.Type);
             switch (row.Data.Extra.Type)
             {
-                case "increment":
+                case "increase":
                     image.sprite = increaseSprite;
                     valueText.color = Color.green;
                     break;

@@ -57,8 +57,8 @@ namespace Intelmatix.Data
 
             public enum Operation
             {
-                decrease,
-                increase,
+                decrement,
+                increment,
                 neutral
             }
             public enum KPIType
@@ -74,9 +74,9 @@ namespace Intelmatix.Data
                     switch (operation)
                     {
                         case "decrement":
-                            return Operation.decrease;
+                            return Operation.decrement;
                         case "increment":
-                            return Operation.increase;
+                            return Operation.increment;
                         case "neutral":
                             return Operation.neutral;
                         default:
