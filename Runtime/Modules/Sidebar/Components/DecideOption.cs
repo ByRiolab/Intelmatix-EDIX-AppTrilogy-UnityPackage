@@ -57,6 +57,7 @@ namespace Intelmatix.Modules.Sidebar
             {
                 if (value)
                 {
+                    
                     isAdded = true;
                     SidebarManager.AddKPIDecision(decision.KPI);
                     Debug.Log("Decision: " + decision.Label);

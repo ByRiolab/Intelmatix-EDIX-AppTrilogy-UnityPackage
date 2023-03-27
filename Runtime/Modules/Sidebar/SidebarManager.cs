@@ -96,6 +96,11 @@ namespace Intelmatix
                 RestoreKPI();
                 CloseSidebar();
             }
+            else if (SidebarManager.Instance.canRestoreKPI && !tab.Questions.Any(q => q.IsCognitive))
+            {
+                Instance.RestoreKPI();
+                Debug.Log("RestoreKPI");
+            }
         }
         void OnQuestionSelected(Question question)
         {
@@ -104,6 +109,13 @@ namespace Intelmatix
                 RestoreKPI();
                 CloseSidebar();
             }
+            else if (SidebarManager.Instance.canRestoreKPI && !question.IsCognitive)
+            {
+                Instance.RestoreKPI();
+                Debug.Log("RestoreKPI");
+            }
+
+           
 
         }
         public void RestoreKPI()
@@ -161,9 +173,9 @@ namespace Intelmatix
                 {
 
                     Instance.DestroyObjectOfList(Instance.listOfDecideOptions);
-                    if (Instance.canRestoreKPI) 
-                        Instance.RestoreKPI();
+                    Instance.RestoreKPI();
                     humanMonde?.Invoke();
+                    Debug.Log("Display Human Mode");
                 }, cognitiveMode: () =>
                 {
                     Instance.DestroyObjectOfList(Instance.listOfDecideOptions);
