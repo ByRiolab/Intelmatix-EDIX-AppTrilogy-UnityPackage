@@ -42,6 +42,7 @@ namespace Intelmatix.Modules.Sidebar
                 if (value)
                 {
                     humanMonde?.Invoke();
+                    SidebarManager.Instance.RestoreKPI();
                 }
             });
             cognitiveButton.onValueChanged.AddListener((value) =>

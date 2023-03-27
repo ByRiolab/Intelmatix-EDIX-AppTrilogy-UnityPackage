@@ -106,9 +106,10 @@ namespace Intelmatix
             }
 
         }
-        private void RestoreKPI()
+        public void RestoreKPI()
         {
             Instance?.kpiController.Restore();
+            PlayerPrefs.DeleteAll();
         }
         private void SetupKPI(QuestionsData questionsData)
         {
@@ -158,8 +159,9 @@ namespace Intelmatix
                 var instance = Instantiate(Instance.decideModePrefab, Instance.parentOfGraphics);
                 instance.Display(humanMonde: () =>
                 {
+
                     Instance.DestroyObjectOfList(Instance.listOfDecideOptions);
-                    if (Instance.canRestoreKPI)
+                    if (Instance.canRestoreKPI) 
                         Instance.RestoreKPI();
                     humanMonde?.Invoke();
                 }, cognitiveMode: () =>
