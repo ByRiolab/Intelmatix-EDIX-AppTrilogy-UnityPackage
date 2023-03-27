@@ -31,12 +31,27 @@ namespace Intelmatix.Modules.Sidebar
             {
                 toggleCanvasGroup.LeanAlpha(value ? 1 : alpha, duration);
             });
+            
         }
 
         private bool isAdded = false;
         public override void Display(Decision decision)
         {
             this.labelText.text = decision.Label;
+            if (!SidebarManager.Instance.CanResoreKPI)
+            {
+                if (PlayerPrefs.HasKey(decision.Label))
+                {
+                    if (PlayerPrefs.GetInt(decision.Label) == 0)
+                    {
+                        this.toggleOption.isOn = false;
+                    }
+                    else if (PlayerPrefs.GetInt(decision.Label) == 1)
+                    {
+                        this.toggleOption.isOn = true;
+                    }
+                }
+            }
             this.toggleOption.onValueChanged.AddListener((value) =>
             {
                 if (value)
@@ -45,12 +60,15 @@ namespace Intelmatix.Modules.Sidebar
                     SidebarManager.AddKPIDecision(decision.KPI);
                     Debug.Log("Decision: " + decision.Label);
                     // decision?.action?.Invoke();
+                    PlayerPrefs.SetInt(decision.Label, 1);
                 }
                 else
                 {
                     if (isAdded)
                     {
                         SidebarManager.RemoveKPIDecision(decision.KPI);
+                        PlayerPrefs.SetInt(decision.Label, 0);
+                        Debug.Log("Decision removed: " + decision.Label);
                     }
                 }
             });

@@ -35,6 +35,9 @@ namespace Intelmatix
         [SerializeField] private DecideMode decideModePrefab;
         [SerializeField] private DecideOption decideOptionPrefab;
 
+        [SerializeField] private bool canRestoreKPI = true;
+        public bool CanResoreKPI => canRestoreKPI;
+
         public static List<SidebarData.FiltersData> filters;
 
         private List<StackedLineChart> listOfLineCharts;
@@ -156,7 +159,8 @@ namespace Intelmatix
                 instance.Display(humanMonde: () =>
                 {
                     Instance.DestroyObjectOfList(Instance.listOfDecideOptions);
-                    Instance.RestoreKPI();
+                    if (Instance.canRestoreKPI)
+                        Instance.RestoreKPI();
                     humanMonde?.Invoke();
                 }, cognitiveMode: () =>
                 {
@@ -168,7 +172,10 @@ namespace Intelmatix
             });
         }
 
-
+        private void OnApplicationQuit()
+        {
+            PlayerPrefs.DeleteAll();
+        }
         private void SetupSidebar(SidebarData sidebar)
         {
             LeanTween.cancel(this.gameObject);
