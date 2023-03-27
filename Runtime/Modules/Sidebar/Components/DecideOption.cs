@@ -49,6 +49,7 @@ namespace Intelmatix.Modules.Sidebar
                     else if (PlayerPrefs.GetInt(decision.Label) == 1)
                     {
                         this.toggleOption.isOn = true;
+                        isAdded = true;
                     }
                 }
             }
