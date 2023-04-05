@@ -46,6 +46,7 @@ namespace Intelmatix
         private List<StadisticsTableChart> listOfTableStadisticsCharts;
         private List<DecideMode> listOfDecideModes;
         private List<DecideOption> listOfDecideOptions;
+        private Tab _tab;
 
 
         void Start()
@@ -84,6 +85,7 @@ namespace Intelmatix
         }
         void OnTabSelectedHandler(Tab tab)
         {
+
             if (tab == null)
             {
                 RestoreKPI();
@@ -101,11 +103,15 @@ namespace Intelmatix
                 Instance.RestoreKPI();
                 Debug.Log("RestoreKPI");
             }
+            _tab = tab;
         }
         void OnQuestionSelected(Question question)
         {
             if (question == null || !question.IsCognitive && !question.IsHumanMode)
             {
+                if (_tab.Tittle == "Decide")
+                    return;
+                Debug.Log(_tab.Tittle);
                 RestoreKPI();
                 CloseSidebar();
             }
@@ -115,7 +121,7 @@ namespace Intelmatix
                 Debug.Log("RestoreKPI");
             }
 
-           
+
 
         }
         public void RestoreKPI()
