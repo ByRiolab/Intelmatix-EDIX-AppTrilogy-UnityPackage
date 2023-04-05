@@ -110,7 +110,10 @@ namespace Intelmatix
             if (question == null || !question.IsCognitive && !question.IsHumanMode)
             {
                 if (_tab.Tittle == "Decide")
+                {
+                    Close();
                     return;
+                }
                 Debug.Log(_tab.Tittle);
                 RestoreKPI();
                 CloseSidebar();
