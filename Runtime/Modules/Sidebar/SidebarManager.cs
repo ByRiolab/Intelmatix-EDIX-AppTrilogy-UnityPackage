@@ -152,7 +152,8 @@ namespace Intelmatix
 
         public static void Close()
         {
-            Instance.CloseSidebar();
+            Instance.DestroyObjectOfList(Instance.listOfDecideOptions);
+            
         }
 
         private void CloseSidebar()
