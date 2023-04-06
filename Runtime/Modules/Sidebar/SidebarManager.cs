@@ -49,6 +49,8 @@ namespace Intelmatix
         private Tab _tab;
 
 
+        public static bool CanCognitive;
+
         void Start()
         {
             if (Object.ReferenceEquals(sidebarReference, null)) return;
@@ -85,6 +87,7 @@ namespace Intelmatix
         }
         void OnTabSelectedHandler(Tab tab)
         {
+            CanCognitive = false;
 
             if (tab == null)
             {
@@ -100,6 +103,7 @@ namespace Intelmatix
             }
             else if (SidebarManager.Instance.canRestoreKPI && !tab.Questions.Any(q => q.IsCognitive))
             {
+                CanCognitive = false;
                 Instance.RestoreKPI();
                 Debug.Log("RestoreKPI");
             }
@@ -107,6 +111,7 @@ namespace Intelmatix
         }
         void OnQuestionSelected(Question question)
         {
+            CanCognitive = false;
             if (question == null || !question.IsCognitive && !question.IsHumanMode)
             {
                 if (_tab.Tittle == "Decide")
@@ -156,7 +161,7 @@ namespace Intelmatix
         public static void Close()
         {
             Instance.DestroyObjectOfList(Instance.listOfDecideOptions);
-            
+
         }
 
         private void CloseSidebar()
