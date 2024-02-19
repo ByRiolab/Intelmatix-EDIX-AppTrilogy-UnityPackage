@@ -21,6 +21,7 @@ namespace Intelmatix
         [Header("References")]
         [SerializeField] private Transform parentOfGraphics;
         [SerializeField] private Transform parentOfGraphicsTemporal;
+        [SerializeField] private Transform parentOfDecideMode;
         [SerializeField] private ResponsiveContainer responsiveContainer;
         [SerializeField] private BakgroundAnim backgroundAnimation;
         [SerializeField] private KPIController kpiController;
@@ -183,7 +184,7 @@ namespace Intelmatix
 
             LeanTween.delayedCall(Instance.gameObject, delay, () =>
             {
-                var instance = Instantiate(Instance.decideModePrefab, Instance.parentOfGraphics);
+                var instance = Instantiate(Instance.decideModePrefab, Instance.parentOfDecideMode);
                 instance.Display(humanMonde: () =>
                 {
 
