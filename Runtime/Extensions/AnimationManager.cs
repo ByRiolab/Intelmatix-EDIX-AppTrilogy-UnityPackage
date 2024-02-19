@@ -39,7 +39,7 @@ namespace Intelmatix
             canvasGroup.blocksRaycasts = false;
             // canvasGroup.interactable = true;
 
-            Vector3 initialPosition = Vector3.zero;
+            Vector3 initialPosition = canvasGroup.transform.localPosition;
             Vector3 finalPosition = initialPosition;
 
             switch (direction)
@@ -69,7 +69,7 @@ namespace Intelmatix
                 canvasGroup.blocksRaycasts = true;
                 // canvasGroup.interactable = true;
             }).setDelay(delay);
-            return LeanTween.moveLocal(canvasGroup.gameObject, Vector3.zero, duration).setEase(easeType).setDelay(delay);
+            return LeanTween.moveLocal(canvasGroup.gameObject, initialPosition, duration).setEase(easeType).setDelay(delay);
         }
 
         public static LTDescr AnimateOut(CanvasGroup canvasGroup,
