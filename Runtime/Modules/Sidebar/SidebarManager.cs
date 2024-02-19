@@ -14,7 +14,7 @@ namespace Intelmatix
 {
     public class SidebarManager : Singleton<SidebarManager, SidebarReference>
     {
-        private SidebarReference sidebarReference => dataReference;
+        private SidebarReference SidebarReference => dataReference;
 
         [SerializeField] public QuestionsReference questionsReference;
 
@@ -54,7 +54,7 @@ namespace Intelmatix
 
         void Start()
         {
-            if (Object.ReferenceEquals(sidebarReference, null)) return;
+            if (Object.ReferenceEquals(SidebarReference, null)) return;
             listOfLineCharts = new List<StackedLineChart>();
             listOfBarcharts = new List<StackedBarchart>();
             listOfTableCharts = new List<ProductTableChart>();
@@ -65,12 +65,13 @@ namespace Intelmatix
 
         void OnEnable()
         {
-            if (Object.ReferenceEquals(sidebarReference, null)) return;
+            if (Object.ReferenceEquals(SidebarReference, null)) return;
             parentOfGraphics.DestroyChildren();
+            parentOfDecideMode.DestroyChildren();
 
             questionsReference.OnDataChanged += SetupKPI;
 
-            sidebarReference.OnDataChanged += SetupSidebar;
+            SidebarReference.OnDataChanged += SetupSidebar;
             // UIManager.OnTabSelected += OnTabSelected;
             UIManager.PreQuestionSelectedEvent += OnQuestionSelected;
             UIManager.PreTabSelectedEvent += OnTabSelectedHandler;
@@ -78,10 +79,10 @@ namespace Intelmatix
 
         void OnDisable()
         {
-            if (Object.ReferenceEquals(sidebarReference, null)) return;
+            if (Object.ReferenceEquals(SidebarReference, null)) return;
             questionsReference.OnDataChanged -= SetupKPI;
 
-            sidebarReference.OnDataChanged -= SetupSidebar;
+            SidebarReference.OnDataChanged -= SetupSidebar;
             UIManager.PreQuestionSelectedEvent -= OnQuestionSelected;
             UIManager.PreTabSelectedEvent -= OnTabSelectedHandler;
             // UIManager.OnTabSelected -= OnTabSelected;
@@ -256,7 +257,7 @@ namespace Intelmatix
             {
                 LeanTween.delayedCall(this.gameObject, delay, () =>
                 {
-                    var instance = Instantiate(prefab, parentOfGraphics);
+                    var instance = Instantiate(prefab, (prefab is DecideMode) ? parentOfDecideMode : parentOfGraphics);
                     instance.transform.SetAsLastSibling();
                     instance.Display(item);
                     instantiateList.Add(instance);
