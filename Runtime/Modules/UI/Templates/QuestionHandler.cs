@@ -17,8 +17,7 @@ namespace Intelmatix.Templates
         [Header("Animation")]
         [SerializeField] private CanvasGroup canvasToAnimate;
 
-        [Header("Components")]
-        [SerializeField] private TextVerticalSizeAdjuster textVerticalSizeAdjuster;
+
 
 
         private void OnEnable()
@@ -38,7 +37,6 @@ namespace Intelmatix.Templates
             }
             this.name = "<li-question> [" + question.Title + "]";
             titleText.text = question.Title;
-            textVerticalSizeAdjuster.UpdateSize();
             toggle.group = toggleGroup;
             toggle.onValueChanged.AddListener((value) =>
             {

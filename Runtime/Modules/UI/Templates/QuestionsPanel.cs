@@ -19,7 +19,7 @@ namespace Intelmatix.Templates
         [Header("Animation")]
         [SerializeField] private CanvasGroup canvasToAnimate;
 
-        private List<QuestionHandler> questionHandlers = new List<QuestionHandler>();
+        private readonly List<QuestionHandler> questionHandlers = new();
 
         private void OnEnable()
         {
