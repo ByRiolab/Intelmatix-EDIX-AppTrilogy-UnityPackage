@@ -6,6 +6,7 @@ using static Intelmatix.Data.QuestionsData;
 
 namespace Intelmatix.Templates
 {
+    [RequireComponent(typeof(CanvasGroup))]
     public class QuestionsPanel : MonoBehaviour
     {
         [Header("References")]
@@ -20,6 +21,11 @@ namespace Intelmatix.Templates
         [SerializeField] private CanvasGroup canvasToAnimate;
 
         private readonly List<QuestionHandler> questionHandlers = new();
+        private CanvasGroup myCanvasGroup;
+        private void Awake()
+        {
+            myCanvasGroup = GetComponent<CanvasGroup>();
+        }
 
         private void OnEnable()
         {
@@ -52,7 +58,9 @@ namespace Intelmatix.Templates
 
         private void Show()
         {
-            LeanTween.delayedCall(.1f, () =>
+            LeanTween.cancel(gameObject);
+            myCanvasGroup.alpha = 0;
+            myCanvasGroup.LeanAlpha(1, .1f).setOnComplete(() =>
             {
                 var duration = 1.1f;
                 // Animation of cascade
@@ -70,6 +78,7 @@ namespace Intelmatix.Templates
 
         public void Hide()
         {
+            LeanTween.cancel(gameObject);
             var duration = .8f;
             // Inverse animation of cascade
             var length = questionHandlers.Count;
@@ -83,8 +92,7 @@ namespace Intelmatix.Templates
             }
             AnimationManager.AnimateOut(canvasToAnimate, duration: duration, distance: (length + 2) * 100f);
 
-            Destroy(gameObject, 1.25f);
-
+            myCanvasGroup.LeanAlpha(0, .1f).setDelay(1.25f).setOnComplete(() => Destroy(gameObject));
         }
     }
 }
