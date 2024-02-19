@@ -1,5 +1,5 @@
 using System;
-using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 namespace Intelmatix.Data
 {
@@ -27,8 +27,11 @@ namespace Intelmatix.Data
         [SerializeField] private string developmentPath = "https://dev-api.intelmatix.com";
         [SerializeField] private string testPath = "https://test-api.intelmatix.com";
         [SerializeField] private string productionPath = "https://api.intelmatix.com";
+        private static string StreamingPath;
+        private static string StreamingKey;
+        private static string StreamingRootPath;
 
-        private string api => environment switch
+        private string Api => environment switch
         {
             Environment.Local => localPath,
             Environment.Development => developmentPath,
@@ -43,10 +46,30 @@ namespace Intelmatix.Data
         [Header("Paths")]
         [SerializeField] private string rootPath = "/api/edix/visualization";
 
-        public string API => api;
-        public string AuthorizationKey => authorizationKey;
-        public string RootPath => rootPath;
+        public string API => StreamingPath ?? Api;
+        public string AuthorizationKey => StreamingKey ?? authorizationKey;
+        public string RootPath => StreamingRootPath ?? rootPath;
 
+        [RuntimeInitializeOnLoadMethod]
+        public static void LoadFromStreamingAssets()
+        {
+            string filePath = Path.Combine(Application.streamingAssetsPath, "api.config");
+
+            if (File.Exists(filePath))
+            {
+                string result;
+
+                result = File.ReadAllText(filePath);
+
+                StreamingPath = result.Split('\n')?[0];
+                StreamingKey = result.Split('\n')?[1];
+                StreamingRootPath = result.Split('\n')?[2];
+            }
+            else
+            {
+                Debug.LogWarning("No hay una configuración de API guardada en StreamingAssets (api.config)");
+            }
+        }
     }
 
 
