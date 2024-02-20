@@ -27,7 +27,7 @@ public class ScrollHighlight : MonoBehaviour
             }
 
             float diff = Mathf.Abs(item.position.y - scrollRect.viewport.position.y);
-            float delta = Mathf.InverseLerp(maxPositionDiff, 100, diff);
+            float delta = Mathf.InverseLerp(maxPositionDiff, 0, diff);
 
             float alpha = Mathf.Lerp(alphaMinMax.x, alphaMinMax.y, Mathf.Pow(delta, alphaExp));
             canvasGroup.alpha = alpha;
