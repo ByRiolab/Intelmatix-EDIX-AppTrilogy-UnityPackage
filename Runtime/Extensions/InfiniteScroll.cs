@@ -15,7 +15,7 @@ public class InfiniteScroll : MonoBehaviour
 		// Initialize();
 	}
 
-	private void Initialize()
+	public void Initialize()
 	{
 		int count = Content.childCount;
 

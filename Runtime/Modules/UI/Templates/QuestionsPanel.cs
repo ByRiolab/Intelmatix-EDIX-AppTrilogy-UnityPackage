@@ -46,13 +46,15 @@ namespace Intelmatix.Templates
             // Instantiate question handlers
             parentOfQuestions.DestroyChildren();
 
-            tab.Questions.ForEach(question =>
+            for (int i = 0; i < 5; i++)
             {
-                var instance = Instantiate(questionHandlerPrefab, parentOfQuestions);
-                instance.Display(question, toggleGroup);
-                questionHandlers.Add(instance);
-            });
-
+                tab.Questions.ForEach(question =>
+                   {
+                       var instance = Instantiate(questionHandlerPrefab, parentOfQuestions);
+                       instance.Display(question, toggleGroup);
+                       questionHandlers.Add(instance);
+                   });
+            }
             Show();
         }
 
