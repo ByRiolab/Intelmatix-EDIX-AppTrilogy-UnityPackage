@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 [DefaultExecutionOrder(-2)]
@@ -32,15 +30,12 @@ public class InfiniteScroll : MonoBehaviour
 
 		if (target < threshold)
 		{
-			if (threshold - target > 0.05f)
-				target += threshold;
+			target += threshold;
 		}
 		else if (target > 1 - threshold)
 		{
-			if (target - threshold > 0.05f)
-				target -= threshold;
+			target -= threshold;
 		}
-
 		//Snap
 		if (Mathf.Abs(velocity.y) <= 4)
 		{
@@ -50,6 +45,5 @@ public class InfiniteScroll : MonoBehaviour
 		scrollRect.verticalNormalizedPosition = target;
 
 		scrollRect.velocity = Mathf.Abs(velocity.y) > 4 ? velocity : Vector2.zero;
-
 	}
 }
