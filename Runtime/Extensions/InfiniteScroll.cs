@@ -18,6 +18,15 @@ public class InfiniteScroll : MonoBehaviour
 	private void Initialize()
 	{
 		int count = Content.childCount;
+
+		for (int i = duplicatedItems.Count - 1; i >= 0; i--)
+		{
+			if (duplicatedItems[i])
+				Destroy(duplicatedItems[i].gameObject);
+		}
+		duplicatedItems.Clear();
+		originalItems.Clear();
+
 		for (int i = 0; i < count; i++)
 		{
 			RectTransform item = (RectTransform)Content.GetChild(i);
@@ -42,7 +51,7 @@ public class InfiniteScroll : MonoBehaviour
 	private void LateUpdate()
 	{
 		if (Content.rect.height < Viewport.rect.height) return;
-		
+
 		var velocity = scrollRect.velocity;
 
 		const float THRESHOLD = 0.125f;
