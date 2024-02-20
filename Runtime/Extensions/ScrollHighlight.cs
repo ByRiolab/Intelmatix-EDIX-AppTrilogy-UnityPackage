@@ -7,8 +7,11 @@ public class ScrollHighlight : MonoBehaviour
     [SerializeField] private ScrollRect scrollRect;
     private RectTransform Content => scrollRect.content;
 
+    [SerializeField] private float maxPositionDiff = 1500;
+    [Space]
     [SerializeField] private Vector2 alphaMinMax = new(0.01f, 1);
     [SerializeField] private uint alphaExp = 12;
+    [Space]
     [SerializeField] private Vector2 scaleMinMax = new(0.01f, 1.2f);
     [SerializeField] private uint scaleExp = 8;
 
@@ -23,10 +26,8 @@ public class ScrollHighlight : MonoBehaviour
                 canvasGroup = item.gameObject.AddComponent<CanvasGroup>();
             }
 
-            float position = 1 - ((float)i) / Content.childCount;
-
-
-            float delta = 1 - Mathf.Abs(scrollRect.normalizedPosition.y - position);
+            float diff = Mathf.Abs(item.position.y - scrollRect.viewport.position.y);
+            float delta = Mathf.InverseLerp(maxPositionDiff, 100, diff);
 
             float alpha = Mathf.Lerp(alphaMinMax.x, alphaMinMax.y, Mathf.Pow(delta, alphaExp));
             canvasGroup.alpha = alpha;
