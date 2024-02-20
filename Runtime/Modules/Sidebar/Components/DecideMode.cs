@@ -37,6 +37,7 @@ namespace Intelmatix.Modules.Sidebar
                 StartCoroutine(ChangePosition(false));
                 cognitiveCanvasGroup.LeanAlpha(value ? 1 : alpha, duration);
             });
+            StartCoroutine(ChangePosition(false));
         }
         public void Display(UnityEngine.Events.UnityAction humanMonde, UnityEngine.Events.UnityAction cognitiveMode)
         {
