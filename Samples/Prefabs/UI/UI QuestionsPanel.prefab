@@ -256,8 +256,9 @@ GameObject:
   - component: {fileID: 5455288194800980576}
   - component: {fileID: 7526807288799496759}
   - component: {fileID: 6088364953372794410}
-  - component: {fileID: 2899073219293139513}
   - component: {fileID: 7780527425927418516}
+  - component: {fileID: 5818289169923289409}
+  - component: {fileID: 6633458070493789089}
   m_Layer: 5
   m_Name: UI QuestionsPanel
   m_TagString: Untagged
@@ -340,20 +341,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2899073219293139513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6238125417964040635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding: {x: 0, y: 0, z: 0, w: 0}
-  m_Softness: {x: 0, y: 0}
 --- !u!114 &7780527425927418516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,6 +371,31 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!225 &5818289169923289409
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6238125417964040635}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &6633458070493789089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6238125417964040635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e46a0f1f839d0423ca2939c9e0777492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollRect: {fileID: 7780527425927418516}
 --- !u!1 &7182879925018500500
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,6 +406,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3340241347721717083}
   - component: {fileID: 4591123319173575749}
+  - component: {fileID: 2600415938419180636}
   m_Layer: 5
   m_Name: <menu>
   m_TagString: Untagged
@@ -449,6 +462,20 @@ MonoBehaviour:
   refreshType: 0
   refreshRate: 1
   debug: 0
+--- !u!114 &2600415938419180636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7182879925018500500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!1 &7850079519015833622
 GameObject:
   m_ObjectHideFlags: 0

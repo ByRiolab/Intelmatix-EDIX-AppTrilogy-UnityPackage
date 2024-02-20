@@ -2358,7 +2358,7 @@ MonoBehaviour:
     m_Left: 70
     m_Right: 0
     m_Top: 350
-    m_Bottom: 30
+    m_Bottom: 80
   spacing: 0
   restrictTo: 0
   refreshType: 2
