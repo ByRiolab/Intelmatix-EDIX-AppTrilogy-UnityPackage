@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -28,10 +29,12 @@ namespace Intelmatix.Modules.Sidebar
 
             humanButton.onValueChanged.AddListener((value) =>
             {
+                StartCoroutine(ChangePosition(true));
                 humanCanvasGroup.LeanAlpha(value ? 1 : alpha, duration);
             });
             cognitiveButton.onValueChanged.AddListener((value) =>
             {
+                StartCoroutine(ChangePosition(false));
                 cognitiveCanvasGroup.LeanAlpha(value ? 1 : alpha, duration);
             });
         }
@@ -41,6 +44,7 @@ namespace Intelmatix.Modules.Sidebar
             {
                 if (value)
                 {
+
                     humanMonde?.Invoke();
                     SidebarManager.Instance.RestoreKPI();
                 }
@@ -49,6 +53,7 @@ namespace Intelmatix.Modules.Sidebar
             {
                 if (value)
                 {
+
                     cognitiveMode?.Invoke();
                 }
             });
@@ -75,6 +80,27 @@ namespace Intelmatix.Modules.Sidebar
         public LTDescr Hide()
         {
             return AnimationManager.AnimateOut(this.canvasGroup, direction: AnimationManager.Direction.Right);
+        }
+
+        private IEnumerator ChangePosition(bool top)
+        {
+            const float speed = 1500;
+            bool condition()
+            {
+                if (top)
+                {
+                    return ((RectTransform)transform).anchoredPosition.y < 0;
+                }
+                else
+                {
+                    return ((RectTransform)transform).anchoredPosition.y > -((RectTransform)transform.parent).rect.height + ((RectTransform)transform).rect.height;
+                }
+            }
+            while (condition())
+            {
+                ((RectTransform)transform).anchoredPosition += new Vector2(0, (top ? speed : -speed) * Time.deltaTime);
+                yield return null;
+            }
         }
 
 
