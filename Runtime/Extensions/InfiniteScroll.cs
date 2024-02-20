@@ -1,71 +1,55 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+[DefaultExecutionOrder(-2)]
 public class InfiniteScroll : MonoBehaviour
 {
 	[SerializeField] private ScrollRect scrollRect;
 	RectTransform Content => scrollRect.content;
 	RectTransform Viewport => scrollRect.viewport;
 
-	private readonly List<RectTransform> originalItems = new();
-	private readonly List<RectTransform> duplicatedItems = new();
+	[Min(1)] public int originalItemsCount = 4;
+	public uint clonesPerItem = 3;
 	private void Start()
 	{
-		// Initialize();
-	}
-
-	public void Initialize()
-	{
-		int count = Content.childCount;
-
-		for (int i = duplicatedItems.Count - 1; i >= 0; i--)
-		{
-			if (duplicatedItems[i])
-				Destroy(duplicatedItems[i].gameObject);
-		}
-		duplicatedItems.Clear();
-		originalItems.Clear();
-
-		for (int i = 0; i < count; i++)
-		{
-			RectTransform item = (RectTransform)Content.GetChild(i);
-			if (item.gameObject.activeSelf)
-				originalItems.Add(item);
-		}
-		for (int i = 0; i < 4; i++)
-		{
-			DuplicateItems();
-		}
 		scrollRect.verticalNormalizedPosition = 0.5f;
-	}
-	private void DuplicateItems()
-	{
-		for (int i = 0; i < originalItems.Count; i++)
-		{
-			RectTransform item = originalItems[i];
-			duplicatedItems.Add(Instantiate(item, Content));
-		}
 	}
 
 	private void LateUpdate()
 	{
-		if (Content.rect.height < Viewport.rect.height) return;
+		if (Content.rect.height < Viewport.rect.height || originalItemsCount <= 0) return;
 
 		var velocity = scrollRect.velocity;
 
-		const float THRESHOLD = 0.125f;
-		const float INCREMENT = 0.25f;
+		float itemProportion = Content.rect.height / Content.childCount / Content.rect.height;
 
-		if (scrollRect.verticalNormalizedPosition < THRESHOLD)
+		float threshold = originalItemsCount * itemProportion;
+
+		float target = scrollRect.verticalNormalizedPosition;
+
+		//Infinite Scroll
+
+		if (target < threshold)
 		{
-			scrollRect.verticalNormalizedPosition += INCREMENT;
+			if (threshold - target > 0.05f)
+				target += threshold;
 		}
-		if (scrollRect.verticalNormalizedPosition > 1 - THRESHOLD)
+		else if (target > 1 - threshold)
 		{
-			scrollRect.verticalNormalizedPosition -= INCREMENT;
+			if (target - threshold > 0.05f)
+				target -= threshold;
 		}
 
-		scrollRect.velocity = velocity;
+		//Snap
+		if (Mathf.Abs(velocity.y) <= 4)
+		{
+			target = Mathf.Lerp(target, target - target % itemProportion * 0.75f, Time.deltaTime * 5);
+		}
+
+		scrollRect.verticalNormalizedPosition = target;
+
+		scrollRect.velocity = Mathf.Abs(velocity.y) > 4 ? velocity : Vector2.zero;
+
 	}
 }

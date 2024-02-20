@@ -55,6 +55,11 @@ namespace Intelmatix.Templates
                        questionHandlers.Add(instance);
                    });
             }
+            if (TryGetComponent(out InfiniteScroll infiniteScroll))
+            {
+                infiniteScroll.originalItemsCount = tab.Questions.Count;
+            }
+
             Show();
         }
 
