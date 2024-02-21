@@ -33,6 +33,11 @@ namespace Intelmatix
         {
             bool inputReceived = Input.anyKeyDown || Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2);
 
+            if (inputReceived)
+            {
+                ResetInactivityTimer();
+            }
+
             if (isScreensaverActive && inputReceived)
             {
                 if (projectOpened)
