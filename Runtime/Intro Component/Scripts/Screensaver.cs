@@ -46,6 +46,8 @@ namespace Intelmatix
                 if (inactivityTimer >= inactivityDuration)
                     ActivateScreensaver();
             }
+
+            screensaverCanvas.blocksRaycasts = screensaverCanvas.alpha > 0.1f;
         }
 
         private void ShowButtons()
