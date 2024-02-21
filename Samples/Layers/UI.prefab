@@ -2358,7 +2358,7 @@ MonoBehaviour:
     m_Left: 70
     m_Right: 0
     m_Top: 350
-    m_Bottom: 80
+    m_Bottom: 120
   spacing: 0
   restrictTo: 0
   refreshType: 2
@@ -2435,7 +2435,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 70, y: 30}
-  m_SizeDelta: {x: 1870, y: 553.978}
+  m_SizeDelta: {x: 1870, y: 500}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &6155746442515619815
 MonoBehaviour:
@@ -2451,7 +2451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
     type: 1
-    percentageValue: 0.5
+    percentageValue: 0.35
 --- !u!1 &6155746442608698183
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,13 @@ using UnityEngine.UI;
 [DefaultExecutionOrder(-2)]
 public class InfiniteScroll : MonoBehaviour, IDragHandler, IEndDragHandler
 {
+	enum SnapPosition
+	{
+		CENTER, TOP, BOTTOM
+	}
+
 	[SerializeField] private ScrollRect scrollRect;
+	[SerializeField] private SnapPosition snapPosition;
 	RectTransform Content => scrollRect.content;
 	RectTransform Viewport => scrollRect.viewport;
 

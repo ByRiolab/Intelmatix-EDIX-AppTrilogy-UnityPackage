@@ -4,10 +4,20 @@ using UnityEngine.UI;
 [DefaultExecutionOrder(-1)]
 public class ScrollHighlight : MonoBehaviour
 {
+
+    enum ScrollPositionReference
+    {
+        CENTER, TOP, BOTTOM
+    }
+
     [SerializeField] private ScrollRect scrollRect;
     private RectTransform Content => scrollRect.content;
 
+    [SerializeField] private ScrollPositionReference positionReference;
+
+
     [SerializeField] private float maxPositionDiff = 1500;
+    [SerializeField] private float offset = 0;
     [Space]
     [SerializeField] private Vector2 alphaMinMax = new(0.01f, 1);
     [SerializeField] private uint alphaExp = 12;
@@ -26,7 +36,21 @@ public class ScrollHighlight : MonoBehaviour
                 canvasGroup = item.gameObject.AddComponent<CanvasGroup>();
             }
 
-            float diff = Mathf.Abs(item.position.y - scrollRect.viewport.position.y);
+            Debug.Log(scrollRect.viewport.position.y + " | " + scrollRect.viewport.rect.height / 2);
+
+            float viewportPosition = scrollRect.viewport.position.y + offset;
+            if (positionReference == ScrollPositionReference.TOP)
+            {
+                viewportPosition += scrollRect.viewport.rect.height / 4;
+            }
+            else if (positionReference == ScrollPositionReference.BOTTOM)
+            {
+                viewportPosition -= scrollRect.viewport.rect.height / 4;
+            }
+
+            float diff = Mathf.Abs(item.position.y - viewportPosition);
+
+
             float delta = Mathf.InverseLerp(maxPositionDiff, 0, diff);
 
             float alpha = Mathf.Lerp(alphaMinMax.x, alphaMinMax.y, Mathf.Pow(delta, alphaExp));

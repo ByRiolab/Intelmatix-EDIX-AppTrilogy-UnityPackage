@@ -1,84 +1,85 @@
-using Intelmatix.Tools;
 using UnityEngine;
-
 
 namespace Intelmatix
 {
     public class Screensaver : MonoBehaviour
     {
-        [SerializeField] private CanvasGroup canvasGroup;
-        [SerializeField] private float delay = 1f;
-        [SerializeField] private float fadeInDuration = 2f;
+        [Header("References")]
+        [SerializeField] private CubeBehaviorController cubeController;
+        [SerializeField] private CanvasGroup screensaverCanvas;
+        [SerializeField] private CanvasGroup buttonsCanvas;
+        [SerializeField] private CanvasGroup videoCanvas;
+        [SerializeField] private CanvasGroup cubesCanvas;
 
-        [SerializeField] private float fadeOutDuration = 2f;
-        [SerializeField] private float inactivityDuration = 10f; // tiempo de inactividad en segundos
+        [Header("Settings")]
+        [SerializeField, Min(0)] private float inactivityDuration = 240f;
 
-        [SerializeField] private LeanTweenType fadeInEaseType = LeanTweenType.easeOutQuad;
-        [SerializeField] private LeanTweenType fadeOutEaseType = LeanTweenType.easeOutQuad;
+        [Header("Initialization")]
+        [SerializeField] private bool startOnAwake = true;
 
-        [SerializeField] private CubeController cubeController;
+        private bool isScreensaverActive = true;
+        private float inactivityTimer;
+        private static bool projectOpened;
 
-        [SerializeField] private bool _startOnAwake = true;
-        [SerializeField] private bool _isScreensaverActive = true;
-
-        private float _timer;
-        void Awake()
+        private void Awake()
         {
-            canvasGroup.alpha = 0;
-            canvasGroup.blocksRaycasts = false;
-            _timer = 0f;
+            ResetInactivityTimer();
 
-            if (_startOnAwake)
+            if (startOnAwake)
+                ActivateScreensaver();
+        }
+
+        private void Update()
+        {
+            bool inputReceived = Input.anyKeyDown || Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2);
+
+            if (isScreensaverActive && inputReceived)
             {
-                canvasGroup.alpha = 1;
-                canvasGroup.blocksRaycasts = true;
-                _isScreensaverActive = true;
-                LeanTween.cancel(gameObject);
+                if (projectOpened)
+                    DeactivateScreensaver();
+                else
+                    ShowButtons();
+            }
+            else if (!isScreensaverActive)
+            {
+                inactivityTimer += Time.deltaTime;
+                if (inactivityTimer >= inactivityDuration)
+                    ActivateScreensaver();
             }
         }
 
-        void Update()
+        private void ShowButtons()
         {
-            var isInteractive = Input.anyKey || Input.GetMouseButton(0) || Input.GetMouseButton(1) || Input.GetMouseButton(2) || Input.touchCount > 0;
-
-            if (isInteractive)
-            {
-                _timer = 0f;
-
-            }
-            if (_isScreensaverActive && isInteractive)
-            {
-                LeanTween.cancel(gameObject, true);
-                cubeController.EvaluateCandidates();
-                _isScreensaverActive = false;
-                _timer = 0f;
-                LeanTween.value(gameObject, UpdateAlpha, canvasGroup.alpha, 0, fadeOutDuration).setEase(fadeOutEaseType).setOnStart(() =>
-                {
-                    canvasGroup.blocksRaycasts = false;
-                }).setDelay(delay);
-            }
-            else
-            {
-                _timer += Time.deltaTime;
-                if (_timer >= inactivityDuration)
-                {
-                    LeanTween.cancel(gameObject, true);
-                    LeanTween.value(gameObject, UpdateAlpha, canvasGroup.alpha, 1, fadeInDuration).setEase(fadeInEaseType)
-                        .setOnComplete(() =>
-                        {
-                            Debug.Log("Screensaver active");
-                            _isScreensaverActive = true;
-                            canvasGroup.blocksRaycasts = true;
-                        });
-                }
-            }
+            buttonsCanvas.LeanAlpha(1, 0.3f).setOnComplete(() => buttonsCanvas.blocksRaycasts = true);
+            cubeController.Deactivate();
+            videoCanvas.LeanAlpha(0.1f, 0.3f);
+            cubesCanvas.LeanAlpha(0, 0.3f);
         }
 
-        void UpdateAlpha(float alpha)
+        public void ActivateScreensaver()
         {
-            canvasGroup.alpha = alpha;
+            ResetScreensaver();
+            screensaverCanvas.LeanAlpha(1, 0.5f);
         }
+
+        public void DeactivateScreensaver()
+        {
+            projectOpened = true;
+            isScreensaverActive = false;
+            screensaverCanvas.LeanAlpha(0, 0.5f);
+            cubeController.Deactivate();
+        }
+
+        public void ResetScreensaver()
+        {
+            cubesCanvas.LeanAlpha(1, 0.3f);
+            videoCanvas.LeanAlpha(1, 0.3f);
+            cubeController.Collapse();
+            buttonsCanvas.LeanAlpha(0, 0.3f);
+            ResetInactivityTimer();
+            isScreensaverActive = true;
+        }
+
+        private void ResetInactivityTimer() => inactivityTimer = 0f;
     }
-
 }
-
