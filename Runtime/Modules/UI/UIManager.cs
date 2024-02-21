@@ -98,7 +98,7 @@ namespace Intelmatix
                         if (isCognitive && isSelected)
                         {
                             SidebarManager.OpenDecisionPanel(
-                                humanMonde: () =>
+                                humanMode: () =>
                                 {
                                     currentPanel?.Hide();
                                     currentPanel = null;

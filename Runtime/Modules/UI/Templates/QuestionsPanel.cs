@@ -99,7 +99,8 @@ namespace Intelmatix.Templates
             }
             AnimationManager.AnimateOut(canvasToAnimate, duration: duration, distance: (length + 2) * 100f);
 
-            myCanvasGroup.LeanAlpha(0, .1f).setDelay(1.25f).setOnComplete(() => Destroy(gameObject));
+            myCanvasGroup.LeanAlpha(0, .1f).setDelay(1.25f);
+            Destroy(gameObject, 1.3f);
         }
     }
 }

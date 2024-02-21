@@ -39,14 +39,13 @@ namespace Intelmatix.Modules.Sidebar
             });
             StartCoroutine(ChangePosition(false));
         }
-        public void Display(UnityEngine.Events.UnityAction humanMonde, UnityEngine.Events.UnityAction cognitiveMode)
+        public void Display(UnityAction humanMode, UnityAction cognitiveMode)
         {
             humanButton.onValueChanged.AddListener((value) =>
             {
                 if (value)
                 {
-
-                    humanMonde?.Invoke();
+                    humanMode?.Invoke();
                     SidebarManager.Instance.RestoreKPI();
                 }
             });
@@ -54,7 +53,6 @@ namespace Intelmatix.Modules.Sidebar
             {
                 if (value)
                 {
-
                     cognitiveMode?.Invoke();
                 }
             });

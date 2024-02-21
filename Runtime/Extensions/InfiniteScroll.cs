@@ -1,7 +1,8 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 [DefaultExecutionOrder(-2)]
-public class InfiniteScroll : MonoBehaviour
+public class InfiniteScroll : MonoBehaviour, IDragHandler, IEndDragHandler
 {
 	[SerializeField] private ScrollRect scrollRect;
 	RectTransform Content => scrollRect.content;
@@ -9,6 +10,7 @@ public class InfiniteScroll : MonoBehaviour
 
 	[Min(1)] public int originalItemsCount = 4;
 	public uint clonesPerItem = 3;
+	private bool isDragging;
 	private void Start()
 	{
 		scrollRect.verticalNormalizedPosition = 0.5f;
@@ -37,13 +39,23 @@ public class InfiniteScroll : MonoBehaviour
 			target -= threshold;
 		}
 		//Snap
-		if (Mathf.Abs(velocity.y) <= 4)
+		if (Mathf.Abs(velocity.y) <= 50 && !isDragging)
 		{
-			target = Mathf.Lerp(target, target - target % itemProportion * 0.75f, Time.deltaTime * 5);
+			target = Mathf.Lerp(target, target + (target % (itemProportion / 2f)) * 0.5f * (velocity.y > 0 ? 1 : -1), Time.deltaTime * 10);
 		}
 
 		scrollRect.verticalNormalizedPosition = target;
 
-		scrollRect.velocity = Mathf.Abs(velocity.y) > 4 ? velocity : Vector2.zero;
+		scrollRect.velocity = Mathf.Abs(velocity.y) > 50 ? velocity : Vector2.zero;
+	}
+
+	public void OnDrag(PointerEventData eventData)
+	{
+		isDragging = true;
+	}
+
+	public void OnEndDrag(PointerEventData eventData)
+	{
+		isDragging = false;
 	}
 }

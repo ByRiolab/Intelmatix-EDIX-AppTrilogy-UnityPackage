@@ -173,7 +173,7 @@ namespace Intelmatix
             DestroyGraphics();
         }
 
-        public static void OpenDecisionPanel(UnityEngine.Events.UnityAction humanMonde, UnityEngine.Events.UnityAction cognitiveMode)
+        public static void OpenDecisionPanel(UnityEngine.Events.UnityAction humanMode, UnityEngine.Events.UnityAction cognitiveMode)
         {
             Instance.backgroundAnimation.ShowRect(SidebarAnimationSettings.BackgroundAppearDuration);
             Instance.DestroyGraphics();
@@ -186,12 +186,11 @@ namespace Intelmatix
             LeanTween.delayedCall(Instance.gameObject, delay, () =>
             {
                 var instance = Instantiate(Instance.decideModePrefab, Instance.parentOfDecideMode);
-                instance.Display(humanMonde: () =>
+                instance.Display(humanMode: () =>
                 {
-
                     Instance.DestroyObjectOfList(Instance.listOfDecideOptions);
                     Instance.RestoreKPI();
-                    humanMonde?.Invoke();
+                    humanMode?.Invoke();
                     Debug.Log("Display Human Mode");
                 }, cognitiveMode: () =>
                 {
