@@ -199,7 +199,7 @@ MonoBehaviour:
   movementType: 0
   movementAxis: 1
   useAutomaticLayout: 1
-  automaticLayoutSpacing: 0.25
+  automaticLayoutSpacing: 0.075
   sizeControl: 1
   size: {x: 400, y: 250}
   automaticLayoutMargins:
