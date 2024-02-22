@@ -4169,6 +4169,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5455288194800980576, guid: 4ed599d9b8deb4cdeb2101ff101a5985, type: 3}
+      propertyPath: canvasToAnimate
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5455288194800980576, guid: 4ed599d9b8deb4cdeb2101ff101a5985, type: 3}
+      propertyPath: globalQuestionText
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5889949899804518728, guid: 4ed599d9b8deb4cdeb2101ff101a5985, type: 3}
       propertyPath: m_fontSize
       value: 69
@@ -4285,13 +4293,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 648221622551008303, guid: 4ed599d9b8deb4cdeb2101ff101a5985, type: 3}
+    - {fileID: 51336533660296252, guid: 4ed599d9b8deb4cdeb2101ff101a5985, type: 3}
     m_RemovedGameObjects:
     - {fileID: 2165915494613685898, guid: 4ed599d9b8deb4cdeb2101ff101a5985, type: 3}
     - {fileID: 7963004673740174511, guid: 4ed599d9b8deb4cdeb2101ff101a5985, type: 3}
     - {fileID: 5604273314116825863, guid: 4ed599d9b8deb4cdeb2101ff101a5985, type: 3}
     - {fileID: 3365419110907302891, guid: 4ed599d9b8deb4cdeb2101ff101a5985, type: 3}
     - {fileID: 2334188887617124580, guid: 4ed599d9b8deb4cdeb2101ff101a5985, type: 3}
+    - {fileID: 2547662197449019722, guid: 4ed599d9b8deb4cdeb2101ff101a5985, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ed599d9b8deb4cdeb2101ff101a5985, type: 3}

@@ -11,7 +11,6 @@ namespace Intelmatix.Templates
     public class QuestionsPanel : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private TextMeshProUGUI globalQuestionText;
         [SerializeField] private ToggleGroup toggleGroup;
         [SerializeField] private RectTransform parentOfQuestions;
         [SerializeField] private SimpleScrollSnap simpleScrollSnap;
@@ -19,8 +18,6 @@ namespace Intelmatix.Templates
         [Header("Components")]
         [SerializeField] private QuestionHandler questionHandlerPrefab;
 
-        [Header("Animation")]
-        [SerializeField] private CanvasGroup canvasToAnimate;
         private readonly List<QuestionHandler> questionHandlers = new();
         private CanvasGroup myCanvasGroup;
         private void Awake()
@@ -29,34 +26,26 @@ namespace Intelmatix.Templates
             simpleScrollSnap = simpleScrollSnap != null ? simpleScrollSnap : GetComponent<SimpleScrollSnap>();
         }
 
-        private void OnEnable()
-        {
-            if (canvasToAnimate != null)
-            {
-                canvasToAnimate.alpha = 0;
-                canvasToAnimate.blocksRaycasts = false;
-            }
-        }
-
-
         public void Display(Tab tab)
         {
             this.name = "<questions-panel> [" + tab.Tittle + "]";
 
-            globalQuestionText.text = tab.GlobalQuestion;
-
-            // Instantiate question handlers
-            for (int i = 0; i < simpleScrollSnap.Content.childCount; i++)
+            for (int i = simpleScrollSnap.Content.childCount - 1; i >= 0; i--)
             {
-                simpleScrollSnap.RemoveFromFront();
+                try
+                {
+                    simpleScrollSnap.RemoveFromFront();
+                }
+                catch { }
             }
 
+            // Instantiate question handlers
             tab.Questions.ForEach(question =>
                {
 
                    simpleScrollSnap.AddToFront(questionHandlerPrefab.gameObject);
 
-                   var instance = simpleScrollSnap.Content.GetChild(simpleScrollSnap.Content.childCount - 1).GetComponent<QuestionHandler>();
+                   QuestionHandler instance = simpleScrollSnap.Content.GetChild(simpleScrollSnap.Content.childCount - 1).GetComponent<QuestionHandler>();
 
                    instance.Display(question, toggleGroup);
                    questionHandlers.Add(instance);
@@ -81,7 +70,6 @@ namespace Intelmatix.Templates
                         distance: 100f * (i + 2)
                     );
                 }
-                AnimationManager.AnimateIn(canvasToAnimate, duration: duration, distance: 100f);
             });
         }
 
@@ -99,7 +87,6 @@ namespace Intelmatix.Templates
                     distance: 100f * (length + 1 - i)
                 );
             }
-            AnimationManager.AnimateOut(canvasToAnimate, duration: duration, distance: (length + 2) * 100f);
 
             myCanvasGroup.LeanAlpha(0, .1f).setDelay(1.25f);
             Destroy(gameObject, 1.3f);
