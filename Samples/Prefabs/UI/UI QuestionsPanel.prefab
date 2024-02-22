@@ -200,8 +200,8 @@ MonoBehaviour:
   movementAxis: 1
   useAutomaticLayout: 1
   automaticLayoutSpacing: 0
-  sizeControl: 1
-  size: {x: 400, y: 250}
+  sizeControl: 0
+  size: {x: 800, y: 300}
   automaticLayoutMargins:
     Left: 0
     Right: 0
