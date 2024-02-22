@@ -201,7 +201,7 @@ MonoBehaviour:
   useAutomaticLayout: 1
   automaticLayoutSpacing: 0
   sizeControl: 0
-  size: {x: 800, y: 300}
+  size: {x: 800, y: 200}
   automaticLayoutMargins:
     Left: 0
     Right: 0
