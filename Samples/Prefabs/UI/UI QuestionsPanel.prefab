@@ -205,7 +205,7 @@ MonoBehaviour:
   automaticLayoutMargins:
     Left: 0
     Right: 0
-    Top: -70
+    Top: 0
     Bottom: 0
   useInfiniteScrolling: 1
   infiniteScrollingSpacing: 0
