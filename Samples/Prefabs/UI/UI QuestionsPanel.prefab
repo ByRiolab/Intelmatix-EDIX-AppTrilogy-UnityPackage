@@ -251,12 +251,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollRect: {fileID: 7780527425927418516}
   positionReference: 2
-  indexing: 1
+  indexing: 0
   maxPositionDiff: 1500
   offset: 0
   alphaMinMax: {x: 0.01, y: 1}
   alphaExp: 12
-  scaleMinMax: {x: 0.01, y: 1}
+  scaleMinMax: {x: 0.1, y: 1}
   scaleExp: 8
 --- !u!1 &7182879925018500500
 GameObject:
