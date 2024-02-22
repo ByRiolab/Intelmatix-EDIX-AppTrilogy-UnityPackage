@@ -13,17 +13,6 @@ namespace Intelmatix.Templates
         [SerializeField] private TextMeshProUGUI titleText;
         [SerializeField] private Toggle toggle;
 
-        [Header("Animation")]
-        [SerializeField] private CanvasGroup canvasToAnimate;
-
-        private void OnEnable()
-        {
-            if (canvasToAnimate != null)
-            {
-                canvasToAnimate.blocksRaycasts = false;
-            }
-        }
-
         public void Display(Question question, ToggleGroup toggleGroup)
         {
             if (question.IsCognitive)
@@ -45,22 +34,13 @@ namespace Intelmatix.Templates
 
             toggle.onValueChanged.AddListener((value) =>
             {
-                LeanTween.cancel(this.canvasToAnimate.gameObject);
                 if (value)
                 {
                     LeanTween.value(gameObject, (float value) =>
                     {
                         titleText.alpha = value;
-                    }, titleText.alpha, 1f, duration)
-                    .setOnComplete(() =>
-                    {
-                        this.canvasToAnimate.blocksRaycasts = true;
-                    })
-                    .setOnStart(() =>
-                    {
-                        this.canvasToAnimate.blocksRaycasts = false;
-                    });
-                    // LeanTween.moveLocal(this.canvasToAnimate.gameObject, Vector3.up * 75f,duration).setEase(LeanTweenType.easeOutBack);
+                    }, titleText.alpha, 1f, duration);
+
                     UIManager.SelectQuestion(question);
                 }
                 else
@@ -68,31 +48,14 @@ namespace Intelmatix.Templates
                     LeanTween.value(gameObject, (float value) =>
                     {
                         titleText.alpha = value;
-                    }, titleText.alpha, 0.25f, duration).setOnComplete(() =>
-                    {
-                        this.canvasToAnimate.blocksRaycasts = true;
-                    }).setOnStart(() =>
-                    {
-                        this.canvasToAnimate.blocksRaycasts = false;
-                    });
+                    }, titleText.alpha, 0.25f, duration);
 
                     if (!toggleGroup.AnyTogglesOn())
                     {
                         UIManager.SelectQuestion(null);
                     }
-                    // LeanTween.moveLocal(this.canvasToAnimate.gameObject, Vector3.zero,duration).setEase(LeanTweenType.easeOutBack);
                 }
             });
-        }
-
-        public void Show(float distance = 100, float duration = 1f)
-        {
-            // AnimationManager.AnimateIn(canvasToAnimate, duration: duration, distance: distance);
-        }
-
-        public void Hide(float distance = 100, float duration = 1f)
-        {
-            // AnimationManager.AnimateOut(canvasToAnimate, duration: duration, distance: distance);
         }
     }
 }
