@@ -208,7 +208,7 @@ MonoBehaviour:
     Top: 0
     Bottom: 0
   useInfiniteScrolling: 1
-  infiniteScrollingSpacing: 0.25
+  infiniteScrollingSpacing: 0.075
   useOcclusionCulling: 0
   startingPanel: 0
   useSwipeGestures: 1
