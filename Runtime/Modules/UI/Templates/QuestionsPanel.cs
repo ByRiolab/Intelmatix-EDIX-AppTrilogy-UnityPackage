@@ -75,20 +75,18 @@ namespace Intelmatix.Templates
         public void Hide()
         {
             LeanTween.cancel(gameObject);
-            var duration = .8f;
-            // Inverse animation of cascade
-            var length = questionHandlers.Count;
-            for (int i = 0; i < length; i++)
+            myCanvasGroup.LeanAlpha(0, .5f).setOnComplete(() =>
             {
-                questionHandlers[i].Hide
-                (
-                    duration: duration,
-                    distance: 100f * (length + 1 - i)
-                );
-            }
-
-            myCanvasGroup.LeanAlpha(0, .1f).setDelay(1.25f);
-            Destroy(gameObject, 1.3f);
+                for (int i = simpleScrollSnap.Content.childCount - 1; i >= 0; i--)
+                {
+                    try
+                    {
+                        simpleScrollSnap.RemoveFromFront();
+                    }
+                    catch { }
+                }
+                Destroy(gameObject);
+            });
         }
     }
 }
