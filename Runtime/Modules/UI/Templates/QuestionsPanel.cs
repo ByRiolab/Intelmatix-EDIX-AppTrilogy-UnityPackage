@@ -26,6 +26,7 @@ namespace Intelmatix.Templates
         private void Awake()
         {
             myCanvasGroup = GetComponent<CanvasGroup>();
+            simpleScrollSnap = simpleScrollSnap != null ? simpleScrollSnap : GetComponent<SimpleScrollSnap>();
         }
 
         private void OnEnable()
@@ -45,24 +46,22 @@ namespace Intelmatix.Templates
             globalQuestionText.text = tab.GlobalQuestion;
 
             // Instantiate question handlers
-            parentOfQuestions.DestroyChildren();
-
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < simpleScrollSnap.Content.childCount; i++)
             {
-                tab.Questions.ForEach(question =>
-                   {
-                       simpleScrollSnap.AddToFront(questionHandlerPrefab.gameObject);
-
-                       var instance = simpleScrollSnap.Content.GetChild(simpleScrollSnap.Content.childCount - 1).GetComponent<QuestionHandler>();
-
-                       instance.Display(question, toggleGroup);
-                       questionHandlers.Add(instance);
-                   });
+                simpleScrollSnap.RemoveFromFront();
             }
-            if (TryGetComponent(out InfiniteScroll infiniteScroll))
-            {
-                infiniteScroll.originalItemsCount = tab.Questions.Count;
-            }
+
+            tab.Questions.ForEach(question =>
+               {
+
+                   simpleScrollSnap.AddToFront(questionHandlerPrefab.gameObject);
+
+                   var instance = simpleScrollSnap.Content.GetChild(simpleScrollSnap.Content.childCount - 1).GetComponent<QuestionHandler>();
+
+                   instance.Display(question, toggleGroup);
+                   questionHandlers.Add(instance);
+               });
+
             Show();
         }
 

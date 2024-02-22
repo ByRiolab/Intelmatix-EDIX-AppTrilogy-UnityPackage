@@ -377,7 +377,7 @@ MonoBehaviour:
   globalQuestionText: {fileID: 5889949899804518728}
   toggleGroup: {fileID: 8750041199618622927}
   parentOfQuestions: {fileID: 2230766166142272765}
-  simpleScrollSnap: {fileID: 0}
+  simpleScrollSnap: {fileID: 6153809530141160206}
   questionHandlerPrefab: {fileID: 4154631061000407824, guid: efc1bf58e483b4ad5a459754933e5f72, type: 3}
   canvasToAnimate: {fileID: 8828943020230611214}
 --- !u!222 &7526807288799496759
@@ -437,7 +437,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6238125417964040635}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e13c3b2efd21481ea91b64603075431, type: 3}
   m_Name: 
@@ -473,7 +473,7 @@ MonoBehaviour:
     Right: 0
     Top: 0
     Bottom: 0
-  useInfiniteScrolling: 0
+  useInfiniteScrolling: 1
   infiniteScrollingSpacing: 0.25
   useOcclusionCulling: 0
   startingPanel: 0
