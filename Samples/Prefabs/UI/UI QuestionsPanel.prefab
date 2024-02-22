@@ -88,7 +88,6 @@ GameObject:
   - component: {fileID: 7526807288799496759}
   - component: {fileID: 7780527425927418516}
   - component: {fileID: 5818289169923289409}
-  - component: {fileID: 2246853205296839330}
   - component: {fileID: 6153809530141160206}
   m_Layer: 5
   m_Name: UI QuestionsPanel
@@ -184,26 +183,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &2246853205296839330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6238125417964040635}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e13c3b2efd21481ea91b64603075431, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scrollRect: {fileID: 7780527425927418516}
-  positionReference: 2
-  maxPositionDiff: 2000
-  offset: -50
-  alphaMinMax: {x: 0.01, y: 1}
-  alphaExp: 20
-  scaleMinMax: {x: 0.45, y: 1}
-  scaleExp: 10
 --- !u!114 &6153809530141160206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,6 +246,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3340241347721717083}
   - component: {fileID: 2600415938419180636}
+  - component: {fileID: 2263541609088008508}
+  - component: {fileID: 1886982661668660209}
   m_Layer: 5
   m_Name: <menu> Viewport
   m_TagString: Untagged
@@ -308,6 +289,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding: {x: 0, y: 0, z: 0, w: 0}
   m_Softness: {x: 0, y: 0}
+--- !u!222 &2263541609088008508
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7182879925018500500}
+  m_CullTransparentMesh: 1
+--- !u!114 &1886982661668660209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7182879925018500500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &7850079519015833622
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,7 +338,6 @@ GameObject:
   - component: {fileID: 2230766166142272765}
   - component: {fileID: 8750041199618622927}
   - component: {fileID: 138348156415377948}
-  - component: {fileID: 5494837063434002797}
   m_Layer: 5
   m_Name: <ul-container> [Questions Parent]
   m_TagString: Untagged
@@ -367,33 +385,3 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7850079519015833622}
   m_CullTransparentMesh: 1
---- !u!114 &5494837063434002797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7850079519015833622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
