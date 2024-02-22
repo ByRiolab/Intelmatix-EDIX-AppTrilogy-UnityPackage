@@ -95,6 +95,7 @@ namespace Intelmatix.Templates
         /// </param>
         public void ReportInteractivity(bool interactable)
         {
+            if (this.interactable == interactable) return;
             this.interactable = interactable;
             if (interactable)
             {
@@ -105,7 +106,7 @@ namespace Intelmatix.Templates
             {
                 line.fillAmount = 0;
                 LeanTween.cancel(line.gameObject);
-                LeanTween.value(line.gameObject, 0, 1, 1.5f).setOnUpdate((float value) => line.fillAmount = value);
+                LeanTween.value(line.gameObject, 0f, 1f, 1.5f).setOnUpdate((float value) => line.fillAmount = value);
             }
         }
 
@@ -113,7 +114,7 @@ namespace Intelmatix.Templates
         {
             if (myCanvasGroup.blocksRaycasts)
             {
-                myCanvasGroup.alpha = interactable ? 1 : 0.5f;
+                myCanvasGroup.alpha = Mathf.Lerp(myCanvasGroup.alpha, interactable ? 1 : 0.5f, Time.deltaTime * 4);
             }
         }
     }
