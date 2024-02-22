@@ -51,7 +51,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   titleText: {fileID: 4350988121336106371}
   toggle: {fileID: 7157369142489693768}
-  canvasToAnimate: {fileID: 7585251403497039938}
 --- !u!1 &6232537662851206790
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,7 +88,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 100}
+  m_SizeDelta: {x: 0, y: 120}
   m_Pivot: {x: 0, y: 0}
 --- !u!225 &7585251403497039938
 CanvasGroup:

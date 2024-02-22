@@ -64,7 +64,7 @@ namespace Intelmatix.Modules.Sidebar
             {
                 canvasGroup.alpha = 0;
                 canvasGroup.blocksRaycasts = false;
-                AnimationManager.AnimateIn(this.canvasGroup, direction: AnimationManager.Direction.Right);
+                AnimationManager.AnimateIn(this.canvasGroup, direction: AnimationManager.Direction.Up);
             }
         }
 
@@ -72,13 +72,13 @@ namespace Intelmatix.Modules.Sidebar
         {
             if (canvasGroup != null)
             {
-                AnimationManager.AnimateOut(this.canvasGroup, direction: AnimationManager.Direction.Right);
+                AnimationManager.AnimateOut(this.canvasGroup, direction: AnimationManager.Direction.Down);
             }
         }
 
         public LTDescr Hide()
         {
-            return AnimationManager.AnimateOut(this.canvasGroup, direction: AnimationManager.Direction.Right);
+            return AnimationManager.AnimateOut(this.canvasGroup, direction: AnimationManager.Direction.Down);
         }
 
         private IEnumerator ChangePosition(bool top)
