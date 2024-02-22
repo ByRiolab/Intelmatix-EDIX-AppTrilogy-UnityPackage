@@ -42,8 +42,7 @@ namespace Intelmatix.Templates
             // Instantiate question handlers
             tab.Questions.ForEach(question =>
                {
-
-                   simpleScrollSnap.AddToFront(questionHandlerPrefab.gameObject);
+                   simpleScrollSnap.AddToBack(questionHandlerPrefab.gameObject);
 
                    QuestionHandler instance = simpleScrollSnap.Content.GetChild(simpleScrollSnap.Content.childCount - 1).GetComponent<QuestionHandler>();
 

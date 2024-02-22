@@ -15,7 +15,7 @@ public class ScrollHighlight : MonoBehaviour
 
     [SerializeField] private ScrollPositionReference positionReference;
 
-
+    [SerializeField] private byte indexing = 0;
     [SerializeField] private float maxPositionDiff = 1500;
     [SerializeField] private float offset = 0;
     [Space]
@@ -30,6 +30,13 @@ public class ScrollHighlight : MonoBehaviour
         for (int i = 0; i < Content.childCount; i++)
         {
             var item = Content.GetChild(i);
+            for (int j = 0; j < indexing; j++)
+            {
+                if (item.childCount > 0)
+                {
+                    item = item.GetChild(0);
+                }
+            }
 
             if (!item.TryGetComponent(out CanvasGroup canvasGroup))
             {
