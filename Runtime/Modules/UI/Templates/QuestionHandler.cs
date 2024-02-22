@@ -1,7 +1,6 @@
 
 using UnityEngine;
 using UnityEngine.UI;
-using Intelmatix.Modules.UI.Components;
 using TMPro;
 using static Intelmatix.Data.QuestionsData;
 
@@ -17,14 +16,10 @@ namespace Intelmatix.Templates
         [Header("Animation")]
         [SerializeField] private CanvasGroup canvasToAnimate;
 
-
-
-
         private void OnEnable()
         {
             if (canvasToAnimate != null)
             {
-                canvasToAnimate.alpha = 0;
                 canvasToAnimate.blocksRaycasts = false;
             }
         }
@@ -35,6 +30,7 @@ namespace Intelmatix.Templates
             {
                 this.gameObject.SetActive(false);
             }
+
             this.name = "<li-question> [" + question.Title + "]";
             titleText.text = question.Title;
             toggle.group = toggleGroup;
@@ -46,6 +42,7 @@ namespace Intelmatix.Templates
 
             titleText.alpha = .25f;
             var duration = 0.5f;
+
             toggle.onValueChanged.AddListener((value) =>
             {
                 LeanTween.cancel(this.canvasToAnimate.gameObject);
@@ -90,12 +87,12 @@ namespace Intelmatix.Templates
 
         public void Show(float distance = 100, float duration = 1f)
         {
-            AnimationManager.AnimateIn(canvasToAnimate, duration: duration, distance: distance);
+            // AnimationManager.AnimateIn(canvasToAnimate, duration: duration, distance: distance);
         }
 
         public void Hide(float distance = 100, float duration = 1f)
         {
-            AnimationManager.AnimateOut(canvasToAnimate, duration: duration, distance: distance);
+            // AnimationManager.AnimateOut(canvasToAnimate, duration: duration, distance: distance);
         }
     }
 }

@@ -42,12 +42,15 @@ namespace Intelmatix.Templates
             // Instantiate question handlers
             tab.Questions.ForEach(question =>
                {
-                   simpleScrollSnap.AddToBack(questionHandlerPrefab.gameObject);
+                   if (!question.IsCognitive)
+                   {
+                       simpleScrollSnap.AddToBack(questionHandlerPrefab.gameObject);
 
-                   QuestionHandler instance = simpleScrollSnap.Content.GetChild(simpleScrollSnap.Content.childCount - 1).GetComponent<QuestionHandler>();
+                       QuestionHandler instance = simpleScrollSnap.Content.GetChild(simpleScrollSnap.Content.childCount - 1).GetComponent<QuestionHandler>();
 
-                   instance.Display(question, toggleGroup);
-                   questionHandlers.Add(instance);
+                       instance.Display(question, toggleGroup);
+                       questionHandlers.Add(instance);
+                   }
                });
 
             Show();
@@ -85,6 +88,7 @@ namespace Intelmatix.Templates
                     }
                     catch { }
                 }
+                questionHandlers.Clear();
                 Destroy(gameObject);
             });
         }
