@@ -134,6 +134,7 @@ MonoBehaviour:
   parentOfQuestions: {fileID: 2230766166142272765}
   simpleScrollSnap: {fileID: 6153809530141160206}
   questionHandlerPrefab: {fileID: 4154631061000407824, guid: efc1bf58e483b4ad5a459754933e5f72, type: 3}
+  line: {fileID: 4154448322127288179}
 --- !u!222 &7526807288799496759
 CanvasRenderer:
   m_ObjectHideFlags: 0
