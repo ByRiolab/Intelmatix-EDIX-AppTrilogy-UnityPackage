@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using static Intelmatix.Data.QuestionsData;
+using DanielLochner.Assets.SimpleScrollSnap;
 
 namespace Intelmatix.Templates
 {
@@ -13,13 +14,13 @@ namespace Intelmatix.Templates
         [SerializeField] private TextMeshProUGUI globalQuestionText;
         [SerializeField] private ToggleGroup toggleGroup;
         [SerializeField] private RectTransform parentOfQuestions;
+        [SerializeField] private SimpleScrollSnap simpleScrollSnap;
 
         [Header("Components")]
         [SerializeField] private QuestionHandler questionHandlerPrefab;
 
         [Header("Animation")]
         [SerializeField] private CanvasGroup canvasToAnimate;
-
         private readonly List<QuestionHandler> questionHandlers = new();
         private CanvasGroup myCanvasGroup;
         private void Awake()
@@ -50,16 +51,15 @@ namespace Intelmatix.Templates
             {
                 tab.Questions.ForEach(question =>
                    {
-                       var instance = Instantiate(questionHandlerPrefab, parentOfQuestions);
-                       instance.Display(question, toggleGroup);
-                       questionHandlers.Add(instance);
+                       questionHandlerPrefab.Display(question, toggleGroup);
+                       var instance = simpleScrollSnap.AddToFront(questionHandlerPrefab.gameObject);
+                       questionHandlers.Add(instance.GetComponent<QuestionHandler>());
                    });
             }
             if (TryGetComponent(out InfiniteScroll infiniteScroll))
             {
                 infiniteScroll.originalItemsCount = tab.Questions.Count;
             }
-
             Show();
         }
 

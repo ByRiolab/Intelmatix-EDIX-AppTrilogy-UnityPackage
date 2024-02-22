@@ -332,8 +332,8 @@ GameObject:
   - component: {fileID: 7526807288799496759}
   - component: {fileID: 7780527425927418516}
   - component: {fileID: 5818289169923289409}
-  - component: {fileID: 6633458070493789089}
   - component: {fileID: 2246853205296839330}
+  - component: {fileID: 6153809530141160206}
   m_Layer: 5
   m_Name: UI QuestionsPanel
   m_TagString: Untagged
@@ -377,6 +377,7 @@ MonoBehaviour:
   globalQuestionText: {fileID: 5889949899804518728}
   toggleGroup: {fileID: 8750041199618622927}
   parentOfQuestions: {fileID: 2230766166142272765}
+  simpleScrollSnap: {fileID: 0}
   questionHandlerPrefab: {fileID: 4154631061000407824, guid: efc1bf58e483b4ad5a459754933e5f72, type: 3}
   canvasToAnimate: {fileID: 8828943020230611214}
 --- !u!222 &7526807288799496759
@@ -429,22 +430,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &6633458070493789089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6238125417964040635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e46a0f1f839d0423ca2939c9e0777492, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scrollRect: {fileID: 7780527425927418516}
-  snapPosition: 0
-  originalItemsCount: 4
-  clonesPerItem: 3
 --- !u!114 &2246853205296839330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465,6 +450,59 @@ MonoBehaviour:
   alphaExp: 20
   scaleMinMax: {x: 0.45, y: 1}
   scaleExp: 10
+--- !u!114 &6153809530141160206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6238125417964040635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54aaa385a9b88e84e9d50b9804aaa24e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementType: 0
+  movementAxis: 1
+  useAutomaticLayout: 1
+  automaticLayoutSpacing: 0.25
+  sizeControl: 1
+  size: {x: 400, y: 250}
+  automaticLayoutMargins:
+    Left: 0
+    Right: 0
+    Top: 0
+    Bottom: 0
+  useInfiniteScrolling: 0
+  infiniteScrollingSpacing: 0.25
+  useOcclusionCulling: 0
+  startingPanel: 0
+  useSwipeGestures: 1
+  minimumSwipeSpeed: 0
+  previousButton: {fileID: 0}
+  nextButton: {fileID: 0}
+  pagination: {fileID: 0}
+  useToggleNavigation: 1
+  snapTarget: 2
+  snapSpeed: 10
+  thresholdSpeedToSnap: -1
+  useHardSnapping: 1
+  useUnscaledTime: 0
+  onTransitionEffects:
+    m_PersistentCalls:
+      m_Calls: []
+  onPanelSelecting:
+    m_PersistentCalls:
+      m_Calls: []
+  onPanelSelected:
+    m_PersistentCalls:
+      m_Calls: []
+  onPanelCentering:
+    m_PersistentCalls:
+      m_Calls: []
+  onPanelCentered:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7182879925018500500
 GameObject:
   m_ObjectHideFlags: 0
