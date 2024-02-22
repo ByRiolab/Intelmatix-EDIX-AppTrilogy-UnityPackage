@@ -60,19 +60,7 @@ namespace Intelmatix.Templates
         {
             LeanTween.cancel(gameObject);
             myCanvasGroup.alpha = 0;
-            myCanvasGroup.LeanAlpha(1, .1f).setOnComplete(() =>
-            {
-                var duration = 1.1f;
-                // Animation of cascade
-                for (int i = 0; i < questionHandlers.Count; i++)
-                {
-                    questionHandlers[i].Show
-                    (
-                        duration: duration,
-                        distance: 100f * (i + 2)
-                    );
-                }
-            });
+            myCanvasGroup.LeanAlpha(1, .5f);
         }
 
         public void Hide()
