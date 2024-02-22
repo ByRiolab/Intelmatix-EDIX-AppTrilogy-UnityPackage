@@ -253,7 +253,7 @@ MonoBehaviour:
   positionReference: 2
   indexing: 1
   maxPositionDiff: 2000
-  offset: 0
+  offset: 100
   alphaMinMax: {x: 0.25, y: 1}
   alphaExp: 12
   scaleMinMax: {x: 0.1, y: 1}
