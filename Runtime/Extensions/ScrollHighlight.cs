@@ -36,7 +36,6 @@ public class ScrollHighlight : MonoBehaviour
                 canvasGroup = item.gameObject.AddComponent<CanvasGroup>();
             }
 
-            Debug.Log(scrollRect.viewport.position.y + " | " + scrollRect.viewport.rect.height / 2);
 
             float viewportPosition = scrollRect.viewport.position.y + offset;
             if (positionReference == ScrollPositionReference.TOP)

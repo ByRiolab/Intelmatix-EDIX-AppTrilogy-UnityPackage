@@ -51,9 +51,12 @@ namespace Intelmatix.Templates
             {
                 tab.Questions.ForEach(question =>
                    {
-                       questionHandlerPrefab.Display(question, toggleGroup);
-                       var instance = simpleScrollSnap.AddToFront(questionHandlerPrefab.gameObject);
-                       questionHandlers.Add(instance.GetComponent<QuestionHandler>());
+                       simpleScrollSnap.AddToFront(questionHandlerPrefab.gameObject);
+
+                       var instance = simpleScrollSnap.Content.GetChild(simpleScrollSnap.Content.childCount - 1).GetComponent<QuestionHandler>();
+
+                       instance.Display(question, toggleGroup);
+                       questionHandlers.Add(instance);
                    });
             }
             if (TryGetComponent(out InfiniteScroll infiniteScroll))
