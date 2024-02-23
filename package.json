@@ -3,7 +3,7 @@
         "com.unity.textmeshpro": "2.0.1"
     },
     "displayName": "Intelmatix UI",
-    "version": "0.2.17",
+    "version": "0.2.18",
     "unity": "2020.1",
     "description": "UI for Intelmatix",
     "name": "com.intelmatix.ui",

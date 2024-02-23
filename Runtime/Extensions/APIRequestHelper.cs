@@ -43,11 +43,13 @@ namespace Intelmatix.Networking
             {
                 var result = JsonUtility.FromJson<T>(www.downloadHandler.text);
                 Debug.Log($"Success request: {url}");
+                www.Dispose();
                 return result;
             }
             catch (System.Exception e)
             {
                 Debug.LogError($"{nameof(Get)} failled: {e.Message}");
+                www.Dispose();
                 return default;
             }
         }
