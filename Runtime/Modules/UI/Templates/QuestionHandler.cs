@@ -40,7 +40,9 @@ namespace Intelmatix.Templates
                     var scrollSnap = GetComponentInParent<SimpleScrollSnap>();
                     if (scrollSnap)
                     {
-                        scrollSnap.GoToPanel(transform.GetSiblingIndex());
+                        var index = transform.GetSiblingIndex() - 1;
+                        if (index < 0) index = transform.parent.childCount - 1;
+                        scrollSnap.GoToPanel(index);
                     }
 
                     LeanTween.value(gameObject, (float value) =>
