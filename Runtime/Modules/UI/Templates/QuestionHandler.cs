@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using static Intelmatix.Data.QuestionsData;
+using DanielLochner.Assets.SimpleScrollSnap;
 
 namespace Intelmatix.Templates
 {
@@ -36,6 +37,12 @@ namespace Intelmatix.Templates
             {
                 if (value)
                 {
+                    var scrollSnap = GetComponentInParent<SimpleScrollSnap>();
+                    if (scrollSnap)
+                    {
+                        scrollSnap.GoToPanel(transform.GetSiblingIndex());
+                    }
+
                     LeanTween.value(gameObject, (float value) =>
                     {
                         titleText.alpha = value;

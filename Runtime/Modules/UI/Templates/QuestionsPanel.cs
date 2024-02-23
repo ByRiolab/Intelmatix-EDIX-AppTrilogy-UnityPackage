@@ -106,7 +106,7 @@ namespace Intelmatix.Templates
             {
                 line.fillAmount = 0;
                 LeanTween.cancel(line.gameObject);
-                LeanTween.value(line.gameObject, 0f, 1f, 1.5f).setOnUpdate((float value) => line.fillAmount = value);
+                LeanTween.value(line.gameObject, 0f, 0.9f, 1.5f).setOnUpdate((float value) => line.fillAmount = value);
             }
         }
 
