@@ -79,6 +79,8 @@ namespace Intelmatix
         /// </summary>
         private void SetupCube()
         {
+            if (cubes == null) return;
+
             ShuffleCubesList();
             ResetVisibility();
 
@@ -90,8 +92,10 @@ namespace Intelmatix
                 {
                     for (int z = 0; z < 3; z++)
                     {
-                        var index = x * 9 + y * 3 + z;
+                        int index = x * 9 + y * 3 + z;
+
                         if (index >= cubes.Count) continue;
+
                         var cube = cubes[index].gameObject;
                         LeanTween.cancel(cube);
 
