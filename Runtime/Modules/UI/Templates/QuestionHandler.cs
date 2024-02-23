@@ -40,8 +40,7 @@ namespace Intelmatix.Templates
                     var scrollSnap = GetComponentInParent<SimpleScrollSnap>();
                     if (scrollSnap)
                     {
-                        var index = transform.GetSiblingIndex() - 1;
-                        if (index < 0) index = transform.parent.childCount - 1;
+                        int index = (transform.GetSiblingIndex() + 1) % transform.parent.childCount;
                         scrollSnap.GoToPanel(index);
                     }
 
