@@ -84,23 +84,31 @@ namespace Intelmatix.Modules.Sidebar
         private IEnumerator ChangePosition(bool top)
         {
             const float speed = 1500;
-            bool condition()
+            float startPosition = ((RectTransform)transform).anchoredPosition.y;
+            float targetPosition;
+            if (top)
             {
-                if (top)
-                {
-                    return ((RectTransform)transform).anchoredPosition.y < 0;
-                }
-                else
-                {
-                    return ((RectTransform)transform).anchoredPosition.y > -((RectTransform)transform.parent).rect.height + ((RectTransform)transform).rect.height;
-                }
+                targetPosition = 0;
             }
-            while (condition())
+            else
             {
-                ((RectTransform)transform).anchoredPosition += new Vector2(0, (top ? speed : -speed) * Time.deltaTime);
+                targetPosition = -((RectTransform)transform.parent).rect.height + ((RectTransform)transform).rect.height;
+            }
+
+            float elapsedTime = 0;
+            while (elapsedTime < 1f)
+            {
+                elapsedTime += Time.deltaTime * speed / Mathf.Abs(targetPosition - startPosition);
+                float t = Mathf.SmoothStep(0, 1, elapsedTime);
+                float newY = Mathf.Lerp(startPosition, targetPosition, t);
+                ((RectTransform)transform).anchoredPosition = new Vector2(0, newY);
                 yield return null;
             }
+
+      // Ensure final position is set correctly
+      ((RectTransform)transform).anchoredPosition = new Vector2(0, targetPosition);
         }
+
 
 
     }
