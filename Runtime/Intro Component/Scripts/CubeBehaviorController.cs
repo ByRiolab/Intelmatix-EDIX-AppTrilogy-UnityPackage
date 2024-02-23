@@ -147,16 +147,25 @@ namespace Intelmatix
         /// </summary>
         private void ShuffleCubesList()
         {
-            int n = cubes.Count;
-            System.Random rng = new();
-
-            while (n > 1)
+            try
             {
-                n--;
-                int k = rng.Next(n + 1);
-                (cubes[n], cubes[k]) = (cubes[k], cubes[n]);
+                int index = cubes.Count;
+                System.Random rng = new();
+
+                while (index > 1)
+                {
+                    index--;
+                    int randomIndex = rng.Next(index + 1);
+                    (cubes[index], cubes[randomIndex]) = (cubes[randomIndex], cubes[index]);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                System.Console.WriteLine($"Error al barajar los cubos: {ex.Message}");
+                // Manejar la excepción de acuerdo a los requisitos de tu aplicación.
             }
         }
+
 
         /// <summary>
         /// Restablece los CanvasGroup a su estado inicial.
