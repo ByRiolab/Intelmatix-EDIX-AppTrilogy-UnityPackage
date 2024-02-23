@@ -48,7 +48,7 @@ namespace Intelmatix
 
             LeanTween.rotate(cubesParent.gameObject, Vector3.zero, rotationSpeed * 0.5f);
 
-            for (int i = 0; i < initialTransforms.Count; i++)
+            for (int i = 0; i < Mathf.Min(initialTransforms.Count, cubes.Count); i++)
             {
                 var (pos, rot, scale) = initialTransforms[i];
                 var cube = cubes[i];
@@ -71,7 +71,8 @@ namespace Intelmatix
 
             LeanTween.cancel(gameObject);
             if (cubeWordLoop)
-                LeanTween.delayedCall(gameObject, loopTimeout, SetupCube);
+                Invoke(nameof(SetupCube), loopTimeout);
+
         }
 
         /// <summary>
@@ -133,8 +134,7 @@ namespace Intelmatix
             LeanTween.cancel(cubesParent.gameObject);
             LeanTween.rotate(cubesParent.gameObject, new Vector3(45, 45, 0), rotationSpeed);
 
-            if (cubeWordLoop)
-                LeanTween.delayedCall(gameObject, loopTimeout, SetupWordDisplay);
+            Invoke(nameof(SetupWordDisplay), loopTimeout);
         }
 
         /// <summary>
@@ -154,22 +154,28 @@ namespace Intelmatix
         {
             try
             {
-                int index = cubes.Count;
+                // Get the total number of cubes
+                int cubeCount = cubes.Count;
+                // Create a new random number generator
                 System.Random rng = new();
 
-                while (index > 1)
+                // Loop through the list of cubes
+                for (int index = cubeCount - 1; index > 0; index--)
                 {
-                    index--;
+                    // Generate a random index within the range of remaining cubes
                     int randomIndex = rng.Next(index + 1);
+                    // Swap the current cube with a randomly selected cube
                     (cubes[index], cubes[randomIndex]) = (cubes[randomIndex], cubes[index]);
                 }
             }
-            catch (System.Exception ex)
+            catch (System.Exception ex) // Catch any exceptions that might occur
             {
+                // If an exception occurs, print an error message
                 System.Console.WriteLine($"Error al barajar los cubos: {ex.Message}");
-                // Manejar la excepción de acuerdo a los requisitos de tu aplicación.
+                // Handle the exception according to your application's requirements
             }
         }
+
 
 
         /// <summary>
