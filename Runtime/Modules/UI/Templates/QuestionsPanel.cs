@@ -87,6 +87,11 @@ namespace Intelmatix.Templates
                 Destroy(gameObject);
             });
         }
+
+
+        float lastDeactivateTime = 0;
+        float lastActivateTime = 0;
+
         /// <summary>
         /// Changes the state of visibility and loading of this panel. Use this according the proyect needs.
         /// </summary>
@@ -99,14 +104,19 @@ namespace Intelmatix.Templates
             this.interactable = interactable;
             if (interactable)
             {
+                lastActivateTime = Time.time;
                 LeanTween.cancel(line.gameObject);
-                line.fillAmount = 1;
+                LeanTween.value(line.gameObject, line.fillAmount, 1, 0.5f).setOnUpdate((float value) => line.fillAmount = value);
             }
             else
             {
+                const float completationRatio = 0.75f;
+                float tweenDuration = lastDeactivateTime != lastActivateTime ? (lastActivateTime - lastDeactivateTime) * completationRatio : 1.5f;
+
+                lastDeactivateTime = Time.time;
                 line.fillAmount = 0;
                 LeanTween.cancel(line.gameObject);
-                LeanTween.value(line.gameObject, 0f, 0.9f, 1.5f).setOnUpdate((float value) => line.fillAmount = value);
+                LeanTween.value(line.gameObject, 0f, completationRatio, tweenDuration).setEaseOutQuad().setOnUpdate((float value) => line.fillAmount = value);
             }
         }
 
