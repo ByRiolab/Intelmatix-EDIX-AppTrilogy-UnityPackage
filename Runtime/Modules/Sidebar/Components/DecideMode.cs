@@ -83,32 +83,40 @@ namespace Intelmatix.Modules.Sidebar
 
         private IEnumerator ChangePosition(bool top)
         {
-            const float speed = 1500;
-            float startPosition = ((RectTransform)transform).anchoredPosition.y;
-            float targetPosition;
+            const float duration = 1f; // Total duration for movement
+            float elapsed = 0f; // Time elapsed
+
+            Vector2 startPos = ((RectTransform)transform).anchoredPosition;
+            Vector2 endPos;
+
             if (top)
             {
-                targetPosition = 0;
+                endPos = new Vector2(startPos.x, 0);
             }
             else
             {
-                targetPosition = -((RectTransform)transform.parent).rect.height + ((RectTransform)transform).rect.height;
+                endPos = new Vector2(startPos.x, -((RectTransform)transform.parent).rect.height + ((RectTransform)transform).rect.height);
             }
 
-            float elapsedTime = 0;
-            while (elapsedTime < 1f)
+            while (elapsed < duration)
             {
-                elapsedTime += Time.deltaTime * speed / Mathf.Abs(targetPosition - startPosition);
-                float t = Mathf.SmoothStep(0, 1, elapsedTime);
-                float newY = Mathf.Lerp(startPosition, targetPosition, t);
-                ((RectTransform)transform).anchoredPosition = new Vector2(0, newY);
+                float t = elapsed / duration;
+                float factor = EaseOutCubic(t);
+
+                ((RectTransform)transform).anchoredPosition = Vector2.Lerp(startPos, endPos, factor);
+
+                elapsed += Time.deltaTime;
                 yield return null;
             }
 
-      // Ensure final position is set correctly
-      ((RectTransform)transform).anchoredPosition = new Vector2(0, targetPosition);
+     // Ensure final position
+     ((RectTransform)transform).anchoredPosition = endPos;
         }
 
+        private float EaseOutCubic(float x)
+        {
+            return 1 - Mathf.Pow(1 - x, 3);
+        }
 
 
     }
