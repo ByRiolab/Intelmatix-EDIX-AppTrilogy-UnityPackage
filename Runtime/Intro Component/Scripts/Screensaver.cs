@@ -20,6 +20,7 @@ namespace Intelmatix
         private bool isScreensaverActive = true;
         private float inactivityTimer;
         private static bool projectOpened;
+        private bool wasTouchingLastFrame;
 
         private void Awake()
         {
@@ -31,7 +32,9 @@ namespace Intelmatix
 
         private void Update()
         {
-            bool inputReceived = Input.anyKeyDown || Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2);
+            bool touch = Input.touchCount > 0 && !wasTouchingLastFrame;
+            wasTouchingLastFrame = Input.touchCount > 0;
+            bool inputReceived = Input.anyKeyDown || Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2) || touch;
 
             if (inputReceived)
             {

@@ -4270,7 +4270,7 @@ MonoBehaviour:
   buttonsCanvas: {fileID: 2304626446297644541}
   videoCanvas: {fileID: 5436758208577940973}
   cubesCanvas: {fileID: 8096831445861061833}
-  inactivityDuration: 10
+  inactivityDuration: 60
   startOnAwake: 1
 --- !u!225 &1505603667230624028
 CanvasGroup:
