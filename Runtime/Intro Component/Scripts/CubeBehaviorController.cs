@@ -227,11 +227,11 @@ namespace Intelmatix
                     Vector2 screenPosition = RectTransformUtility.WorldToScreenPoint(null, centerPosition);
 
                     // Convertir la posición de la pantalla a una posición en el mundo
-                    Vector3 worldPosition = cubesCamera.ScreenToWorldPoint(new Vector3(screenPosition.x * scaleFactor, screenPosition.y * scaleFactor, 15));
+                    Vector3 worldPosition = cubesCamera.ScreenToWorldPoint(new Vector3(screenPosition.x / scaleFactor, screenPosition.y / scaleFactor, 15));
 
                     // Asignar la posición en el mundo al objeto que deseas mover
                     cubes[i].LeanMove(worldPosition, 1.85f).setEaseInOutCubic();
-                    cubes[i].LeanRotate(new(45, 45, 360 * 3), 2f).setEaseOutCubic();
+                    cubes[i].LeanRotate(new(-25, 50, -25 + 360 * 3), 2f).setEaseOutCubic();
                     cubes[i].LeanScale(Vector3.one * 0.5f, 1f);
                 }
                 else
