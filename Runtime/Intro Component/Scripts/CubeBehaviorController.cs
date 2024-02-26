@@ -188,14 +188,69 @@ namespace Intelmatix
                 cube.gameObject.SetActive(true);
             }
         }
-        public void Deactivate()
+
+        public void Stop()
         {
             LeanTween.cancel(gameObject);
+            LeanTween.cancel(cubesParent.gameObject);
             CancelInvoke();
-            cubesCamera.enabled = false;
             foreach (var cube in cubes)
             {
                 LeanTween.cancel(cube.gameObject);
+            }
+        }
+
+        public static Vector2 GetRandomNormalizedDirection()
+        {
+            // Generate random angle in radians
+            float randomAngle = Random.Range(0f, Mathf.PI * 2f);
+
+            // Convert angle to a direction vector
+            Vector2 randomDirection = new Vector2(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle));
+
+            // Normalize the vector to get a unit vector
+            randomDirection.Normalize();
+
+            return randomDirection;
+        }
+
+        public void MoveCubesToPositions(RectTransform[] positions, float scaleFactor)
+        {
+            for (int i = 0; i < cubes.Count; i++)
+            {
+                if (i < positions.Length)
+                {
+                    var rectTransform = positions[i];
+                    // Get the center position of the RectTransform's rectangle
+                    Vector3 centerPosition = rectTransform.TransformPoint(rectTransform.rect.center);
+                    // Obtener la posición en la pantalla del objeto UI
+                    Vector2 screenPosition = RectTransformUtility.WorldToScreenPoint(null, centerPosition);
+
+                    // Convertir la posición de la pantalla a una posición en el mundo
+                    Vector3 worldPosition = cubesCamera.ScreenToWorldPoint(new Vector3(screenPosition.x * scaleFactor, screenPosition.y * scaleFactor, 15));
+
+                    // Asignar la posición en el mundo al objeto que deseas mover
+                    cubes[i].LeanMove(worldPosition, 1.85f).setEaseInOutCubic();
+                    cubes[i].LeanRotate(new(45, 45, 360 * 3), 2f).setEaseOutCubic();
+                    cubes[i].LeanScale(Vector3.one * 0.5f, 1f);
+                }
+                else
+                {
+                    cubes[i].LeanScale(Vector3.zero, 1f).setEaseInCirc();
+
+                    var direction = GetRandomNormalizedDirection() * 20;
+
+                    cubes[i].LeanMove(cubes[i].position + (Vector3)direction, 1f).setEaseInQuad();
+                }
+            }
+        }
+
+        public void Deactivate()
+        {
+            Stop();
+            cubesCamera.enabled = false;
+            foreach (var cube in cubes)
+            {
                 cube.gameObject.SetActive(false);
             }
         }

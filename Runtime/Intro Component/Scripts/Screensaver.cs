@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Intelmatix
@@ -7,10 +8,11 @@ namespace Intelmatix
         [Header("References")]
         [SerializeField] private CubeBehaviorController cubeController;
         [SerializeField] private CanvasGroup screensaverCanvas;
-        [SerializeField] private CanvasGroup buttonsCanvas;
+        [SerializeField] private CanvasGroup logosCanvasGroup;
         [SerializeField] private CanvasGroup videoCanvas;
         [SerializeField] private CanvasGroup cubesCanvas;
         [SerializeField] private ProjectButton projectButtonTemplate;
+        [SerializeField] private Canvas logosCanvas;
         [SerializeField] private ProjectDisplayInfo[] projects;
 
         [Header("Settings")]
@@ -24,6 +26,7 @@ namespace Intelmatix
         private float inactivityTimer;
         private static bool projectOpened;
         private bool wasTouchingLastFrame;
+        private readonly List<RectTransform> displayedProjects = new();
 
         private void Awake()
         {
@@ -35,7 +38,9 @@ namespace Intelmatix
 
             foreach (ProjectDisplayInfo project in projects)
             {
-                Instantiate(projectButtonTemplate, buttonsCanvas.transform).SetData(project);
+                var instance = Instantiate(projectButtonTemplate, logosCanvasGroup.transform);
+                instance.SetData(project);
+                displayedProjects.Add(instance.Icon.GetComponent<RectTransform>());
             }
 
         }
@@ -70,10 +75,18 @@ namespace Intelmatix
 
         private void ShowButtons()
         {
-            buttonsCanvas.LeanAlpha(1, 0.3f).setOnComplete(() => buttonsCanvas.blocksRaycasts = true);
-            cubeController.Deactivate();
-            videoCanvas.LeanAlpha(0.1f, 0.3f);
-            cubesCanvas.LeanAlpha(0, 0.3f);
+            cubeController.Stop();
+
+            cubeController.MoveCubesToPositions(displayedProjects.ToArray(), logosCanvas.scaleFactor);
+
+            logosCanvasGroup.LeanAlpha(1, 0.3f).setDelay(2.5f).setOnComplete(() =>
+            {
+                logosCanvasGroup.blocksRaycasts = true;
+
+                videoCanvas.LeanAlpha(0.1f, 0.3f);
+                cubesCanvas.LeanAlpha(0, 0.3f);
+                cubeController.Deactivate();
+            });
         }
 
         public void ActivateScreensaver()
@@ -95,7 +108,7 @@ namespace Intelmatix
             cubesCanvas.LeanAlpha(1, 0.3f);
             videoCanvas.LeanAlpha(1, 0.3f);
             cubeController.Collapse();
-            buttonsCanvas.LeanAlpha(0, 0.3f);
+            logosCanvasGroup.LeanAlpha(0, 0.3f);
             ResetInactivityTimer();
             isScreensaverActive = true;
         }

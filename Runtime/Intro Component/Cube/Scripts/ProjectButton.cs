@@ -21,6 +21,8 @@ namespace Intelmatix
         [SerializeField] Image iconImage;
         [SerializeField] TMPro.TextMeshProUGUI nameText;
 
+        public Image Icon => iconImage;
+
         private CanvasGroup canvasGroup;
 
         void Awake()

@@ -80,6 +80,32 @@ namespace Intelmatix
                 barChart.AxisConfig.HorizontalAxisConfig.LabelsConfig.LabelColor = new Color(1, 1, 1, 1);
             }
         }
+
+        public static Vector3 GetWorldPosition(this RectTransform rectTransform, Camera camera)
+        {
+            // Obtener las esquinas del rectángulo local
+            Vector3[] corners = new Vector3[4];
+            rectTransform.GetWorldCorners(corners);
+
+            // Obtener el centro del rectángulo en el espacio local
+            Vector3 center = rectTransform.rect.center;
+
+            // Promedio de las esquinas para obtener el centro del rectángulo en el espacio mundial
+            Vector3 worldCenter = Vector3.zero;
+            for (int i = 0; i < corners.Length; i++)
+            {
+                worldCenter += corners[i];
+            }
+            worldCenter /= corners.Length;
+
+            // Obtener la distancia desde la cámara al rectángulo
+            float distance = Vector3.Distance(camera.transform.position, worldCenter);
+
+            // Proyectar el centro del rectángulo en el espacio mundial hacia la cámara
+            Vector3 worldPosition = camera.transform.position + camera.transform.forward * distance;
+
+            return worldPosition;
+        }
     }
 
 }
