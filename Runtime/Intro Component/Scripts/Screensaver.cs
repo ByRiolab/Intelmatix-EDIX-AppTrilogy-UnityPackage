@@ -10,12 +10,15 @@ namespace Intelmatix
         [SerializeField] private CanvasGroup buttonsCanvas;
         [SerializeField] private CanvasGroup videoCanvas;
         [SerializeField] private CanvasGroup cubesCanvas;
+        [SerializeField] private ProjectButton projectButtonTemplate;
+        [SerializeField] private ProjectDisplayInfo[] projects;
 
         [Header("Settings")]
         [SerializeField, Min(0)] private float inactivityDuration = 240f;
 
         [Header("Initialization")]
         [SerializeField] private bool startOnAwake = true;
+        public static Screensaver Instance;
 
         private bool isScreensaverActive = true;
         private float inactivityTimer;
@@ -24,10 +27,17 @@ namespace Intelmatix
 
         private void Awake()
         {
+            Instance = this;
             ResetInactivityTimer();
 
             if (startOnAwake)
                 ActivateScreensaver();
+
+            foreach (ProjectDisplayInfo project in projects)
+            {
+                Instantiate(projectButtonTemplate, buttonsCanvas.transform).SetData(project);
+            }
+
         }
 
         private void Update()
