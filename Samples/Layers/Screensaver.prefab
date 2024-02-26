@@ -2859,10 +2859,25 @@ MonoBehaviour:
   projectButtonTemplate: {fileID: 2099599375058065657, guid: b834089cba97d458f93de387dde2c960, type: 3}
   logosCanvas: {fileID: 7359174325143059391}
   projects:
-  - <Icon>k__BackingField: {fileID: 21300000, guid: 70e63529266af4ee990d978d3e1ae10c, type: 3}
+  - <Icon>k__BackingField: {fileID: 21300000, guid: f394c2fa7bb4f4697a0e523bc157264d, type: 3}
     <Name>k__BackingField: Example Project
     <IsThis>k__BackingField: 1
-  - <Icon>k__BackingField: {fileID: 21300000, guid: f426bb5139a50477fa4ae34733a9cc88, type: 3}
+  - <Icon>k__BackingField: {fileID: 21300000, guid: d8753908abcc840f8babd5aef5065277, type: 3}
+    <Name>k__BackingField: Not this project
+    <IsThis>k__BackingField: 0
+  - <Icon>k__BackingField: {fileID: 21300000, guid: 7ec0c33a980cf40ff8e3bc57d4254f07, type: 3}
+    <Name>k__BackingField: Not this project
+    <IsThis>k__BackingField: 0
+  - <Icon>k__BackingField: {fileID: 21300000, guid: bb7db91cd14ca4701a42c6b66c77609f, type: 3}
+    <Name>k__BackingField: Not this project
+    <IsThis>k__BackingField: 0
+  - <Icon>k__BackingField: {fileID: 21300000, guid: 2cdb9bf74362848168994e96f6c2b655, type: 3}
+    <Name>k__BackingField: Not this project
+    <IsThis>k__BackingField: 0
+  - <Icon>k__BackingField: {fileID: 21300000, guid: 637330cdbcef84a95b65191bc0421583, type: 3}
+    <Name>k__BackingField: Not this project
+    <IsThis>k__BackingField: 0
+  - <Icon>k__BackingField: {fileID: 21300000, guid: 773f99ffd8d3642e9a865cdbb7f21f47, type: 3}
     <Name>k__BackingField: Not this project
     <IsThis>k__BackingField: 0
   inactivityDuration: 60
@@ -3306,7 +3321,6 @@ GameObject:
   - component: {fileID: 2304626446297644541}
   - component: {fileID: 5795418546930555254}
   - component: {fileID: 4923810780731395059}
-  - component: {fileID: 8457437483726976864}
   - component: {fileID: 624015983429018408}
   m_Layer: 5
   m_Name: <canvas-group> [Logos]
@@ -3384,62 +3398,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8457437483726976864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8400313883556111034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 4923810780731395059}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1798845694805831979}
-        m_TargetAssemblyTypeName: Intelmatix.Screensaver, Intelmatix.Core
-        m_MethodName: Reset
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &624015983429018408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3457,7 +3415,7 @@ MonoBehaviour:
     m_Right: 350
     m_Top: 600
     m_Bottom: 600
-  m_ChildAlignment: 0
+  m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 450, y: 200}

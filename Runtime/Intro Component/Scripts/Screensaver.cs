@@ -51,6 +51,8 @@ namespace Intelmatix
             wasTouchingLastFrame = Input.touchCount > 0;
             bool inputReceived = Input.anyKeyDown || Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2) || touch;
 
+            inputReceived = inputReceived && screensaverCanvas.alpha > 0.7f;
+
             if (inputReceived)
             {
                 ResetInactivityTimer();
@@ -75,6 +77,9 @@ namespace Intelmatix
 
         private void ShowButtons()
         {
+
+            Debug.Log("ShowButtons");
+
             cubeController.Stop();
 
             cubeController.MoveCubesToPositions(displayedProjects.ToArray(), logosCanvas.scaleFactor);
@@ -89,9 +94,9 @@ namespace Intelmatix
             });
         }
 
-        public void ActivateScreensaver()
+        public void ActivateScreensaver(bool fullreset = false)
         {
-            ResetScreensaver();
+            ResetScreensaver(fullreset);
             screensaverCanvas.LeanAlpha(1, 0.5f);
         }
 
@@ -103,14 +108,18 @@ namespace Intelmatix
             cubeController.Deactivate();
         }
 
-        public void ResetScreensaver()
+        private void ResetScreensaver(bool fullreset = false)
         {
-            cubesCanvas.LeanAlpha(1, 0.3f);
-            videoCanvas.LeanAlpha(1, 0.3f);
+            cubesCanvas.alpha = 1;
+            videoCanvas.alpha = 1;
             cubeController.Collapse();
-            logosCanvasGroup.LeanAlpha(0, 0.3f);
-            ResetInactivityTimer();
+            logosCanvasGroup.alpha = 0;
+            logosCanvasGroup.blocksRaycasts = false;
             isScreensaverActive = true;
+            if (fullreset) projectOpened = false;
+            ResetInactivityTimer();
+
+            LeanTween.cancel(logosCanvasGroup.gameObject);
         }
 
         private void ResetInactivityTimer() => inactivityTimer = 0f;
