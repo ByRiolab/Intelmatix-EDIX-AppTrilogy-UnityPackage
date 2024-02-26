@@ -24,7 +24,7 @@ namespace Intelmatix
         [SerializeField] private float loopTimeout = 5;
 
         private int alphaID;
-        private List<Transform> cubes;
+        private List<Transform> cubes = new();
 
         private void Awake()
         {
@@ -168,7 +168,7 @@ namespace Intelmatix
                     (cubes[index], cubes[randomIndex]) = (cubes[randomIndex], cubes[index]);
                 }
             }
-            catch (System.Exception ex) // Catch any exceptions that might occur
+            catch (System.Exception ex) // *Catch any exceptions that might occur
             {
                 // If an exception occurs, print an error message
                 System.Console.WriteLine($"Error al barajar los cubos: {ex.Message}");
@@ -176,19 +176,28 @@ namespace Intelmatix
             }
         }
 
-
-
         /// <summary>
         /// Restablece los CanvasGroup a su estado inicial.
         /// </summary>
         private void ResetVisibility()
         {
+            LeanTween.cancel(gameObject);
             cubesCamera.enabled = true;
+            foreach (var cube in cubes)
+            {
+                cube.gameObject.SetActive(true);
+            }
         }
         public void Deactivate()
         {
-            cubesCamera.enabled = false;
             LeanTween.cancel(gameObject);
+            CancelInvoke();
+            cubesCamera.enabled = false;
+            foreach (var cube in cubes)
+            {
+                LeanTween.cancel(cube.gameObject);
+                cube.gameObject.SetActive(false);
+            }
         }
     }
 }
