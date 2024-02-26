@@ -51,12 +51,12 @@ namespace Intelmatix
             wasTouchingLastFrame = Input.touchCount > 0;
             bool inputReceived = Input.anyKeyDown || Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2) || touch;
 
-            inputReceived = inputReceived && screensaverCanvas.alpha > 0.7f;
-
             if (inputReceived)
             {
                 ResetInactivityTimer();
             }
+
+            inputReceived = inputReceived && screensaverCanvas.alpha > 0.7f;
 
             if (isScreensaverActive && inputReceived)
             {

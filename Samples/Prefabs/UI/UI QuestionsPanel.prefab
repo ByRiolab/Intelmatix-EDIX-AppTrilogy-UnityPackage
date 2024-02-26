@@ -253,10 +253,10 @@ MonoBehaviour:
   scrollRect: {fileID: 7780527425927418516}
   positionReference: 2
   indexing: 1
-  maxPositionDiff: 2000
-  offset: 100
-  alphaMinMax: {x: 0.25, y: 1}
-  alphaExp: 25
+  maxPositionDiff: 1000
+  offset: 200
+  alphaMinMax: {x: 0, y: 1}
+  alphaExp: 4
   scaleMinMax: {x: 0.5, y: 1}
   scaleExp: 8
 --- !u!1 &7182879925018500500
@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Padding: {x: 0, y: -50, z: 0, w: -500}
   m_Softness: {x: 0, y: 0}
 --- !u!222 &2263541609088008508
 CanvasRenderer:
