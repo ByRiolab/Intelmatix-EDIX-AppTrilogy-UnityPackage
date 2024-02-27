@@ -219,7 +219,7 @@ MonoBehaviour:
   pagination: {fileID: 0}
   useToggleNavigation: 1
   snapTarget: 2
-  snapSpeed: 10
+  snapSpeed: 4
   thresholdSpeedToSnap: -1
   useHardSnapping: 1
   useUnscaledTime: 0
