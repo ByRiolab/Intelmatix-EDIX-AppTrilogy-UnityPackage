@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace Intelmatix.Tools
 {
-
     public class CubeController : MonoBehaviour
     {
 
@@ -19,65 +18,36 @@ namespace Intelmatix.Tools
         public LeanTweenType cubeEase = LeanTweenType.notUsed;
         public float cubeTime;
         [Space]
-        [SerializeField] List<Cube> cubes = new List<Cube>();
-        List<Cube> candidates = new List<Cube>();
+        [SerializeField] List<Cube> cubes = new();
+        readonly List<Cube> candidates = new();
 
         private bool _isOnAnimation = false;
 
-        void Update()
-        {
-
-
-
-
-            //Debug
-            // if (Input.GetKeyDown(KeyCode.Space)) InteractionDetected();
-            // if (Input.GetKeyDown(KeyCode.R)) UnityEngine.SceneManagement.SceneManager.LoadScene("Cube");
-
-            Rotate();
-        }
+        private void Update() => Rotate();
 
         void Rotate()
         {
-            // Para rotar
             if (shouldRotate)
             {
-
                 rotation = speed * Time.deltaTime;
                 pivot.transform.Rotate(new Vector3(0f, rotation, 0f), Space.World);
             }
-            // Para frenar
             else
             {
-
-                rotation = rotation - Time.deltaTime;
+                rotation -= Time.deltaTime;
 
                 if (rotation <= 0) rotation = 0;
 
                 pivot.transform.Rotate(new Vector3(0f, rotation, 0f), Space.World);
             }
         }
-
-        // // Metodo para subscribirse
-        // public void InteractionDetected()
-        // {
-
-        //     // Si se quiere dejar de girar
-        //     //shouldRotate = false;
-
-        //     LeanTween.delayedCall(0.5f, EvaluateCandidates);
-        // }
-
         public void EvaluateCandidates()
         {
             if (_isOnAnimation) return;
-            // LeanTween.delayedCall(0.5f, () => _isOnAnimation = false);
 
-
-            // Para filtrar los cubos que estan en frente
+            // Filter the cubes that are in-front
             foreach (Cube cube in cubes)
             {
-
                 cube.activeEase = cubeEase;
                 cube.time = cubeTime;
 
@@ -89,7 +59,7 @@ namespace Intelmatix.Tools
                 }
             }
 
-            // Para eleccionar uno al azar
+            // Select a random cube
             int random = Random.Range(0, candidates.Count);
 
             var selectedCube = candidates[random];

@@ -3,14 +3,17 @@ using UnityEngine;
 
 namespace Intelmatix
 {
+    /// <summary>
+    /// Manager of a custom Screensaver that shows a video, a cube animation and a list of project icons.
+    /// </summary>
     public class Screensaver : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] private CubeBehaviorController cubeController;
-        [SerializeField] private CanvasGroup screensaverCanvas;
+        [SerializeField] private CanvasGroup screensaverCanvasGroup;
         [SerializeField] private CanvasGroup logosCanvasGroup;
-        [SerializeField] private CanvasGroup videoCanvas;
-        [SerializeField] private CanvasGroup cubesCanvas;
+        [SerializeField] private CanvasGroup videoCanvasGroup;
+        [SerializeField] private CanvasGroup cubesCanvasGroup;
         [SerializeField] private ProjectButton projectButtonTemplate;
         [SerializeField] private Canvas logosCanvas;
         [SerializeField] private ProjectDisplayInfo[] projects;
@@ -42,7 +45,6 @@ namespace Intelmatix
                 instance.SetData(project);
                 displayedProjects.Add(instance.Icon.GetComponent<RectTransform>());
             }
-
         }
 
         private void Update()
@@ -56,7 +58,7 @@ namespace Intelmatix
                 ResetInactivityTimer();
             }
 
-            inputReceived = inputReceived && screensaverCanvas.alpha > 0.7f;
+            inputReceived = inputReceived && screensaverCanvasGroup.alpha > 0.7f;
 
             if (isScreensaverActive && inputReceived)
             {
@@ -72,7 +74,7 @@ namespace Intelmatix
                     ActivateScreensaver();
             }
 
-            screensaverCanvas.blocksRaycasts = screensaverCanvas.alpha > 0.1f;
+            screensaverCanvasGroup.blocksRaycasts = screensaverCanvasGroup.alpha > 0.1f;
         }
 
         private void ShowButtons()
@@ -85,8 +87,8 @@ namespace Intelmatix
             {
                 logosCanvasGroup.blocksRaycasts = true;
 
-                videoCanvas.LeanAlpha(0.1f, 0.3f);
-                cubesCanvas.LeanAlpha(0, 0.3f);
+                videoCanvasGroup.LeanAlpha(0.1f, 0.3f);
+                cubesCanvasGroup.LeanAlpha(0, 0.3f);
                 cubeController.Deactivate();
             });
         }
@@ -94,21 +96,21 @@ namespace Intelmatix
         public void ActivateScreensaver(bool fullreset = false)
         {
             ResetScreensaver(fullreset);
-            screensaverCanvas.LeanAlpha(1, 0.5f);
+            screensaverCanvasGroup.LeanAlpha(1, 0.5f);
         }
 
         public void DeactivateScreensaver()
         {
             projectOpened = true;
             isScreensaverActive = false;
-            screensaverCanvas.LeanAlpha(0, 0.5f);
+            screensaverCanvasGroup.LeanAlpha(0, 0.5f);
             cubeController.Deactivate();
         }
 
         private void ResetScreensaver(bool fullreset = false)
         {
-            cubesCanvas.alpha = 1;
-            videoCanvas.alpha = 1;
+            cubesCanvasGroup.alpha = 1;
+            videoCanvasGroup.alpha = 1;
             cubeController.Collapse();
             logosCanvasGroup.alpha = 0;
             logosCanvasGroup.blocksRaycasts = false;

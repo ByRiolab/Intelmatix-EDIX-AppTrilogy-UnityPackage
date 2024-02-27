@@ -10,8 +10,11 @@ namespace Intelmatix
     [System.Serializable]
     public class ProjectDisplayInfo
     {
-        [field: SerializeField] public Sprite Icon { get; private set; }
         [field: SerializeField] public string Name { get; private set; }
+        [field: SerializeField] public Sprite Icon { get; private set; }
+        /// <summary>
+        /// Is this project the current one?
+        /// </summary>
         [field: SerializeField] public bool IsThis { get; private set; }
     }
     [RequireComponent(typeof(CanvasGroup))]
@@ -45,7 +48,7 @@ namespace Intelmatix
             iconImage.sprite = project.Icon;
             nameText.SetText(project.Name);
 
-            canvasGroup.alpha = project.IsThis ? 1 : 0.3f;
+            canvasGroup.alpha = project.IsThis ? 1 : 0.2f;
         }
     }
 }
