@@ -242,6 +242,11 @@ namespace Intelmatix
 
                     cubes[i].LeanMove(cubes[i].position + (Vector3)direction, 1f).setEaseInQuad();
                 }
+                var cubeRenderer = cubes[i].GetComponent<MeshRenderer>();
+                var startMaterial = cubeRenderer.material.GetFloat(alphaID);
+                LeanTween.value(cubes[i].gameObject, startMaterial, 1, 1f)
+    .setEase(menuEaseType)
+    .setOnUpdate(value => cubeRenderer.material.SetFloat(alphaID, value));
             }
         }
 
