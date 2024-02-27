@@ -77,9 +77,6 @@ namespace Intelmatix
 
         private void ShowButtons()
         {
-
-            Debug.Log("ShowButtons");
-
             cubeController.Stop();
 
             cubeController.MoveCubesToPositions(displayedProjects.ToArray(), logosCanvas.scaleFactor);
