@@ -322,7 +322,7 @@ MonoBehaviour:
   movementAxis: 1
   useAutomaticLayout: 1
   automaticLayoutSpacing: 0
-  sizeControl: 0
+  sizeControl: 1
   size: {x: 600, y: 200}
   automaticLayoutMargins:
     Left: 0
@@ -417,7 +417,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 50, y: 50}
-  m_SizeDelta: {x: -100, y: -100}
+  m_SizeDelta: {x: -100, y: -477.9442}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &2600415938419180636
 MonoBehaviour:
