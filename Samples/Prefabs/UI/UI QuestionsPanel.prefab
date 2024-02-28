@@ -323,7 +323,7 @@ MonoBehaviour:
   useAutomaticLayout: 1
   automaticLayoutSpacing: 0
   sizeControl: 0
-  size: {x: 780, y: 200}
+  size: {x: 600, y: 200}
   automaticLayoutMargins:
     Left: 0
     Right: 0
@@ -374,11 +374,11 @@ MonoBehaviour:
   scrollRect: {fileID: 7780527425927418516}
   positionReference: 2
   indexing: 1
-  maxPositionDiff: 1000
-  offset: 200
+  maxPositionDiff: 750
+  offset: 100
   alphaMinMax: {x: 0, y: 1}
-  alphaExp: 4
-  scaleMinMax: {x: 0.5, y: 1}
+  alphaExp: 3
+  scaleMinMax: {x: 0.6, y: 1}
   scaleExp: 8
 --- !u!1 &7182879925018500500
 GameObject:
