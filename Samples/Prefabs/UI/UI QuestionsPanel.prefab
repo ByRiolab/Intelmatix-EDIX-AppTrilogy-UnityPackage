@@ -323,7 +323,7 @@ MonoBehaviour:
   movementType: 0
   movementAxis: 1
   useAutomaticLayout: 1
-  automaticLayoutSpacing: 0.25
+  automaticLayoutSpacing: 0.2
   sizeControl: 1
   size: {x: 600, y: 200}
   automaticLayoutMargins:
@@ -332,7 +332,7 @@ MonoBehaviour:
     Top: 0
     Bottom: 0
   useInfiniteScrolling: 1
-  infiniteScrollingSpacing: 0.26
+  infiniteScrollingSpacing: 0.2
   useOcclusionCulling: 0
   startingPanel: 0
   useSwipeGestures: 1
