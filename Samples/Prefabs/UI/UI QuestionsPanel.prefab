@@ -329,8 +329,8 @@ MonoBehaviour:
   automaticLayoutMargins:
     Left: 0
     Right: 0
-    Top: 0
-    Bottom: 0
+    Top: 2
+    Bottom: 2
   useInfiniteScrolling: 1
   infiniteScrollingSpacing: 0.2
   useOcclusionCulling: 0
