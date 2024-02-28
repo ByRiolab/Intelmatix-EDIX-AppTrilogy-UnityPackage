@@ -10,11 +10,12 @@ namespace DanielLochner.Assets.SimpleScrollSnap
         [SerializeField] private byte index = 0;
         public override void OnTransition(RectTransform rectTransform, float scale)
         {
-            while (index > 0)
+            var aux = index;
+            while (aux > 0)
             {
                 if (rectTransform.childCount > 0)
                     rectTransform = (RectTransform)rectTransform.GetChild(0);
-                index--;
+                aux--;
             }
             rectTransform.localScale = Vector3.one * scale;
         }
