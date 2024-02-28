@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4154631061000407824}
   - component: {fileID: 563783587253183736}
   - component: {fileID: 1214420644270933971}
+  - component: {fileID: 9050747386241215163}
   m_Layer: 5
   m_Name: UI QuestionHandler
   m_TagString: Untagged
@@ -93,6 +94,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!225 &9050747386241215163
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410678208105249012}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6232537662851206790
 GameObject:
   m_ObjectHideFlags: 0
