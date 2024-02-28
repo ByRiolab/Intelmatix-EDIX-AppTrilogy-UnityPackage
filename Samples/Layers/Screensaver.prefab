@@ -2702,7 +2702,7 @@ GameObject:
   - component: {fileID: 8190078654251758868}
   - component: {fileID: 1540875085699702065}
   m_Layer: 5
-  m_Name: <button> Reset (1)
+  m_Name: <button> Reset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3165,26 +3165,26 @@ MonoBehaviour:
   projectButtonTemplate: {fileID: 2099599375058065657, guid: b834089cba97d458f93de387dde2c960, type: 3}
   logosCanvas: {fileID: 7359174325143059391}
   projects:
-  - <Icon>k__BackingField: {fileID: 21300000, guid: f394c2fa7bb4f4697a0e523bc157264d, type: 3}
-    <Name>k__BackingField: Example Project
+  - <Name>k__BackingField: Example Project
+    <Icon>k__BackingField: {fileID: 21300000, guid: f394c2fa7bb4f4697a0e523bc157264d, type: 3}
     <IsThis>k__BackingField: 1
-  - <Icon>k__BackingField: {fileID: 21300000, guid: d8753908abcc840f8babd5aef5065277, type: 3}
-    <Name>k__BackingField: Not this project
+  - <Name>k__BackingField: Not this project
+    <Icon>k__BackingField: {fileID: 21300000, guid: d8753908abcc840f8babd5aef5065277, type: 3}
     <IsThis>k__BackingField: 0
-  - <Icon>k__BackingField: {fileID: 21300000, guid: 7ec0c33a980cf40ff8e3bc57d4254f07, type: 3}
-    <Name>k__BackingField: Not this project
+  - <Name>k__BackingField: Not this project
+    <Icon>k__BackingField: {fileID: 21300000, guid: 7ec0c33a980cf40ff8e3bc57d4254f07, type: 3}
     <IsThis>k__BackingField: 0
-  - <Icon>k__BackingField: {fileID: 21300000, guid: bb7db91cd14ca4701a42c6b66c77609f, type: 3}
-    <Name>k__BackingField: Not this project
+  - <Name>k__BackingField: Not this project
+    <Icon>k__BackingField: {fileID: 21300000, guid: bb7db91cd14ca4701a42c6b66c77609f, type: 3}
     <IsThis>k__BackingField: 0
-  - <Icon>k__BackingField: {fileID: 21300000, guid: 2cdb9bf74362848168994e96f6c2b655, type: 3}
-    <Name>k__BackingField: Not this project
+  - <Name>k__BackingField: Not this project
+    <Icon>k__BackingField: {fileID: 21300000, guid: 2cdb9bf74362848168994e96f6c2b655, type: 3}
     <IsThis>k__BackingField: 0
-  - <Icon>k__BackingField: {fileID: 21300000, guid: 637330cdbcef84a95b65191bc0421583, type: 3}
-    <Name>k__BackingField: Not this project
+  - <Name>k__BackingField: Not this project
+    <Icon>k__BackingField: {fileID: 21300000, guid: 637330cdbcef84a95b65191bc0421583, type: 3}
     <IsThis>k__BackingField: 0
-  - <Icon>k__BackingField: {fileID: 21300000, guid: 773f99ffd8d3642e9a865cdbb7f21f47, type: 3}
-    <Name>k__BackingField: Not this project
+  - <Name>k__BackingField: Not this project
+    <Icon>k__BackingField: {fileID: 21300000, guid: 773f99ffd8d3642e9a865cdbb7f21f47, type: 3}
     <IsThis>k__BackingField: 0
   inactivityDuration: 60
   startOnAwake: 1

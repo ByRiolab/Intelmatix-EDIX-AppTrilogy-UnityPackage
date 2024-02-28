@@ -87,7 +87,6 @@ namespace Intelmatix
             {
                 logosCanvasGroup.blocksRaycasts = true;
 
-                videoCanvasGroup.LeanAlpha(0.1f, 0.3f);
                 cubesCanvasGroup.LeanAlpha(0, 0.3f);
                 cubeController.Deactivate();
             });
