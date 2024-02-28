@@ -321,7 +321,7 @@ MonoBehaviour:
   movementType: 0
   movementAxis: 1
   useAutomaticLayout: 1
-  automaticLayoutSpacing: 0
+  automaticLayoutSpacing: 0.2
   sizeControl: 1
   size: {x: 600, y: 200}
   automaticLayoutMargins:
