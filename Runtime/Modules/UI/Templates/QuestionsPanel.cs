@@ -55,7 +55,6 @@ namespace Intelmatix.Templates
                        questionHandlers.Add(instance);
                    }
                });
-
             Show();
         }
 
