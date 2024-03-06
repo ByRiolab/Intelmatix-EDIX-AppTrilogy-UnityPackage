@@ -27,11 +27,11 @@ namespace Intelmatix.Data
         [SerializeField] private string developmentPath = "https://dev-api.intelmatix.com";
         [SerializeField] private string testPath = "https://test-api.intelmatix.com";
         [SerializeField] private string productionPath = "https://api.intelmatix.com";
-        private static string StreamingPath;
-        private static string StreamingKey;
-        private static string StreamingRootPath;
+        public static string StreamingPath;
+        public static string StreamingKey;
+        public static string StreamingRootPath;
 
-        private string Api => environment switch
+        public string Api => environment switch
         {
             Environment.Local => localPath,
             Environment.Development => developmentPath,
