@@ -22,6 +22,7 @@ namespace Intelmatix
         [SerializeField] private Transform parentOfGraphics;
         [SerializeField] private Transform parentOfGraphicsTemporal;
         [SerializeField] private Transform parentOfDecideMode;
+        [SerializeField] private Transform parentOfDecideOptions;
         [SerializeField] private ResponsiveContainer responsiveContainer;
         [SerializeField] private BakgroundAnim backgroundAnimation;
         [SerializeField] private KPIController kpiController;
@@ -256,7 +257,8 @@ namespace Intelmatix
             {
                 LeanTween.delayedCall(this.gameObject, delay, () =>
                 {
-                    var instance = Instantiate(prefab, (prefab is DecideMode) ? parentOfDecideMode : parentOfGraphics);
+                    var parent = prefab is DecideMode ? parentOfDecideMode : (prefab is DecideOption) ? parentOfDecideOptions : parentOfGraphics;
+                    var instance = Instantiate(prefab, parent);
                     instance.transform.SetAsLastSibling();
                     instance.Display(item);
                     instantiateList.Add(instance);
