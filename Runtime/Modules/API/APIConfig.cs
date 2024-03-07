@@ -60,7 +60,7 @@ namespace Intelmatix.Data
                 string result;
 
                 result = File.ReadAllText(filePath);
-
+                result = result.Replace("\r\n", "\n");
                 StreamingPath = result.Split('\n')?[0];
                 StreamingKey = result.Split('\n')?[1];
                 StreamingRootPath = result.Split('\n')?[2];
@@ -71,6 +71,4 @@ namespace Intelmatix.Data
             }
         }
     }
-
-
 }
