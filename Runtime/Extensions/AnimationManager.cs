@@ -80,7 +80,7 @@ namespace Intelmatix
             LeanTweenType easeType = LeanTweenType.easeInOutSine
             )
         {
-            if (canvasGroup == null)
+            if (canvasGroup == null || canvasGroup.alpha == 0)
             {
                 // Debug.LogWarning("CanvasGroup is null");
                 return null;
